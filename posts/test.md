@@ -2,7 +2,7 @@
 title: 'Test post'
 date: '25-01-2022'
 excerpt: 'This is a test post'
-coverImage: '/images/posts/img1.jpg'
+coverImage: 'https://placeimg.com/1920/1080/tech'
 ---
 ## First post heading
 
