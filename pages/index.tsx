@@ -29,9 +29,9 @@ const Home: NextPage<Props> = ({ posts }) => (
     <div className="grid grid-cols-12 cardsContainer py-32 w-[980px] gap-x-[2rem] m-auto justify-center gap-y-10 box-border">
       {posts.map((post, index) =>
         index < 1 ? (
-          <MainPost slug={post.slug} {...post.frontmatter} />
+          <MainPost key={post.slug} slug={post.slug} {...post.frontmatter} />
         ) : (
-          <Post slug={post.slug} {...post.frontmatter} />
+          <Post key={post.slug} slug={post.slug} {...post.frontmatter} />
         )
       )}
     </div>
