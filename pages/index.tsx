@@ -1,10 +1,10 @@
 import type { GetStaticProps, NextPage } from 'next'
-import Image from 'next/image'
 import Head from 'next/head'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import MainPost from '../components/MainPost'
+import Post from '../components/Post'
 
 type Props = {
   posts: {
@@ -31,36 +31,7 @@ const Home: NextPage<Props> = ({ posts }) => (
         index < 1 ? (
           <MainPost slug={post.slug} {...post.frontmatter} />
         ) : (
-          <div
-            className="col-span-6 bg-white rounded-xl shadow-sm cursor-pointer relative"
-            key={post.slug}
-          >
-            <div className="flex w-full h-64 overflow-hidden rounded-t-xl">
-              <div className="w-full relative cardImageContainer">
-                <Image
-                  src={post.frontmatter.coverImage}
-                  alt={post.frontmatter.title}
-                  layout="fill"
-                  objectFit="cover"
-                  className="rounded-t-xl"
-                />
-                <div className="overlay" />
-              </div>
-            </div>
-
-            <div className="bg-white shadow-none rounded-xl p-8 pb-10 flex flex-col">
-              <h3 className="text-2xl font-extrabold indent-2">
-                {post.frontmatter.title}
-              </h3>
-
-              <p className="text-gray-500 text-lg  pt-4">
-                {post.frontmatter.excerpt}
-              </p>
-              <p className="text-gray-500 text-sm absolute right-6 bottom-4">
-                {post.frontmatter.date}
-              </p>
-            </div>
-          </div>
+          <Post slug={post.slug} {...post.frontmatter} />
         )
       )}
     </div>
