@@ -1,7 +1,7 @@
 ---
 title: 'Test post'
 date: '25-01-2022'
-excerpt: 'This is a test post'
+excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ipsum nunc aliquet bibendum enim facilisis gravida neque. Eu mi bibendum neque egestas congue quisque egestas diam. Viverra nibh cras pulvinar mattis nunc sed blandit libero volutpat. Lacinia at quis risus sed vulputate odio.'
 coverImage: 'https://placeimg.com/1920/1080/tech'
 ---
 ## First post heading

@@ -17,56 +17,78 @@ type Props = {
   }[]
 }
 
-const Home: NextPage<Props> = ({ posts }: Props) => (
-  <div className="w-[90%] bg-white my-10 m-auto rounded-xl px-40 py-20">
+const Home: NextPage<Props> = ({ posts }) => (
+  <div className="font-body flex flex-wrap w-full">
     <Head>
       <title>Chris Pantak Blog</title>
       <meta name="description" content="Chris Pantak tech blog" />
       <link rel="icon" href="/favicon.ico" />
     </Head>
 
-    <div className="flex flex-wrap gap-x-32 justify-center">
+    <div className="grid grid-cols-12 cardsContainer py-32 w-[980px] gap-x-[2rem] m-auto justify-center gap-y-10 box-border">
       {posts.map((post, index) =>
         index < 1 ? (
-          <div className="w-full flex gap-12 pb-28" key={post.slug}>
-            <div className="w-1/2 h-[20rem] relative ">
-              <Image
-                src={post.frontmatter.coverImage}
-                alt={post.frontmatter.title}
-                layout="fill"
-                objectFit="cover"
-                objectPosition="80% 50%"
-                className="rounded-xl"
-              />
+          <div
+            className="col-span-12 mainCard w-full min-h-[40vh] flex bg-white rounded-xl shadow-sm cursor-pointer"
+            key={post.slug}
+          >
+            <div className="flex w-1/2 overflow-hidden rounded-xl">
+              <div className="w-full relative cardImageContainer">
+                <Image
+                  src={post.frontmatter.coverImage}
+                  alt={post.frontmatter.title}
+                  layout="fill"
+                  objectFit="cover"
+                  objectPosition="bottom"
+                  className="rounded-l-xl"
+                />
+                <div className="overlay" />
+              </div>
             </div>
 
-            <div className="bg-white shadow-none rounded-lg p-8 w-1/2">
-              <h3 className="text-5xl tracking-widest font-extrabold">
+            <div className="bg-white shadow-none rounded-xl p-8 w-1/2 flex flex-col">
+              <h3 className="text-3xl font-extrabold text-center">
                 {post.frontmatter.title}
               </h3>
-              <p className="text-gray-700 text-sm">{post.frontmatter.date}</p>
-              <p className="text-gray-700 text-sm">
+
+              <p className="text-gray-500 text-xl  pt-8">
                 {post.frontmatter.excerpt}
               </p>
-              <a className="text-blue-500" href={`/posts/${post.slug}`}>
-                Read more
-              </a>
+              <p className="text-gray-500 text-sm mt-auto text-right">
+                {post.frontmatter.date}
+              </p>
             </div>
           </div>
         ) : (
-          <div key={post.slug} className="w-80 h-80">
-            <div className="w-full h-full relative ">
-              <Image
-                src={post.frontmatter.coverImage}
-                alt={post.frontmatter.title}
-                layout="fill"
-                objectFit="cover"
-                className="rounded-xl"
-              />
+          <div
+            className="col-span-6 bg-white rounded-xl shadow-sm cursor-pointer relative"
+            key={post.slug}
+          >
+            <div className="flex w-full h-64 overflow-hidden rounded-t-xl">
+              <div className="w-full relative cardImageContainer">
+                <Image
+                  src={post.frontmatter.coverImage}
+                  alt={post.frontmatter.title}
+                  layout="fill"
+                  objectFit="cover"
+                  className="rounded-t-xl"
+                />
+                <div className="overlay" />
+              </div>
             </div>
-            <h3>{post.frontmatter.title}</h3>
-            <p>{post.frontmatter.date}</p>
-            <p>{post.frontmatter.excerpt}</p>
+
+            <div className="bg-white shadow-none rounded-xl p-8 pb-10 flex flex-col">
+              <h3 className="text-2xl font-extrabold indent-2">
+                {post.frontmatter.title}
+              </h3>
+
+              <p className="text-gray-500 text-lg  pt-4">
+                {post.frontmatter.excerpt}
+              </p>
+              <p className="text-gray-500 text-sm absolute right-6 bottom-4">
+                {post.frontmatter.date}
+              </p>
+            </div>
           </div>
         )
       )}
