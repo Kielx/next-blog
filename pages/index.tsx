@@ -4,6 +4,7 @@ import Head from 'next/head'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+import MainPost from '../components/MainPost'
 
 type Props = {
   posts: {
@@ -28,37 +29,7 @@ const Home: NextPage<Props> = ({ posts }) => (
     <div className="grid grid-cols-12 cardsContainer py-32 w-[980px] gap-x-[2rem] m-auto justify-center gap-y-10 box-border">
       {posts.map((post, index) =>
         index < 1 ? (
-          <div
-            className="col-span-12 mainCard w-full min-h-[40vh] flex bg-white rounded-xl shadow-sm cursor-pointer"
-            key={post.slug}
-          >
-            <div className="flex w-1/2 overflow-hidden rounded-xl">
-              <div className="w-full relative cardImageContainer">
-                <Image
-                  src={post.frontmatter.coverImage}
-                  alt={post.frontmatter.title}
-                  layout="fill"
-                  objectFit="cover"
-                  objectPosition="bottom"
-                  className="rounded-l-xl"
-                />
-                <div className="overlay" />
-              </div>
-            </div>
-
-            <div className="bg-white shadow-none rounded-xl p-8 w-1/2 flex flex-col">
-              <h3 className="text-3xl font-extrabold text-center">
-                {post.frontmatter.title}
-              </h3>
-
-              <p className="text-gray-500 text-xl  pt-8">
-                {post.frontmatter.excerpt}
-              </p>
-              <p className="text-gray-500 text-sm mt-auto text-right">
-                {post.frontmatter.date}
-              </p>
-            </div>
-          </div>
+          <MainPost slug={post.slug} {...post.frontmatter} />
         ) : (
           <div
             className="col-span-6 bg-white rounded-xl shadow-sm cursor-pointer relative"
