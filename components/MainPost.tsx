@@ -19,10 +19,10 @@ const MainPost: React.FC<Props> = ({
 }) => (
   <Link href={`/posts/${slug}`} passHref>
     <div
-      className="Post group col-span-12 mainCard w-full min-h-[40vh] flex bg-white rounded-xl shadow-sm border border-opacity-5 border-black cursor-pointer"
+      className="Post group col-span-12 mx-auto md:col-span-12 mainCard w-full min-h-[40vh] flex flex-wrap md:flex-nowrap bg-white rounded-xl shadow-sm border border-opacity-5 border-black cursor-pointer"
       key={slug}
     >
-      <div className="flex w-1/2 overflow-hidden rounded-xl">
+      <div className="flex w-full md:w-1/2 h-52 md:h-auto overflow-hidden rounded-t-xl md:rounded-xl">
         <div className="w-full relative cardImageContainer">
           <Image
             src={coverImage}
@@ -30,16 +30,18 @@ const MainPost: React.FC<Props> = ({
             layout="fill"
             objectFit="fill"
             objectPosition="bottom"
-            className="rounded-l-xl"
+            className="md:rounded-l-xl"
           />
           <div className="overlay" />
         </div>
       </div>
 
-      <div className="bg-white shadow-none rounded-xl p-8 w-1/2 flex flex-col">
-        <h3 className="text-3xl font-extrabold text-center">{title}</h3>
+      <div className="bg-white shadow-none rounded-xl p-3 md:p-8 md:w-1/2 flex flex-col">
+        <h3 className="text-xl md:text-3xl font-extrabold text-start md:text-center">
+          {title}
+        </h3>
 
-        <p className="transition-all group-hover:text-gray-600  text-gray-500 text-xl  pt-8">
+        <p className="transition-all group-hover:text-gray-600  text-gray-500 text-base md:text-xl  py-4 md:pt-8">
           {excerpt}
         </p>
         <p className="transition-all group-hover:text-gray-600  text-gray-500 text-sm mt-auto text-right">
