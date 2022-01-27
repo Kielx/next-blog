@@ -31,7 +31,12 @@ const Home: NextPage<Props> = ({ posts }) => (
         index < 1 ? (
           <MainPost key={post.slug} slug={post.slug} {...post.frontmatter} />
         ) : (
-          <Post key={post.slug} slug={post.slug} {...post.frontmatter} />
+          <Post
+            index={index}
+            key={post.slug}
+            slug={post.slug}
+            {...post.frontmatter}
+          />
         )
       )}
     </div>

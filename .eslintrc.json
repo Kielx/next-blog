@@ -29,6 +29,7 @@
         "unnamedComponents": "arrow-function"
       }
     ],
+    "arrow-body-style": "off",
     "react/jsx-props-no-spreading": "off",
     "no-restricted-syntax": "off",
     "no-unused-expressions": ["error", { "allowTernary": true }],
