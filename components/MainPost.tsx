@@ -28,7 +28,7 @@ const MainPost: React.FC<Props> = ({
             src={coverImage}
             alt={title}
             layout="fill"
-            objectFit="cover"
+            objectFit="fill"
             objectPosition="bottom"
             className="rounded-l-xl"
           />

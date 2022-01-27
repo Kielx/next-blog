@@ -23,6 +23,7 @@ const Post: React.FC<Props> = ({
   const { ref, inView } = useInView({
     /* Optional options */
     triggerOnce: true,
+    rootMargin: '30px',
   })
 
   return (
