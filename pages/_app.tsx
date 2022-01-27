@@ -5,9 +5,13 @@ import '@fontsource/montserrat/500.css'
 import '@fontsource/montserrat/600.css'
 import '@fontsource/montserrat/400.css'
 import 'animate.css'
+import Header from '../components/Header'
 
 const MyApp = ({ Component, pageProps }: AppProps) => (
-  <Component {...pageProps} />
+  <>
+    <Header />
+    <Component {...pageProps} />
+  </>
 )
 
 export default MyApp
