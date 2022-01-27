@@ -32,10 +32,10 @@ const Post: React.FC<Props> = ({
         ref={ref}
         className={`${
           inView && index > 2 && 'animate__fadeInUp'
-        } animate__animated  Post group col-span-6 bg-white rounded-xl shadow-sm cursor-pointer relative border border-opacity-5 border-black`}
+        } animate__animated  Post group col-span-12 md:col-span-6 bg-white rounded-xl shadow-sm cursor-pointer relative border border-opacity-5 border-black`}
         key={slug}
       >
-        <div className="flex w-full h-64 overflow-hidden rounded-t-xl">
+        <div className="flex w-full h-32 md:h-64 overflow-hidden rounded-t-xl">
           <div className="w-full relative cardImageContainer">
             <Image
               src={coverImage}
@@ -48,13 +48,15 @@ const Post: React.FC<Props> = ({
           </div>
         </div>
 
-        <div className="bg-white shadow-none rounded-xl p-8 pb-10 flex flex-col">
-          <h3 className="text-2xl font-extrabold indent-2">{title}</h3>
+        <div className="p-2 bg-white shadow-none rounded-xl md:p-8 pb-10 flex flex-col">
+          <h3 className="text-center md:text-left text-lg md:text-2xl font-extrabold md:indent-2">
+            {title}
+          </h3>
 
-          <p className="transition-all group-hover:text-gray-600 text-gray-500 text-lg  pt-4">
+          <p className="transition-all group-hover:text-gray-600 text-gray-500 text-xs md:text-lg  pt-4">
             {excerpt}
           </p>
-          <p className="transition-all group-hover:text-gray-600  text-gray-500 text-sm absolute right-6 bottom-4">
+          <p className="transition-all group-hover:text-gray-600  text-gray-500 text-xs md:text-sm absolute right-6 bottom-4">
             {date}
           </p>
         </div>
