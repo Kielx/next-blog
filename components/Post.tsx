@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useInView } from 'react-intersection-observer'
@@ -9,7 +9,6 @@ type Props = {
   title: string
   excerpt: string
   date: string
-  index: number
   keywords: string[]
 }
 
@@ -19,21 +18,31 @@ const Post: React.FC<Props> = ({
   title,
   excerpt,
   date,
-  index,
   keywords,
 }) => {
-  const { ref, inView } = useInView({
+  const { ref, inView, entry } = useInView({
     /* Optional options */
     triggerOnce: true,
-    rootMargin: '30px',
+    rootMargin: '50px',
   })
 
+  // Check if component is in default view
+  const [initialView, setInitialView] = useState(true)
+
+  useEffect(() => {
+    // If component is rendered to DOM and is not in the view, set initialView to false
+    if (entry && !inView) {
+      setInitialView(false)
+    }
+  }, [entry, inView])
+
+  // Then in main function we check which posts are in view and toggle fadeIn animation class for that are not
   return (
     <Link href={`/posts/${slug}`} passHref>
       <div
         ref={ref}
         className={`${
-          inView && index > 0 && 'animate__fadeInUp'
+          inView && !initialView && 'animate__fadeInUp'
         } animate__animated  Post group col-span-12 md:col-span-4 hover:shadow-md shadow-sm p-3 lg:p-8 bg-white rounded-lg transition-all cursor-pointer relative border border-opacity-5 border-black`}
         key={slug}
       >
