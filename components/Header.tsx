@@ -58,7 +58,7 @@ const Header = () => {
 
   return (
     <>
-      <div className="mobileNavbar md:hidden w-full h-24 flex flex-wrap bg-[#2C2C2C] py-4  ">
+      <div className="mobileNavbar md:hidden w-full h-16 flex flex-wrap bg-[#2C2C2C] py-2  ">
         <Link href="/" passHref>
           <div className="h-full w-1/2  relative cursor-pointer">
             <Image src="/logoDark.svg" alt="logo" layout="fill" />
