@@ -10,6 +10,7 @@ type Props = {
   excerpt: string
   date: string
   index: number
+  keywords: string[]
 }
 
 const Post: React.FC<Props> = ({
@@ -19,6 +20,7 @@ const Post: React.FC<Props> = ({
   excerpt,
   date,
   index,
+  keywords,
 }) => {
   const { ref, inView } = useInView({
     /* Optional options */
@@ -31,34 +33,44 @@ const Post: React.FC<Props> = ({
       <div
         ref={ref}
         className={`${
-          inView && index > 2 && 'animate__fadeInUp'
-        } animate__animated  Post group col-span-12 md:col-span-6 bg-white rounded-xl shadow-sm cursor-pointer relative border border-opacity-5 border-black`}
+          inView && index > 0 && 'animate__fadeInUp'
+        } animate__animated  Post group col-span-12 md:col-span-4 hover:shadow-md shadow-sm p-3 lg:p-8 bg-white rounded-lg transition-all cursor-pointer relative border border-opacity-5 border-black`}
         key={slug}
       >
-        <div className="flex w-full h-32 md:h-64 overflow-hidden rounded-t-xl">
+        <div className="flex w-full h-40 md:h-40 overflow-hidden rounded-lg">
           <div className="w-full relative cardImageContainer">
             <Image
               src={coverImage}
               alt={title}
               layout="fill"
               objectFit="cover"
-              className="rounded-t-xl"
             />
             <div className="overlay" />
           </div>
         </div>
 
-        <div className="p-2 bg-white shadow-none rounded-xl md:p-8 pb-10 flex flex-col">
-          <h3 className="text-center md:text-left text-lg md:text-2xl font-extrabold md:indent-2">
+        <div className="shadow-none rounded-lg pb-2 flex flex-col">
+          <h3 className="pt-4 transition-all text-[#444444] hover:text-[#222] text-start md:text-left text-md md:text-xl font-extrabold">
             {title}
           </h3>
-
-          <p className="transition-all group-hover:text-gray-600 text-gray-500 text-xs md:text-lg  pt-4">
-            {excerpt}
-          </p>
-          <p className="transition-all group-hover:text-gray-600  text-gray-500 text-xs md:text-sm absolute right-6 bottom-4">
+          <p className="transition-all group-hover:text-gray-400  text-gray-300 text-xs lg:text-sm ">
             {date}
           </p>
+
+          <p className="line-clamp-4 transition-all group-hover:text-gray-600 text-gray-500 text-xs md:text-sm  pt-2">
+            {excerpt}
+          </p>
+
+          <div className="flex pt-2 flex-wrap">
+            {keywords?.map((keyword) => (
+              <span
+                key={keyword}
+                className="transition-all group-hover:text-gray-400 text-gray-300 text-xs md:text-sm pt-1 mr-1"
+              >
+                #{keyword}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </Link>

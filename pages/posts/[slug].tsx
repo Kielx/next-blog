@@ -30,7 +30,7 @@ const PostPage: NextPage<Props> = ({ frontmatter, slug, content }) => (
       Go back
     </Link>
     <MainPost slug={slug} {...frontmatter} />
-    <div className="w-full max-w-[980px] m-auto min-h-screen bg-white rounded-xl shadow-sm border border-opacity-5 border-black">
+    <div className="w-full max-w-[980px] m-auto min-h-screen bg-white rounded-lg shadow-sm border border-opacity-5 border-black">
       {content}
     </div>
   </div>

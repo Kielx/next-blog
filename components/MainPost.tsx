@@ -21,17 +21,17 @@ const MainPost: React.FC<Props> = ({
 }) => (
   <Link href={`/posts/${slug}`} passHref>
     <div
-      className="Post group hover:shadow-sm relative p-3 lg:p-8 transition-all  col-span-12 mx-auto md:col-span-12 mainCard w-full min-h-[40vh] flex flex-wrap md:flex-nowrap bg-white rounded-xl cursor-pointer"
+      className="Post group hover:shadow-sm relative p-3 lg:p-8 transition-all  col-span-12 mx-auto md:col-span-12 mainCard w-full min-h-[40vh] flex flex-wrap md:flex-nowrap bg-white rounded-lg cursor-pointer"
       key={slug}
     >
-      <div className="order-2 md:order-1 bg-white rounded-xl px-3 md:w-1/2 flex flex-col ">
-        <h3 className="transition-all text-[#444444] hover:text-[#222] text-xl md:text-3xl font-semibold text-start">
+      <div className="order-2 md:order-1 bg-white rounded-lg px-3 md:w-1/2 flex flex-col ">
+        <h3 className="font-bold transition-all text-[#444444] hover:text-[#222] text-xl md:text-3xl text-start">
           {title}
         </h3>
         <p className="transition-all group-hover:text-gray-400  text-gray-300 text-sm pt-1">
           {date}
         </p>
-        <p className="transition-all group-hover:text-gray-500  text-[#828282] text-base md:text-lg  py-4 md:pt-8">
+        <p className="transition-all group-hover:text-gray-500  text-[#828282] text-base md:text-lg  py-4 ">
           {excerpt}
         </p>
         <div className="flex gap-4 mt-auto">
@@ -45,7 +45,7 @@ const MainPost: React.FC<Props> = ({
           ))}
         </div>
       </div>
-      <div className="order-1 mb-4 md:mb-0 md:order-2 flex w-full md:w-1/2 h-52 md:h-auto overflow-hidden rounded-xl ">
+      <div className="order-1 mb-4 md:mb-0 md:order-2 flex w-full md:w-1/2 h-52 md:h-auto overflow-hidden rounded-lg ">
         <div className="w-full relative cardImageContainer">
           <Image
             src={coverImage}
