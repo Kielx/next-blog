@@ -32,7 +32,7 @@ const navItems: NavItems = [
   },
 ]
 
-const mappedNavItems = navItems.map((item) => {
+const mappedNavItems: JSX.Element[] = navItems.map((item) => {
   if (item.type === 'link') {
     return (
       <Link href={item.href} key={item.name} passHref>
