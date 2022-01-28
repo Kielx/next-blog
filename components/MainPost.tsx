@@ -8,6 +8,7 @@ type Props = {
   title: string
   excerpt: string
   date: string
+  keywords: string[]
 }
 
 const MainPost: React.FC<Props> = ({
@@ -16,13 +17,35 @@ const MainPost: React.FC<Props> = ({
   title,
   excerpt,
   date,
+  keywords,
 }) => (
   <Link href={`/posts/${slug}`} passHref>
     <div
-      className="Post group col-span-12 mx-auto md:col-span-12 mainCard w-full min-h-[40vh] flex flex-wrap md:flex-nowrap bg-white rounded-xl shadow-sm border border-opacity-5 border-black cursor-pointer"
+      className="Post group hover:shadow-sm relative p-3 lg:p-8 transition-all  col-span-12 mx-auto md:col-span-12 mainCard w-full min-h-[40vh] flex flex-wrap md:flex-nowrap bg-white rounded-xl cursor-pointer"
       key={slug}
     >
-      <div className="flex w-full md:w-1/2 h-52 md:h-auto overflow-hidden rounded-t-xl md:rounded-xl">
+      <div className="order-2 md:order-1 bg-white rounded-xl px-3 md:w-1/2 flex flex-col ">
+        <h3 className="transition-all text-[#444444] hover:text-[#222] text-xl md:text-3xl font-semibold text-start">
+          {title}
+        </h3>
+        <p className="transition-all group-hover:text-gray-400  text-gray-300 text-sm pt-1">
+          {date}
+        </p>
+        <p className="transition-all group-hover:text-gray-500  text-[#828282] text-base md:text-lg  py-4 md:pt-8">
+          {excerpt}
+        </p>
+        <div className="flex gap-4 mt-auto">
+          {keywords.map((keyword) => (
+            <span
+              key={keyword}
+              className="transition-all group-hover:text-gray-400  text-gray-300 text-sm pt-1"
+            >
+              #{keyword}
+            </span>
+          ))}
+        </div>
+      </div>
+      <div className="order-1 mb-4 md:mb-0 md:order-2 flex w-full md:w-1/2 h-52 md:h-auto overflow-hidden rounded-xl ">
         <div className="w-full relative cardImageContainer">
           <Image
             src={coverImage}
@@ -35,19 +58,7 @@ const MainPost: React.FC<Props> = ({
           <div className="overlay" />
         </div>
       </div>
-
-      <div className="bg-white shadow-none rounded-xl p-3 md:p-8 md:w-1/2 flex flex-col">
-        <h3 className="text-xl md:text-3xl font-extrabold text-start md:text-center">
-          {title}
-        </h3>
-
-        <p className="transition-all group-hover:text-gray-600  text-gray-500 text-base md:text-xl  py-4 md:pt-8">
-          {excerpt}
-        </p>
-        <p className="transition-all group-hover:text-gray-600  text-gray-500 text-sm mt-auto text-right">
-          {date}
-        </p>
-      </div>
+      <div className="w-10/12 z-[-100] h-12 bg-transparent left-1/2 transform -translate-x-1/2 bottom-0 absolute shadow-[0_4px_32px_rgba(0,0,0,0.12)]" />
     </div>
   </Link>
 )

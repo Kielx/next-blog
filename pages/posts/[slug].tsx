@@ -18,28 +18,21 @@ type Props = {
     date: string
     excerpt: string
     coverImage: string
+    keywords: string[]
   }
   content: string
 }
 
-const PostPage: NextPage<Props> = ({
-  frontmatter: { coverImage, title, excerpt, date },
-  slug,
-  content,
-}) => (
+const PostPage: NextPage<Props> = ({ frontmatter, slug, content }) => (
   <div>
     {slug}
     <Link href="/" passHref>
       Go back
     </Link>
-    <MainPost
-      slug={slug}
-      coverImage={coverImage}
-      title={title}
-      excerpt={excerpt}
-      date={date}
-    />
-    <p>{content}</p>
+    <MainPost slug={slug} {...frontmatter} />
+    <div className="w-full max-w-[980px] m-auto min-h-screen bg-white rounded-xl shadow-sm border border-opacity-5 border-black">
+      {content}
+    </div>
   </div>
 )
 

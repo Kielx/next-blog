@@ -14,6 +14,7 @@ type Props = {
       date: string
       excerpt: string
       coverImage: string
+      keywords: string[]
     }
   }[]
 }
@@ -26,7 +27,7 @@ const Home: NextPage<Props> = ({ posts }) => (
       <link rel="icon" href="/favicon.ico" />
     </Head>
 
-    <div className="grid grid-cols-12 gap-3 cardsContainer sm:px-6 px-2 py-10 md:py-20 w-[980px] m-auto justify-center gap-y-10 box-border">
+    <div className="grid grid-cols-12 gap-3 w-full cardsContainer sm:px-6 px-2 py-4 md:py-8 max-w-screen-xl m-auto justify-center gap-y-10 box-border">
       {posts.map((post, index) =>
         index < 1 ? (
           <MainPost key={post.slug} slug={post.slug} {...post.frontmatter} />
@@ -59,7 +60,6 @@ export const getStaticProps: GetStaticProps = async () => {
     )
 
     const { data: frontmatter } = matter(markdownWithMeta)
-
     return {
       slug,
       frontmatter,
