@@ -45,6 +45,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
   let files = fs.readdirSync(path.join('posts'))
   if (context.locale === 'pl') {
     files = files.filter((file) => file.endsWith('.pl.md'))
+  } else {
+    files = files.filter((file) => !file.endsWith('pl.md'))
   }
 
   // Get slug and frontmatter from posts
