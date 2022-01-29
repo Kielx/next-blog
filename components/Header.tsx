@@ -76,7 +76,7 @@ const Header = () => {
         </div>
       </div>
 
-      <div className="desktopNavbar px-20 hidden w-full h-24 md:flex bg-[#2C2C2C] py-4 items-center place-content-around ">
+      <div className="desktopNavbar px-4 lg:px-20 hidden w-full h-24 md:flex bg-[#2C2C2C] py-4 items-center place-content-around ">
         <div className="w-full flex max-w-[1600px] items-center">
           <Link href="/" passHref>
             <div className="h-full  w-1/2 relative  flex justify-items-start">
@@ -89,7 +89,7 @@ const Header = () => {
               />
             </div>
           </Link>
-          <div className="desktopMenu h-full w-1/2 flex justify-end items-center gap-8 text-lg font-bold text-[#EEEEEE]">
+          <div className="desktopMenu h-full w-1/2 flex justify-end items-center gap-4 lg:gap-8 text-lg font-bold text-[#EEEEEE]">
             {mappedNavItems}
           </div>
         </div>
