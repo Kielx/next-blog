@@ -1,11 +1,13 @@
 import { useEffect } from 'react'
 import type { GetStaticProps, GetStaticPaths, NextPage } from 'next'
+
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import { ParsedUrlQuery } from 'querystring'
 import ReactMarkdown from 'react-markdown'
 import Prism from 'prismjs'
+import NotFoundPL from '../../components/NotFoundPL'
 
 interface IParams extends ParsedUrlQuery {
   slug: string
@@ -21,14 +23,24 @@ type Props = {
     keywords: string[]
   }
   content: string
+  notFound: boolean | undefined
 }
 
-const PostPage: NextPage<Props> = ({ frontmatter, content }) => {
+const PostPage: NextPage<Props> = ({
+  frontmatter,
+  content,
+  notFound,
+  slug,
+}) => {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setTimeout(Prism.highlightAll, 0)
     }
   }, [])
+
+  if (notFound) {
+    return <NotFoundPL slug={slug} />
+  }
   return (
     <div className="py-6 px-2 xs:px-4 sm:pt-8 bg-white">
       <div className="w-full md:w-3/4 lg:w-8/12 flex flex-col max-w-[920px] m-auto min-h-screen bg-white rounded-md">
@@ -49,12 +61,16 @@ const PostPage: NextPage<Props> = ({ frontmatter, content }) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const files = fs.readdirSync(path.join('posts'))
 
-  const paths = files.map((filename) => ({
-    params: {
-      slug: filename.replace('.md', ''),
+  const paths = files.flatMap((filename) => [
+    {
+      params: { slug: filename.replace('.md', '') },
+      locale: 'en-US',
     },
-  }))
-
+    {
+      params: { slug: filename.replace('.pl.md', '').replace('.md', '') },
+      locale: 'pl',
+    },
+  ])
   return {
     paths,
     fallback: false,
@@ -62,10 +78,26 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 export const getStaticProps: GetStaticProps = async (context) => {
   const { slug } = context.params as IParams
-  const markdownWithMeta = fs.readFileSync(
-    path.join('posts', `${slug}.md`),
-    'utf-8'
-  )
+  const locale = context.locale as string
+  const langPol = locale === 'pl'
+
+  let markdownWithMeta = null
+  try {
+    markdownWithMeta = fs.readFileSync(
+      path.join('posts', `${slug}${langPol ? '.pl' : ''}.md`),
+      'utf-8'
+    )
+  } catch (e) {
+    return {
+      props: {
+        slug,
+        notFound: true,
+        frontmatter: {
+          title: 'Ta strona nie istnieje',
+        },
+      },
+    }
+  }
 
   const { data: frontmatter, content } = matter(markdownWithMeta)
 

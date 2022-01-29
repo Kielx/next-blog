@@ -39,14 +39,18 @@ const Home: NextPage<Props> = ({ posts }) => (
   </div>
 )
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async (context) => {
   // Get files from the posts directory
-  const files = fs.readdirSync(path.join('posts'))
+
+  let files = fs.readdirSync(path.join('posts'))
+  if (context.locale === 'pl') {
+    files = files.filter((file) => file.endsWith('.pl.md'))
+  }
 
   // Get slug and frontmatter from posts
   const posts = files.map((filename) => {
     // Create slug
-    const slug = filename.replace('.md', '')
+    const slug = filename.replace('.pl.md', '').replace('.md', '')
 
     // Get frontmatter
     const markdownWithMeta = fs.readFileSync(
