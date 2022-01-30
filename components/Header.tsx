@@ -85,13 +85,13 @@ const Header = () => {
   const { pathname, asPath, query } = router
   return (
     <>
-      <div className="mobileNavbar lg:hidden w-full h-11 flex flex-wrap bg-[#2C2C2C] py-1  ">
+      <div className="mobileNavbar lg:hidden w-full h-11 flex flex-wrap bg-[#2C2C2C]  ">
         <Link href="/" passHref>
           <div className="h-full w-1/2  relative cursor-pointer">
             <Image
               src="/logoDark.svg"
               alt="logo"
-              width={200}
+              width={156}
               height={40}
               className="cursor-pointer"
             />
