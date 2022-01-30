@@ -27,7 +27,7 @@ const Home: NextPage<Props> = ({ posts }) => (
       <link rel="icon" href="/favicon.ico" />
     </Head>
 
-    <div className="grid grid-cols-12 gap-3 w-full cardsContainer xs:px-8 px-4 md:px-0 py-8 md:py-12 max-w-[692px] xl:max-w-[980px] m-auto justify-center gap-y-10 box-border">
+    <div className="grid grid-cols-12 gap-6 w-full cardsContainer xs:px-8 px-4 md:px-0 py-8 md:py-12 max-w-[692px] xl:max-w-[980px] m-auto justify-center gap-y-10 box-border">
       {posts.map((post, index) =>
         index < 1 ? (
           <MainPost key={post.slug} slug={post.slug} {...post.frontmatter} />

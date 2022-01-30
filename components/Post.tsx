@@ -43,10 +43,10 @@ const Post: React.FC<Props> = ({
         ref={ref}
         className={`${
           inView && !initialView && 'animate__fadeInUp'
-        } animate__animated  Post group col-span-12 md:col-span-4 hover:shadow-md shadow-sm p-3 lg:p-8 bg-white rounded-lg transition-all cursor-pointer relative border border-opacity-5 border-black`}
+        } animate__animated  Post group col-span-12 md:col-span-6  bg-white rounded-lg transition-all cursor-pointer relative border border-opacity-5 border-black`}
         key={slug}
       >
-        <div className="flex w-full h-40 md:h-40 overflow-hidden rounded-lg">
+        <div className="flex w-full h-40  xs:h-[204px] md:h-[187px] xl:h-[266px] overflow-hidden rounded-t-lg">
           <div className="w-full relative cardImageContainer">
             <Image
               src={coverImage}
@@ -58,15 +58,15 @@ const Post: React.FC<Props> = ({
           </div>
         </div>
 
-        <div className="shadow-none rounded-lg pb-2 flex flex-col">
-          <h3 className="pt-4 transition-all text-[#444444] hover:text-[#222] text-start md:text-left text-md md:text-xl font-extrabold">
+        <div className="shadow-none rounded-lg p-4 flex flex-col">
+          <h3 className=" transition-all text-[#444444] hover:text-[#222] text-start md:text-left text-md md:text-xl font-extrabold">
             {title}
           </h3>
           <p className="transition-all group-hover:text-gray-400  text-gray-300 text-xs lg:text-sm ">
             {date}
           </p>
 
-          <p className="line-clamp-4 transition-all group-hover:text-gray-600 text-gray-500 text-xs md:text-sm  pt-2">
+          <p className="line-clamp-3  transition-all group-hover:text-gray-600 text-gray-500 text-xs md:text-sm  pt-2">
             {excerpt}
           </p>
 
