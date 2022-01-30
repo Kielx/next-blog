@@ -61,9 +61,12 @@ const mapNavItems = (items: NavItems): JSX.Element[] => {
     if (item.type === 'link') {
       return (
         <Link href={item.href} key={item.name} passHref>
-          <div className="hover:text-gray-400 cursor-pointer transition-all w-full lg:w-auto py-1 lg:py-0 ">
+          <a
+            href="replace"
+            className="hover:text-gray-400 cursor-pointer transition-all w-full lg:w-auto py-1 lg:py-0 "
+          >
             {item.name}
-          </div>
+          </a>
         </Link>
       )
     }
@@ -87,7 +90,7 @@ const Header = () => {
     <>
       <div className="mobileNavbar lg:hidden w-full h-11 flex flex-wrap bg-[#2C2C2C]  ">
         <Link href="/" passHref>
-          <div className="h-full w-1/2  relative cursor-pointer">
+          <a href="replace" className="h-full w-1/2  relative cursor-pointer">
             <Image
               src="/logoDark.svg"
               alt="logo"
@@ -95,7 +98,7 @@ const Header = () => {
               height={40}
               className="cursor-pointer"
             />
-          </div>
+          </a>
         </Link>
         <div className="w-1/2 flex items-center justify-items-end">
           <HeaderHamburger open={open} setOpen={setOpen} />
@@ -125,7 +128,10 @@ const Header = () => {
       <div className="desktopNavbar px-4 lg:px-20 hidden w-full h-11 lg:flex bg-[#2C2C2C] items-center place-content-around ">
         <div className="w-full flex max-w-[1600px] items-center">
           <Link href="/" passHref>
-            <div className="h-full  w-1/2 relative  flex justify-items-start">
+            <a
+              href="replace"
+              className="h-full  w-1/2 relative  flex justify-items-start"
+            >
               <Image
                 src="/logoDark.svg"
                 alt="logo"
@@ -133,7 +139,7 @@ const Header = () => {
                 height={40}
                 className="cursor-pointer"
               />
-            </div>
+            </a>
           </Link>
           <div className="desktopMenu h-full w-1/2 flex justify-end items-center gap-8 text-sm font-thin text-[#EEEEEE]">
             {router.locale === 'pl'

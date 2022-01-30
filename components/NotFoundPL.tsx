@@ -14,15 +14,23 @@ const NotFoundPL = ({ slug }: Props) => {
       <div className="text-[#444444] text-center pt-3">
         Spróbuj w{' '}
         <Link href={slug} locale="en-US" passHref>
-          <button type="button" className="text-blue-500 hover:text-blue-700">
+          <a
+            href="replace"
+            type="button"
+            className="text-blue-500 hover:text-blue-700"
+          >
             wersji angielskiej
-          </button>
+          </a>
         </Link>{' '}
         lub{' '}
         <Link href="/" passHref>
-          <button type="button" className="text-blue-500 hover:text-blue-700">
+          <a
+            href="replace"
+            type="button"
+            className="text-blue-500 hover:text-blue-700"
+          >
             wróć do strony głównej
-          </button>
+          </a>
         </Link>
       </div>
     </div>

@@ -39,7 +39,8 @@ const Post: React.FC<Props> = ({
   // Then in main function we check which posts are in view and toggle fadeIn animation class for that are not
   return (
     <Link href={`/posts/${slug}`} passHref>
-      <div
+      <a
+        href="replace"
         ref={ref}
         className={`${
           inView && !initialView && 'animate__fadeInUp'
@@ -81,7 +82,7 @@ const Post: React.FC<Props> = ({
             ))}
           </div>
         </div>
-      </div>
+      </a>
     </Link>
   )
 }

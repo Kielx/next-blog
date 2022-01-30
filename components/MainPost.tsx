@@ -20,7 +20,8 @@ const MainPost: React.FC<Props> = ({
   keywords,
 }) => (
   <Link href={`/posts/${slug}`} passHref>
-    <div
+    <a
+      href="replace"
       className="Post group hover:shadow-sm relative  transition-all  col-span-12 mx-auto md:col-span-12 mainCard w-full flex flex-wrap md:flex-nowrap bg-white rounded-lg cursor-pointer"
       key={slug}
     >
@@ -59,7 +60,7 @@ const MainPost: React.FC<Props> = ({
       </div>
 
       <div className="w-10/12 z-[-100] h-12 bg-transparent left-1/2 transform -translate-x-1/2 bottom-0 absolute shadow-[0_4px_32px_rgba(0,0,0,0.12)]" />
-    </div>
+    </a>
   </Link>
 )
 
