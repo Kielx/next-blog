@@ -24,7 +24,7 @@ const MainPost: React.FC<Props> = ({
       className="Post group hover:shadow-sm relative  transition-all  col-span-12 mx-auto md:col-span-12 mainCard w-full flex flex-wrap md:flex-nowrap bg-white rounded-lg cursor-pointer"
       key={slug}
     >
-      <div className="mb-4 md:mb-0 flex w-full md:w-8/12 min-h-[30vh] xs:min-h-[35vh] md:h-auto overflow-hidden rounded-t-lg md:rounded-l-lg md:rounded-r-none">
+      <div className="mb-4 md:mb-0 flex w-full md:w-8/12 min-h-[30vh]  md:min-h-[10vh] md:h-auto overflow-hidden rounded-t-lg md:rounded-l-lg md:rounded-r-none">
         <div className="w-full relative cardImageContainer">
           <Image
             src={coverImage}
@@ -46,7 +46,7 @@ const MainPost: React.FC<Props> = ({
         <p className="transition-all group-hover:text-gray-500  m-auto text-[#828282] text-xs md:text-sm xl:text-base xl:leading-5  pt-2 ">
           {excerpt}
         </p>
-        <div className="flex gap-4 mt-auto">
+        <div className="flex gap-4 mt-auto pb-2 md:pb-0">
           {keywords.map((keyword) => (
             <span
               key={keyword}
