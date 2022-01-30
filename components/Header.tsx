@@ -129,7 +129,7 @@ const Header = () => {
               <Image
                 src="/logoDark.svg"
                 alt="logo"
-                width={250}
+                width={156}
                 height={40}
                 className="cursor-pointer"
               />
