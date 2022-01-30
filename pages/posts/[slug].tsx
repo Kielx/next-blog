@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import type { GetStaticProps, GetStaticPaths, NextPage } from 'next'
+import { useRouter } from 'next/router'
 
 import fs from 'fs'
 import path from 'path'
@@ -8,6 +9,7 @@ import { ParsedUrlQuery } from 'querystring'
 import ReactMarkdown from 'react-markdown'
 import Prism from 'prismjs'
 import NotFoundPL from '../../components/NotFoundPL'
+import Head from '../../components/Head'
 
 interface IParams extends ParsedUrlQuery {
   slug: string
@@ -32,6 +34,9 @@ const PostPage: NextPage<Props> = ({
   notFound,
   slug,
 }) => {
+  const router = useRouter()
+  const locale = router.locale as string
+
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setTimeout(Prism.highlightAll, 0)
@@ -41,8 +46,19 @@ const PostPage: NextPage<Props> = ({
   if (notFound) {
     return <NotFoundPL slug={slug} />
   }
+
   return (
     <div className="py-6 px-2 xs:px-4 sm:pt-8 bg-white">
+      <Head
+        title={`${frontmatter.title} - Pan-Media Blog`}
+        description={frontmatter.excerpt}
+        image={`https://blog.pantak.net${frontmatter.coverImage}`}
+        url={`https://blog.pantak.net/posts/${
+          locale === 'pl' ? 'pl/' : ''
+        }${slug}`}
+        imageAltText={`${frontmatter.title} post image`}
+        siteName="Pan Media Blog"
+      />
       <div className="w-full md:w-3/4 lg:w-8/12 flex flex-col max-w-[920px] m-auto min-h-screen bg-white rounded-md">
         <h2 className="text-[#444444] font-bold text-xl xs:text-2xl sm:text-3xl  text-center">
           {frontmatter.title}
