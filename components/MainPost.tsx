@@ -30,7 +30,7 @@ const MainPost: React.FC<Props> = ({
             src={coverImage}
             alt={title}
             layout="fill"
-            objectFit="fill"
+            objectFit="cover"
             objectPosition="bottom"
           />
           <div className="overlay" />
