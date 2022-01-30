@@ -61,7 +61,7 @@ const mapNavItems = (items: NavItems): JSX.Element[] => {
     if (item.type === 'link') {
       return (
         <Link href={item.href} key={item.name} passHref>
-          <div className="hover:text-gray-400 cursor-pointer transition-all">
+          <div className="hover:text-gray-400 cursor-pointer transition-all w-full lg:w-auto py-1 lg:py-0 ">
             {item.name}
           </div>
         </Link>
@@ -69,7 +69,7 @@ const mapNavItems = (items: NavItems): JSX.Element[] => {
     }
     return (
       <a
-        className="hover:text-gray-400 cursor-pointer transition-all"
+        className="hover:text-gray-400 cursor-pointer transition-all w-full lg:w-auto py-1 lg:py-0"
         href={item.href}
         key={item.name}
       >
@@ -85,14 +85,14 @@ const Header = () => {
   const { pathname, asPath, query } = router
   return (
     <>
-      <div className="mobileNavbar lg:hidden w-full h-16 flex flex-wrap bg-[#2C2C2C] py-2  ">
+      <div className="mobileNavbar lg:hidden w-full h-11 flex flex-wrap bg-[#2C2C2C] py-1  ">
         <Link href="/" passHref>
           <div className="h-full w-1/2  relative cursor-pointer">
             <Image
               src="/logoDark.svg"
               alt="logo"
               width={200}
-              height={50}
+              height={40}
               className="cursor-pointer"
             />
           </div>
@@ -103,13 +103,14 @@ const Header = () => {
         <div
           className={`${
             open ? 'max-h-[100vh] opacity-100' : 'max-h-0 opacity-0 invisible'
-          }  z-20 mobileMenu w-full justify-end items-center gap-2 py-4 text-lg font-bold text-[#EEEEEE] bg-[#2C2C2C]`}
+          }  z-20 divide-y mobileMenu w-full justify-end items-start px-10 py-4 text-lg font-thin text-[#EEEEEE] bg-[#2C2C2C]`}
         >
           {router.locale === 'pl'
             ? mapNavItems(navItemsPL)
             : mapNavItems(navItems)}
           <button
             type="button"
+            className="w-full text-left pt-2"
             onClick={() => {
               router.push({ pathname, query }, asPath, {
                 locale: router.locale === 'en-US' ? 'pl' : 'en-US',
@@ -121,7 +122,7 @@ const Header = () => {
         </div>
       </div>
 
-      <div className="desktopNavbar px-4 lg:px-20 hidden w-full h-24 lg:flex bg-[#2C2C2C] py-4 items-center place-content-around ">
+      <div className="desktopNavbar px-4 lg:px-20 hidden w-full h-11 lg:flex bg-[#2C2C2C] items-center place-content-around ">
         <div className="w-full flex max-w-[1600px] items-center">
           <Link href="/" passHref>
             <div className="h-full  w-1/2 relative  flex justify-items-start">
@@ -129,12 +130,12 @@ const Header = () => {
                 src="/logoDark.svg"
                 alt="logo"
                 width={250}
-                height={60}
+                height={40}
                 className="cursor-pointer"
               />
             </div>
           </Link>
-          <div className="desktopMenu h-full w-1/2 flex justify-end items-center gap-4 lg:gap-8 text-lg font-bold text-[#EEEEEE]">
+          <div className="desktopMenu h-full w-1/2 flex justify-end items-center gap-8 text-sm font-thin text-[#EEEEEE]">
             {router.locale === 'pl'
               ? mapNavItems(navItemsPL)
               : mapNavItems(navItems)}
@@ -142,7 +143,7 @@ const Header = () => {
 
           <button
             type="button"
-            className="pl-4 "
+            className="pl-8 text-sm "
             onClick={() => {
               router.push({ pathname, query }, asPath, {
                 locale: router.locale === 'en-US' ? 'pl' : 'en-US',
