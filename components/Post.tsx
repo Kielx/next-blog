@@ -52,7 +52,7 @@ const Post: React.FC<Props> = ({
               src={coverImage}
               alt={title}
               layout="fill"
-              objectFit="cover"
+              objectFit="fill"
             />
             <div className="overlay" />
           </div>
