@@ -1,7 +1,7 @@
 ---
 title: "Jak stworzyć grę Pong przy użyciu C++ i biblioteki Ncurses"
 date: "2022-01-26"
-excerpt: "Pierwsza część serii, gdzie opisuję przebieg tworzenia konsolowej gry Pong przy pomocy języka C++ i biblioteki Ncurses. Praktyczny przewodnik na temat podstaw języka i ich zastosowania w programowaniu."
+excerpt: "Pierwsza część serii, gdzie opisuję przebieg tworzenia konsolowej gry Pong przy pomocy języka C++ i biblioteki Ncurses."
 coverImage: "/images/posts/ncursesPong.gif"
 keywords:
   - "C++"

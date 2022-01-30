@@ -20,14 +20,14 @@ type Props = {
 }
 
 const Home: NextPage<Props> = ({ posts }) => (
-  <div className="font-body flex flex-wrap w-full">
+  <div className="font-body flex flex-wrap w-full ">
     <Head>
       <title>Chris Pantak Blog</title>
       <meta name="description" content="Chris Pantak tech blog" />
       <link rel="icon" href="/favicon.ico" />
     </Head>
 
-    <div className="grid grid-cols-12 gap-3 w-full cardsContainer sm:px-6 px-2 py-4 md:py-8 max-w-screen-xl m-auto justify-center gap-y-10 box-border">
+    <div className="grid grid-cols-12 gap-3 w-full cardsContainer xs:px-8 px-4 md:px-0 py-8 md:py-12 max-w-[692px] xl:max-w-[980px] m-auto justify-center gap-y-10 box-border">
       {posts.map((post, index) =>
         index < 1 ? (
           <MainPost key={post.slug} slug={post.slug} {...post.frontmatter} />
