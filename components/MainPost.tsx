@@ -41,7 +41,7 @@ const MainPost: React.FC<Props> = ({
           {title}
         </h3>
         <p className="transition-all group-hover:text-gray-400  text-gray-300 text-xs">
-          {date}
+          {date.split('-').reverse().join('-')}
         </p>
         <p className="transition-all group-hover:text-gray-500  m-auto text-[#828282] text-xs md:text-sm xl:text-base xl:leading-5  pt-2 ">
           {excerpt}

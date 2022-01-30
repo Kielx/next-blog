@@ -63,7 +63,7 @@ const Post: React.FC<Props> = ({
             {title}
           </h3>
           <p className="transition-all group-hover:text-gray-400  text-gray-300 text-xs lg:text-sm ">
-            {date}
+            {date.split('-').reverse().join('-')}
           </p>
 
           <p className="line-clamp-3  transition-all group-hover:text-gray-600 text-gray-500 text-xs md:text-sm  pt-2">
