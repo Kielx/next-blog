@@ -113,8 +113,11 @@ const Header = () => {
             : mapNavItems(navItems)}
           <button
             type="button"
-            className="w-full text-left pt-2"
+            className="text-left w-full pt-2"
             onClick={() => {
+              document.cookie = `NEXT_LOCALE=${
+                router.locale === 'en-US' ? 'pl' : 'en-US'
+              }; expires=Fri, 31 Dec 9999 23:59:59 GMT`
               router.push({ pathname, query }, asPath, {
                 locale: router.locale === 'en-US' ? 'pl' : 'en-US',
               })
@@ -151,6 +154,9 @@ const Header = () => {
             type="button"
             className="pl-8 text-sm "
             onClick={() => {
+              document.cookie = `NEXT_LOCALE=${
+                router.locale === 'en-US' ? 'pl' : 'en-US'
+              }; expires=Fri, 31 Dec 9999 23:59:59 GMT`
               router.push({ pathname, query }, asPath, {
                 locale: router.locale === 'en-US' ? 'pl' : 'en-US',
               })
