@@ -2,14 +2,14 @@
 title: 'How to get started with C++ and Ncurses - Part 1 - Introduction'
 date: '2022-02-01'
 excerpt: 'First part of series on how to create a terminal Pong game in C++ using ncurses. Hands on guide with detailed explanation of the code for beginners.'
-coverImage: '/images/posts/How-to-get-started-with-cpp-and-ncurses/1.svg'
+coverImage: '/images/posts/CppNcurses1/1.svg'
 keywords:
   - 'C++'
   - 'Ncurses'
   - Basics
 ---
 
-![Girl playing tennis](/images/posts/How-to-get-started-with-cpp-and-ncurses/1.svg#postMainImage)
+![Girl playing tennis](/images/posts/CppNcurses1/1.svg#postMainImage)
 
 ## Table of contents
 
@@ -30,7 +30,7 @@ In this post, I will try to help beginners who want to start their adventure wit
 
 ## What are we going to create?
 
-![Pong gameplay](/images/posts/How-to-get-started-with-cpp-and-ncurses/2.gif#postMiniImage)
+![Pong gameplay](/images/posts/CppNcurses1/2.gif#postMiniImage)
 
 ### For what purpose we are going to create this game?
 

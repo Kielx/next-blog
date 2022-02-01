@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import type { GetStaticProps, GetStaticPaths, NextPage } from 'next'
 import { useRouter } from 'next/router'
 
@@ -38,11 +38,18 @@ const PostPage: NextPage<Props> = ({
   const router = useRouter()
   const locale = router.locale as string
 
+  const [mounted, setMounted] = useState(false)
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setTimeout(Prism.highlightAll, 0)
-    }
+    setMounted(true)
   }, [])
+
+  useEffect(() => {
+    if (mounted && router.isReady) {
+      setTimeout(() => {
+        Prism.highlightAll()
+      }, 0)
+    }
+  }, [mounted, router.isReady])
 
   if (notFound) {
     return <NotFoundPL slug={slug} />
@@ -76,9 +83,11 @@ const PostPage: NextPage<Props> = ({
         <p className="pt-1 pb-4 text-gray-300 text-center">
           {frontmatter.date}
         </p>
-        <section className="markdown-body">
-          <ReactMarkdown components={components}>{content}</ReactMarkdown>
-        </section>
+        <div className="markdown-body" key="uniqueKey">
+          {mounted && (
+            <ReactMarkdown components={components}>{content}</ReactMarkdown>
+          )}
+        </div>
       </div>
     </div>
   )

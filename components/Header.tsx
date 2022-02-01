@@ -86,6 +86,25 @@ const Header = () => {
   const [open, setOpen] = useState(false)
   const router = useRouter()
   const { pathname, asPath, query } = router
+
+  const removeElementsByClass = async (className: string) => {
+    const elements = document.getElementsByClassName(className)
+    while (elements.length > 0) {
+      elements[0].parentNode.removeChild(elements[0])
+    }
+    return true
+  }
+
+  const pushNext = async () => {
+    await removeElementsByClass('markdown-body')
+    router
+      .push({ pathname, query }, asPath, {
+        locale: router.locale === 'en-US' ? 'pl' : 'en-US',
+      })
+      .then(() => {
+        router.reload()
+      })
+  }
   return (
     <>
       <div className="mobileNavbar lg:hidden w-full h-11 flex flex-wrap bg-[#2C2C2C]  ">
@@ -149,7 +168,6 @@ const Header = () => {
               ? mapNavItems(navItemsPL)
               : mapNavItems(navItems)}
           </div>
-
           <button
             type="button"
             className="pl-8 text-sm "
@@ -157,9 +175,8 @@ const Header = () => {
               document.cookie = `NEXT_LOCALE=${
                 router.locale === 'en-US' ? 'pl' : 'en-US'
               }; expires=Fri, 31 Dec 9999 23:59:59 GMT`
-              router.push({ pathname, query }, asPath, {
-                locale: router.locale === 'en-US' ? 'pl' : 'en-US',
-              })
+
+              pushNext()
             }}
           >
             {router.locale === 'en-US' ? '🇺🇸' : '🇵🇱'}
