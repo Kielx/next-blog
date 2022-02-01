@@ -10,6 +10,7 @@ import Header from '../components/Header'
 
 import '../styles/header.css'
 import '../styles/globals.css'
+import '../styles/slug.css'
 
 const MyApp = ({ Component, pageProps }: AppProps) => (
   <>
