@@ -6,7 +6,7 @@ coverImage: '/images/posts/How-to-get-started-with-cpp-and-ncurses/1.svg'
 keywords:
   - 'C++'
   - 'Ncurses'
-  - Basics
+  - Podstawy
 ---
 
 ![Dziewczyna grająca w tenisa](/images/posts/How-to-get-started-with-cpp-and-ncurses/1.svg#postMainImage)
@@ -37,9 +37,9 @@ W tym poście, postaram się pomóc początkującym, którzy chcą rozpocząć s
 
 Większość poradników skupia się albo na czystej teorii - np. jak działają funkcje i klasy lub wyłącznie na praktycznej części przygotowania programu.
 
-Wielokrotnie podczas czytania dokumentacji brakowało mi praktycznych przykładów zastosowania określonego rozwiązania i łączyło się z pytaniem - "No dobrze, to jest np. klasa, ale do czego jest mi ona potrzebna? Jak mam ją wykorzystać w prawdziwym życiu (programowaniu)?". Dużo łatwiej zrozumieć określone pojęcie o ile mamy podstawę by zastosować je w praktyce.
+Wielokrotnie podczas czytania dokumentacji brakowało mi praktycznych przykładów zastosowania określonego rozwiązania i pojawiało się u mnie pytanie - "No dobrze, to jest np. klasa, ale do czego jest mi ona potrzebna? Jak mam ją wykorzystać w prawdziwym życiu (programowaniu)?". Dużo łatwiej zrozumieć określone pojęcie o ile mamy podstawę by zastosować je w praktyce.
 
-Czy powinniśmy więc skupić się tylko na praktyce? Są tego plusy, jednak wtedy może się okazać, że po prostu kopiujemy dokładnie to co robił autor poradnika. W efekcie - po wykonaniu całego projektu, kiedy mamy spróbować stworzyć coś swojego znowu mamy pustkę w głowie.
+Czy powinniśmy więc skupić się tylko na praktyce? Są tego plusy, jednak wtedy może się okazać, że po prostu kopiujemy dokładnie to co robił autor poradnika. W efekcie - po wykonaniu całego projektu, kiedy spróbujemy stworzyć coś swojego znowu mamy pustkę w głowie.
 
 Dlatego też podczas tworzenia tych postów chcę znaleźć złoty środek i połączyć odpowiednią dawkę teorii z praktyką dla początkujących w taki sposób by mogli przenieść zdobytą wiedzę na grunt nowych projektów.
 
@@ -87,7 +87,7 @@ To skrót od SuperUser DO - czyli zrób coś jako administrator systemu. W syste
 apt-get install gcc
 ~~~
 
-To polecenie, które pozwala na zainstalowanie pakietów. Pakiety to paczki, które zawierają różne przydatne programy, które możemy używać w naszym systemie. APT (Advanced Packaging Tool) to menadżer pakietów systemu Ubuntu, który odpowiada za instalowanie, aktualizowanie i usuwanie pakietów. W tym przekazujemy do terminala polecenie, by przy pomocy APT'a zainstalował pakiet o określonej nazwie tu GCC.
+To polecenie, które pozwala na zainstalowanie pakietów. Pakiety to paczki, które zawierają różne przydatne programy, które możemy używać w naszym systemie. APT (Advanced Packaging Tool) to menadżer pakietów systemu Ubuntu, który odpowiada za instalowanie, aktualizowanie i usuwanie pakietów. We wspomnianym wyżej poleceniu przekazujemy do terminala komendę, by przy pomocy APT'a zainstalował pakiet o określonej nazwie - tu GCC czyli paczkę, która zawiera program kompilatora.
 
 ### A jak ja mam zapamiętać te wszystkie polecenia?
 
