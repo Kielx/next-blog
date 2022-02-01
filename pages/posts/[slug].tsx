@@ -10,6 +10,7 @@ import ReactMarkdown from 'react-markdown'
 import Prism from 'prismjs'
 import NotFoundPL from '../../components/NotFoundPL'
 import Head from '../../components/Head'
+import HeadingRenderer from '../../components/ReactMarkdownHeadingRenderer'
 
 interface IParams extends ParsedUrlQuery {
   slug: string
@@ -47,8 +48,16 @@ const PostPage: NextPage<Props> = ({
     return <NotFoundPL slug={slug} />
   }
 
+  const components = {
+    h2: HeadingRenderer,
+    h3: HeadingRenderer,
+    h4: HeadingRenderer,
+    h5: HeadingRenderer,
+    h6: HeadingRenderer,
+  }
+
   return (
-    <div className="py-6 px-2 xs:px-4 sm:pt-8 bg-white">
+    <div className="py-6 px-2 xs:px-4 sm:py-20 bg-white">
       <Head
         title={`${frontmatter.title} - Pan-Media Blog`}
         description={frontmatter.excerpt}
@@ -59,6 +68,7 @@ const PostPage: NextPage<Props> = ({
         imageAltText={`${frontmatter.title} post image`}
         siteName="Pan Media Blog"
       />
+
       <div className="w-full md:w-3/4 lg:w-8/12 flex flex-col max-w-[920px] m-auto min-h-screen bg-white rounded-md">
         <h2 className="text-[#444444] font-bold text-xl xs:text-2xl sm:text-3xl  text-center">
           {frontmatter.title}
@@ -66,9 +76,9 @@ const PostPage: NextPage<Props> = ({
         <p className="pt-1 pb-4 text-gray-300 text-center">
           {frontmatter.date}
         </p>
-        <span className="text-md">
-          <ReactMarkdown>{content}</ReactMarkdown>
-        </span>
+        <section className="markdown-body">
+          <ReactMarkdown components={components}>{content}</ReactMarkdown>
+        </section>
       </div>
     </div>
   )
