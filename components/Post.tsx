@@ -44,7 +44,7 @@ const Post: React.FC<Props> = ({
         ref={ref}
         className={`${
           inView && !initialView && 'animate__fadeInUp'
-        } animate__animated  Post group col-span-12 md:col-span-6  bg-white rounded-lg transition-all cursor-pointer relative border border-opacity-5 border-black`}
+        } animate__animated  Post group col-span-12 md:col-span-6  bg-white rounded-lg transition-all cursor-pointer relative shadow`}
         key={slug}
       >
         <div className="flex w-full h-40  xs:h-[204px] md:h-[187px] xl:h-[266px] overflow-hidden rounded-t-lg">

@@ -22,7 +22,7 @@ const MainPost: React.FC<Props> = ({
   <Link href={`/posts/${slug}`} passHref>
     <a
       href="replace"
-      className="Post group hover:shadow-sm relative  transition-all  col-span-12 mx-auto md:col-span-12 mainCard w-full flex flex-wrap md:flex-nowrap bg-white rounded-lg cursor-pointer"
+      className="Post group hover:shadow-sm relative  transition-all  col-span-12 mx-auto md:col-span-12 mainCard w-full flex flex-wrap md:flex-nowrap bg-white rounded-lg cursor-pointer shadow"
       key={slug}
     >
       <div className="mb-4 md:mb-0 flex w-full md:w-8/12 min-h-[30vh]  md:min-h-[10vh] md:h-auto overflow-hidden rounded-t-lg md:rounded-l-lg md:rounded-r-none">
@@ -32,7 +32,7 @@ const MainPost: React.FC<Props> = ({
             alt={title}
             layout="fill"
             objectFit="cover"
-            objectPosition="bottom"
+            objectPosition="center"
           />
           <div className="overlay" />
         </div>
