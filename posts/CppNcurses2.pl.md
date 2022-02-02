@@ -2,7 +2,7 @@
 title: 'Jak zacząć przygodę z C++ i Ncurses - Cz. 2 - Okno i sterowanie'
 date: '2022-02-01'
 excerpt: 'Pierwsza część serii, gdzie opisuję przebieg tworzenia konsolowej gry Pong przy pomocy języka C++ i biblioteki Ncurses. Praktyczny przewodnik na temat podstaw języka i ich zastosowania w programowaniu.'
-coverImage: '/images/posts/CppNcurses2/1.jpg#postMainImage'
+coverImage: '/images/posts/CppNcurses2/1.jpg'
 keywords:
   - 'C++'
   - 'Ncurses'
