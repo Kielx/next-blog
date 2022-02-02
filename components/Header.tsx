@@ -87,24 +87,6 @@ const Header = () => {
   const router = useRouter()
   const { pathname, asPath, query } = router
 
-  const removeElementsByClass = async (className: string) => {
-    const elements = document.getElementsByClassName(className)
-    while (elements.length > 0) {
-      elements[0].parentNode.removeChild(elements[0])
-    }
-    return true
-  }
-
-  const pushNext = async () => {
-    await removeElementsByClass('markdown-body')
-    router
-      .push({ pathname, query }, asPath, {
-        locale: router.locale === 'en-US' ? 'pl' : 'en-US',
-      })
-      .then(() => {
-        router.reload()
-      })
-  }
   return (
     <>
       <div className="mobileNavbar lg:hidden w-full h-11 flex flex-wrap bg-[#2C2C2C]  ">
@@ -168,19 +150,26 @@ const Header = () => {
               ? mapNavItems(navItemsPL)
               : mapNavItems(navItems)}
           </div>
-          <button
-            type="button"
-            className="pl-8 text-sm "
+
+          {/* This button is used to push the page to the next language
+          It is necessary to remove the elements from the DOM, because the PrismJS
+          library woud throw an error if the elements are not removed
+          Therefore it is necessary to refresh the whole page via Anchor tag
+          So it checks what locale we have and then pushes the page to the next language
+          Ternary operator checks if path is different than "/" because it needs to append pl to the path */}
+          <a
+            className="pl-8 text-lg"
+            href={`${router.locale === 'en-US' ? '/pl' : ''}${
+              asPath !== '/' ? asPath.replace(/^\/$/, '') : asPath
+            }`}
             onClick={() => {
               document.cookie = `NEXT_LOCALE=${
                 router.locale === 'en-US' ? 'pl' : 'en-US'
               }; expires=Fri, 31 Dec 9999 23:59:59 GMT`
-
-              pushNext()
             }}
           >
             {router.locale === 'en-US' ? '🇺🇸' : '🇵🇱'}
-          </button>
+          </a>
         </div>
       </div>
     </>
