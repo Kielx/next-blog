@@ -85,7 +85,7 @@ const mapNavItems = (items: NavItems): JSX.Element[] => {
 const Header = () => {
   const [open, setOpen] = useState(false)
   const router = useRouter()
-  const { pathname, asPath, query } = router
+  const { asPath } = router
 
   return (
     <>
@@ -112,20 +112,25 @@ const Header = () => {
           {router.locale === 'pl'
             ? mapNavItems(navItemsPL)
             : mapNavItems(navItems)}
-          <button
-            type="button"
-            className="text-left w-full pt-2"
+          {/* This button is used to push the page to the next language
+          It is necessary to remove the elements from the DOM, because the PrismJS
+          library woud throw an error if the elements are not removed
+          Therefore it is necessary to refresh the whole page via Anchor tag
+          So it checks what locale we have and then pushes the page to the next language
+          Ternary operator checks if path is different than "/" because it needs to append pl to the path */}
+          <a
+            className="w-full pt-1"
+            href={`${router.locale === 'en-US' ? '/pl' : ''}${
+              asPath !== '/' ? asPath.replace(/^\/$/, '') : asPath
+            }`}
             onClick={() => {
               document.cookie = `NEXT_LOCALE=${
                 router.locale === 'en-US' ? 'pl' : 'en-US'
               }; expires=Fri, 31 Dec 9999 23:59:59 GMT`
-              router.push({ pathname, query }, asPath, {
-                locale: router.locale === 'en-US' ? 'pl' : 'en-US',
-              })
             }}
           >
             {router.locale === 'en-US' ? '🇺🇸' : '🇵🇱'}
-          </button>
+          </a>
         </div>
       </div>
 
