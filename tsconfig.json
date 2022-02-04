@@ -21,7 +21,8 @@
     "**/*.ts",
     "**/*.tsx",
     "next-i18next.config.js",
-    "next.config.js"
+    "next.config.js",
     "cypress/integration/sample_spec.js"
   ],
   "exclude": ["node_modules", "cypress"]
+}
