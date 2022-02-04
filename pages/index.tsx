@@ -1,11 +1,13 @@
 import type { GetStaticProps, NextPage } from 'next'
 import { useRouter } from 'next/router'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import MainPost from '../components/MainPost'
 import Post from '../components/Post'
 import Head from '../components/Head'
+import Header from '../components/Header'
 
 type Props = {
   posts: {
@@ -44,19 +46,26 @@ const Home: NextPage<Props> = ({ posts }) => {
   const router = useRouter()
   const locale = router.locale as string
   return (
-    <div className="font-body flex flex-wrap w-full ">
-      <Head {...(locale === 'pl' ? metaTagsPL : metaTags)} />
+    <>
+      <Header />
+      <div className="font-body flex flex-wrap w-full ">
+        <Head {...(locale === 'pl' ? metaTagsPL : metaTags)} />
 
-      <div className="grid grid-cols-12 gap-6 w-full cardsContainer xs:px-8 px-4 md:px-0 py-8 md:py-12 max-w-[692px] xl:max-w-[980px] m-auto justify-center gap-y-10 box-border">
-        {posts.map((post, index) =>
-          index < 1 ? (
-            <MainPost key={post.slug} slug={post.slug} {...post.frontmatter} />
-          ) : (
-            <Post key={post.slug} slug={post.slug} {...post.frontmatter} />
-          )
-        )}
+        <div className="grid grid-cols-12 gap-6 w-full cardsContainer xs:px-8 px-4 md:px-0 py-8 md:py-12 max-w-[692px] xl:max-w-[980px] m-auto justify-center gap-y-10 box-border">
+          {posts.map((post, index) =>
+            index < 1 ? (
+              <MainPost
+                key={post.slug}
+                slug={post.slug}
+                {...post.frontmatter}
+              />
+            ) : (
+              <Post key={post.slug} slug={post.slug} {...post.frontmatter} />
+            )
+          )}
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 
@@ -97,6 +106,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
       posts,
+      ...(await serverSideTranslations(locale, ['header'])),
     },
   }
 }

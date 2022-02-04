@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import type { GetStaticProps, GetStaticPaths, NextPage } from 'next'
 import { useRouter } from 'next/router'
-
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
@@ -11,6 +11,7 @@ import Prism from 'prismjs'
 import NotFoundPL from '../../components/NotFoundPL'
 import Head from '../../components/Head'
 import HeadingRenderer from '../../components/ReactMarkdownHeadingRenderer'
+import Header from '../../components/Header'
 
 interface IParams extends ParsedUrlQuery {
   slug: string
@@ -64,32 +65,35 @@ const PostPage: NextPage<Props> = ({
   }
 
   return (
-    <div className="py-6 px-2 xs:px-4 sm:py-20 bg-white">
-      <Head
-        title={`${frontmatter.title} - Pan-Media Blog`}
-        description={frontmatter.excerpt}
-        image={`https://blog.pantak.net${frontmatter.coverImage}`}
-        url={`https://blog.pantak.net/posts/${
-          locale === 'pl' ? 'pl/' : ''
-        }${slug}`}
-        imageAltText={`${frontmatter.title} post image`}
-        siteName="Pan Media Blog"
-      />
+    <>
+      <Header />
+      <div className="py-6 px-2 xs:px-4 sm:py-20 bg-white">
+        <Head
+          title={`${frontmatter.title} - Pan-Media Blog`}
+          description={frontmatter.excerpt}
+          image={`https://blog.pantak.net${frontmatter.coverImage}`}
+          url={`https://blog.pantak.net/posts/${
+            locale === 'pl' ? 'pl/' : ''
+          }${slug}`}
+          imageAltText={`${frontmatter.title} post image`}
+          siteName="Pan Media Blog"
+        />
 
-      <div className="w-full md:w-3/4 lg:w-8/12 flex flex-col max-w-[920px] m-auto min-h-screen bg-white rounded-md">
-        <h2 className="text-[#444444] font-bold text-xl xs:text-2xl sm:text-3xl  text-center">
-          {frontmatter.title}
-        </h2>
-        <p className="pt-1 pb-4 text-gray-300 text-center">
-          {frontmatter.date}
-        </p>
-        <div className="markdown-body" key="uniqueKey">
-          {mounted && (
-            <ReactMarkdown components={components}>{content}</ReactMarkdown>
-          )}
+        <div className="w-full md:w-3/4 lg:w-8/12 flex flex-col max-w-[920px] m-auto min-h-screen bg-white rounded-md">
+          <h2 className="text-[#444444] font-bold text-xl xs:text-2xl sm:text-3xl  text-center">
+            {frontmatter.title}
+          </h2>
+          <p className="pt-1 pb-4 text-gray-300 text-center">
+            {frontmatter.date}
+          </p>
+          <div className="markdown-body" key="uniqueKey">
+            {mounted && (
+              <ReactMarkdown components={components}>{content}</ReactMarkdown>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 
@@ -141,6 +145,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       frontmatter,
       slug,
       content,
+      ...(await serverSideTranslations(locale, ['header'])),
     },
   }
 }

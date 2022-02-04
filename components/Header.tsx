@@ -1,7 +1,9 @@
 import Image from 'next/image'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import { useTranslation } from 'next-i18next'
+
 import HeaderHamburger from './HeaderHamburger'
 
 type NavItems = {
@@ -33,59 +35,37 @@ const navItems: NavItems = [
   },
 ]
 
-const navItemsPL: NavItems = [
-  {
-    name: 'Strona główna',
-    href: '/',
-    type: 'link',
-  },
-  {
-    name: 'O mnie',
-    href: '/about',
-    type: 'link',
-  },
-  {
-    name: 'Kontakt',
-    href: '/contact',
-    type: 'link',
-  },
-  {
-    name: 'Portfolio',
-    href: 'https://pantak.net',
-    type: 'a',
-  },
-]
-
-const mapNavItems = (items: NavItems): JSX.Element[] => {
-  return items.map((item) => {
-    if (item.type === 'link') {
-      return (
-        <Link href={item.href} key={item.name} passHref>
-          <a
-            href="replace"
-            className="hover:text-gray-400 cursor-pointer transition-all w-full lg:w-auto py-1 lg:py-0 "
-          >
-            {item.name}
-          </a>
-        </Link>
-      )
-    }
-    return (
-      <a
-        className="hover:text-gray-400 cursor-pointer transition-all w-full lg:w-auto py-1 lg:py-0"
-        href={item.href}
-        key={item.name}
-      >
-        {item.name}
-      </a>
-    )
-  })
-}
-
 const Header = () => {
   const [open, setOpen] = useState(false)
   const router = useRouter()
-  const { pathname, asPath, query } = router
+  const { asPath } = router
+  const { t } = useTranslation('header')
+
+  const mapNavItems = (items: NavItems): JSX.Element[] => {
+    return items.map((item) => {
+      if (item.type === 'link') {
+        return (
+          <Link href={item.href} key={item.name} passHref>
+            <a
+              href="replace"
+              className="hover:text-gray-400 cursor-pointer transition-all w-full lg:w-auto py-1 lg:py-0 "
+            >
+              {t(item.name)}
+            </a>
+          </Link>
+        )
+      }
+      return (
+        <a
+          className="hover:text-gray-400 cursor-pointer transition-all w-full lg:w-auto py-1 lg:py-0"
+          href={item.href}
+          key={item.name}
+        >
+          {t(item.name)}
+        </a>
+      )
+    })
+  }
 
   return (
     <>
@@ -109,23 +89,26 @@ const Header = () => {
             open ? 'max-h-[100vh] opacity-100' : 'max-h-0 opacity-0 invisible'
           }  z-20 divide-y mobileMenu w-full justify-end items-start px-10 py-4 text-lg font-thin text-[#EEEEEE] bg-[#2C2C2C]`}
         >
-          {router.locale === 'pl'
-            ? mapNavItems(navItemsPL)
-            : mapNavItems(navItems)}
-          <button
-            type="button"
-            className="text-left w-full pt-2"
+          {mapNavItems(navItems)}
+          {/* This button is used to push the page to the next language
+          It is necessary to remove the elements from the DOM, because the PrismJS
+          library woud throw an error if the elements are not removed
+          Therefore it is necessary to refresh the whole page via Anchor tag
+          So it checks what locale we have and then pushes the page to the next language
+          Ternary operator checks if path is different than "/" because it needs to append pl to the path */}
+          <a
+            className="w-full pt-1"
+            href={`${router.locale === 'en-US' ? '/pl' : ''}${
+              asPath !== '/' ? asPath.replace(/^\/$/, '') : asPath
+            }`}
             onClick={() => {
               document.cookie = `NEXT_LOCALE=${
                 router.locale === 'en-US' ? 'pl' : 'en-US'
               }; expires=Fri, 31 Dec 9999 23:59:59 GMT`
-              router.push({ pathname, query }, asPath, {
-                locale: router.locale === 'en-US' ? 'pl' : 'en-US',
-              })
             }}
           >
             {router.locale === 'en-US' ? '🇺🇸' : '🇵🇱'}
-          </button>
+          </a>
         </div>
       </div>
 
@@ -146,9 +129,7 @@ const Header = () => {
             </a>
           </Link>
           <div className="desktopMenu h-full w-1/2 flex justify-end items-center gap-8 text-sm font-thin text-[#EEEEEE]">
-            {router.locale === 'pl'
-              ? mapNavItems(navItemsPL)
-              : mapNavItems(navItems)}
+            {mapNavItems(navItems)}
           </div>
 
           {/* This button is used to push the page to the next language
