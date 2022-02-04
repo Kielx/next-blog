@@ -1,7 +1,4 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-
+module.exports = {
   i18n: {
     // These are all the locales you want to support in
     // your application
@@ -11,5 +8,3 @@ const nextConfig = {
     defaultLocale: 'en-US',
   },
 }
-
-module.exports = nextConfig
