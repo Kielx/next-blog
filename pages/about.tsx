@@ -9,7 +9,7 @@ const About = () => {
   return (
     <>
       <Header />
-      <p>{t('name')}</p>
+      <h1>{t('h1')}</h1>
     </>
   )
 }
