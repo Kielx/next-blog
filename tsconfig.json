@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
+    "types": ["cypress"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -21,8 +22,7 @@
     "**/*.ts",
     "**/*.tsx",
     "next-i18next.config.js",
-    "next.config.js",
-    "cypress/integration/sample_spec.js"
+    "next.config.js"
   ],
-  "exclude": ["node_modules", "cypress"]
+  "exclude": ["node_modules"]
 }
