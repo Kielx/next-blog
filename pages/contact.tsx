@@ -1,11 +1,15 @@
 import type { GetStaticProps } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useRouter } from 'next/router'
 import { useState } from 'react'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import Header from '../components/Header'
 import SendIcon from '../public/icons/send.svg'
 
 const Contact = () => {
+  const router = useRouter()
   const { t } = useTranslation('contact')
   const [state, setState] = useState({})
 
@@ -17,10 +21,16 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     const url = `/api/contact`
-    await fetch(url, {
+    const response = await fetch(url, {
       method: 'POST',
       body: JSON.stringify(state),
     })
+    if (response.ok) {
+      router.push('/')
+      toast.success(t('success'))
+    } else {
+      toast.error(t('error'))
+    }
   }
 
   return (

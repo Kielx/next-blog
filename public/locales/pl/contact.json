@@ -3,5 +3,7 @@
   "name": "Imię",
   "email": "Adres E-mail",
   "message": "Twoja wiadomość",
-  "send": "Wyślij wiadomość"
+  "send": "Wyślij wiadomość",
+  "success": "Twoja wiadomość została wysłana!",
+  "error": "Wystąpił błąd. Spróbuj ponownie później."
 }
