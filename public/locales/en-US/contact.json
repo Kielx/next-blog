@@ -1,3 +1,7 @@
 {
-  "h1": "Welcome at the temporary contact me page"
+  "h1": "I'd love to hear from you",
+  "name": "Name",
+  "email": "Email",
+  "message": "Message",
+  "send": "Send"
 }

@@ -1,3 +1,7 @@
 {
-  "h1": "Witaj na tymczasowej stronie do kontaktu"
+  "h1": "Bądźmy w kontakcie!",
+  "name": "Imię",
+  "email": "Adres E-mail",
+  "message": "Twoja wiadomość",
+  "send": "Wyślij wiadomość"
 }
