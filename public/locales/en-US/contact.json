@@ -4,6 +4,7 @@
   "email": "Email",
   "message": "Message",
   "send": "Send",
+  "sending": "Sending...",
   "success": "Your message has been sent. Thank you!",
   "error": "There was an error sending your message. Please try again later."
 }

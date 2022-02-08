@@ -12,6 +12,7 @@ import 'animate.css'
 import '../styles/header.css'
 import '../styles/globals.css'
 import '../styles/slug.css'
+import '../styles/sending.css'
 import 'react-toastify/dist/ReactToastify.css'
 
 const MyApp = ({ Component, pageProps }: AppProps) => (

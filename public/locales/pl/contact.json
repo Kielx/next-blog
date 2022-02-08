@@ -4,6 +4,7 @@
   "email": "Adres E-mail",
   "message": "Twoja wiadomość",
   "send": "Wyślij wiadomość",
+  "sending": "Wysyłanie...",
   "success": "Twoja wiadomość została wysłana!",
   "error": "Wystąpił błąd. Spróbuj ponownie później."
 }
