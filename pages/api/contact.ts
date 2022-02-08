@@ -69,10 +69,10 @@ export default async function handler(
       html: `${message}`,
     }
     try {
-      sgMail.send(msg)
-      res.status(200).json({ message: 'Message successfully sent' })
+      await sgMail.send(msg)
     } catch (error) {
       res.status(500).json({ error })
     }
+    res.status(200).json({ message: 'Message successfully sent' })
   }
 }
