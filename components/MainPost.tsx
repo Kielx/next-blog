@@ -38,13 +38,13 @@ const MainPost: React.FC<Props> = ({
         </div>
       </div>
       <div className=" bg-white rounded-lg px-3 md:py-6 md:px-4 xl:p-8 xl:pb-4 md:w-4/12 flex flex-col ">
-        <h3 className="font-bold transition-all text-[#444444] hover:text-[#222] text-md xl:text-2xl text-start md:leading-5 xl:leading-6">
+        <h3 className="font-bold transition-all text-[#444444] hover:text-[#222] text-md xl:text-2xl text-start md:leading-5 xl:leading-7 pb-1">
           {title}
         </h3>
-        <p className="transition-all group-hover:text-gray-400  text-gray-300 text-xs">
+        <p className="transition-all group-hover:text-gray-400  text-gray-300 text-xs pb-2">
           {date.split('-').reverse().join('-')}
         </p>
-        <p className="transition-all group-hover:text-gray-500  m-auto text-[#828282] text-xs md:text-sm xl:text-base xl:leading-5  pt-2 ">
+        <p className="transition-all group-hover:text-gray-500  m-auto text-[#828282] text-xs md:text-sm xl:text-base xl:leading-[1.65rem]  pt-2 ">
           {excerpt}
         </p>
         <div className="flex gap-4 mt-auto pb-2 md:pb-0">
