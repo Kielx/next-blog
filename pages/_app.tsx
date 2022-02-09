@@ -9,7 +9,6 @@ import '@fontsource/montserrat/400.css'
 import '@fontsource/montserrat/100.css'
 import 'animate.css'
 
-import '../styles/header.css'
 import '../styles/globals.css'
 import '../styles/slug.css'
 import 'react-toastify/dist/ReactToastify.css'

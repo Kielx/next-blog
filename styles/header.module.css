@@ -1,15 +1,6 @@
-/* Mobile Menu display */
-
-.mobileMenu {
-  display: flex;
-  flex-direction: column;
-  transition-delay: 0.2s;
-  transition: 0.1s cubic-bezier(0.4, 0, 0.25, 1);
-}
-
 /* Hamburger icon */
 
-#nav-icon1 {
+#navIcon1 {
   width: 30px;
   height: 25px;
   position: relative;
@@ -25,7 +16,7 @@
   cursor: pointer;
 }
 
-#nav-icon1 span {
+#navIcon1 span {
   display: block;
   position: absolute;
   height: 2px;
@@ -44,19 +35,19 @@
   transition: 0.25s ease-in-out;
 }
 
-#nav-icon1 span:nth-child(1) {
+#navIcon1 span:nth-child(1) {
   top: 0px;
 }
 
-#nav-icon1 span:nth-child(2) {
+#navIcon1 span:nth-child(2) {
   top: 9px;
 }
 
-#nav-icon1 span:nth-child(3) {
+#navIcon1 span:nth-child(3) {
   top: 18px;
 }
 
-#nav-icon1.open span:nth-child(1) {
+#navIcon1.open span:nth-child(1) {
   top: 9px;
   -webkit-transform: rotate(135deg);
   -moz-transform: rotate(135deg);
@@ -64,12 +55,12 @@
   transform: rotate(135deg);
 }
 
-#nav-icon1.open span:nth-child(2) {
+#navIcon1.open span:nth-child(2) {
   opacity: 0;
   left: -60px;
 }
 
-#nav-icon1.open span:nth-child(3) {
+#navIcon1.open span:nth-child(3) {
   top: 9px;
   -webkit-transform: rotate(-135deg);
   -moz-transform: rotate(-135deg);
@@ -77,6 +68,6 @@
   transform: rotate(-135deg);
 }
 
-#nav-icon1:hover span {
+#navIcon1:hover span {
   background: rgb(156 163 175);
 }

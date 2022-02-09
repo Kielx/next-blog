@@ -1,4 +1,4 @@
-import React from 'react'
+import styles from '../styles/header.module.css'
 
 type Props = {
   open: boolean
@@ -10,9 +10,9 @@ const HeaderHamburger: React.FC<Props> = ({ open, setOpen }) => {
     <button
       type="button"
       onClick={() => setOpen(!open)}
-      className="hamburger ml-auto text-right cursor-pointer font-bold text-white text-2xl pr-6"
+      className={`${styles.hamburger} ml-auto text-right cursor-pointer font-bold text-white text-2xl pr-6`}
     >
-      <div id="nav-icon1" className={`${open ? 'open' : ''}`}>
+      <div id={styles.navIcon1} className={`${open ? styles.open : ''}`}>
         <span />
         <span />
         <span />

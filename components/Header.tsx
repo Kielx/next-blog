@@ -87,7 +87,7 @@ const Header = () => {
         <div
           className={`${
             open ? 'max-h-[100vh] opacity-100' : 'max-h-0 opacity-0 invisible'
-          }  z-20 divide-y mobileMenu w-full justify-end items-start px-10 py-4 text-lg font-thin text-[#EEEEEE] bg-[#2C2C2C]`}
+          }  mobileMenu  transition-[max-height opacity] duration-[150ms] flex flex-col z-20 divide-y  w-full justify-end items-start px-10 py-4 text-lg font-thin text-[#EEEEEE] bg-[#2C2C2C]`}
         >
           {mapNavItems(navItems)}
           {/* This button is used to push the page to the next language
