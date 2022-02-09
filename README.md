@@ -5,3 +5,4 @@
 - [ ] Style contact page
 - [ ] Style about me page
 - [ ] Add new posts with content
+- [ ] Google gtag
