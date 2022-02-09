@@ -70,7 +70,7 @@ const Contact = () => {
               required
               placeholder={t('name')}
               onChange={handleChange}
-              className="border-b border-b-gray-300 w-full pt-3 px-4 bg-white text-gray-700 placeholder-gray-400  text-base focus:outline-none focus:border-b-black transition-colors"
+              className="transition-all hover:border-b-black border-b border-b-gray-300 w-full pt-3 px-4 bg-white text-gray-700 placeholder-gray-400  text-base focus:outline-none focus:border-b-black"
             />
           </label>
           <label
@@ -84,7 +84,7 @@ const Contact = () => {
               required
               placeholder={t('email')}
               onChange={handleChange}
-              className="border-b border-b-gray-300 w-full pt-3 px-4 bg-white text-gray-700 placeholder-gray-400  text-base focus:outline-none focus:border-b-black transition-colors"
+              className="transition-all hover:border-b-black border-b border-b-gray-300 w-full pt-3 px-4 bg-white text-gray-700 placeholder-gray-400  text-base focus:outline-none focus:border-b-black"
             />
           </label>
           <label htmlFor="message" className="col-span-2 row-span-2">
@@ -95,7 +95,7 @@ const Contact = () => {
               placeholder={t('message')}
               rows={5}
               onChange={handleChange}
-              className="resize-none rounded-sm border-transparent appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-1 focus:ring-black focus:border-transparent"
+              className="resize-none rounded-sm border-transparent appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-1 focus:ring-black focus:border-transparent hover:ring-black hover:ring-1 transition-all"
             />
           </label>
           <button
