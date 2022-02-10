@@ -2,6 +2,7 @@ import type { AppProps } from 'next/app'
 import { appWithTranslation } from 'next-i18next'
 import { ToastContainer, Slide } from 'react-toastify'
 
+import '@fontsource/montserrat/900.css'
 import '@fontsource/montserrat/700.css'
 import '@fontsource/montserrat/600.css'
 import '@fontsource/montserrat/500.css'
