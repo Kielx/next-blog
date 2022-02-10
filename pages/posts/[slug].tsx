@@ -67,7 +67,7 @@ const PostPage: NextPage<Props> = ({
   return (
     <>
       <Header />
-      <div className="py-6 px-2 xs:px-4 sm:py-20 bg-white">
+      <div className="bg-white py-6 px-2 xs:px-4 sm:py-20">
         <Head
           title={`${frontmatter.title} - Pan-Media Blog`}
           description={frontmatter.excerpt}
@@ -79,11 +79,11 @@ const PostPage: NextPage<Props> = ({
           siteName="Pan Media Blog"
         />
 
-        <div className="w-full md:w-3/4 lg:w-8/12 flex flex-col max-w-[920px] m-auto min-h-screen bg-white rounded-md">
-          <h2 className="text-[#444444] font-bold text-xl xs:text-2xl sm:text-3xl  text-center">
+        <div className="m-auto flex min-h-screen w-full max-w-[920px] flex-col rounded-md bg-white md:w-3/4 lg:w-8/12">
+          <h2 className="text-center text-xl font-bold text-[#444444] xs:text-2xl  sm:text-3xl">
             {frontmatter.title}
           </h2>
-          <p className="pt-1 pb-4 text-gray-300 text-center">
+          <p className="pt-1 pb-4 text-center text-gray-300">
             {frontmatter.date}
           </p>
           <div className="markdown-body" key="uniqueKey">

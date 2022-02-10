@@ -59,7 +59,7 @@ body {
 /* Markdown post styles */
 
 img[src*='#postMainImage'] {
-  @apply w-full h-[40vh] object-cover my-6;
+  @apply my-6 h-[40vh] w-full object-cover;
 }
 
 img[src*='#postMiniImage'] {

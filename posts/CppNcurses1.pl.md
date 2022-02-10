@@ -4,9 +4,9 @@ date: '2022-02-01'
 excerpt: 'Pierwsza część serii, gdzie opisuję przebieg tworzenia konsolowej gry Pong przy pomocy języka C++ i biblioteki Ncurses. Praktyczny przewodnik na temat podstaw języka i ich zastosowania w programowaniu.'
 coverImage: '/images/posts/CppNcurses1/1.webp'
 keywords:
-- 'C++'
-- 'Ncurses'
-- Podstawy
+  - 'C++'
+  - 'Ncurses'
+  - Podstawy
 ---
 
 ![Nowoczesny stół do gry w pong](/images/posts/CppNcurses1/1.webp#postMainImage)
@@ -67,9 +67,9 @@ Instrukcję [Jak pobrać i zainstalować Visual Studio Code dla Linuxa znajdzies
 
 Terminal możesz uruchomić zazwyczaj poprzez użycie skrótu ctrl + alt + T. Ewentualnie możesz znaleźć go w głównym menu programów. Jeśli masz problem z powyższymi instrukcjami, a Twoja dystrybucja obsługuje pakiety Snap (Ubuntu je obsługuje), możesz zainstalować Visual Studio Code za pomocą polecenia
 
-~~~Bash
+```Bash
 sudo snap install code --classic
-~~~
+```
 
 ## Zainstalowałem Ubuntu i VSCode, czy wreszcie mogę pisać programy?
 
@@ -85,15 +85,15 @@ A co to jest kompilator i do czego jest potrzebny? Najprościej rzecz ujmując -
 
 Dobre pytanie - sam na początku mojej przygody z Linuxem zastanawiałem się co to wszystko znaczy.
 
-~~~Bash
+```Bash
 sudo
-~~~
+```
 
 To skrót od SuperUser DO - czyli zrób coś jako administrator systemu. W systemie Windows podczas instalacji programów wyskakuje nam okienko, które prosi o potwierdzenie, że chcemy zainstalować program jako administrator. W Linuxie nie ma takiego okienka, a robimy to poprzez polecenie sudo.
 
-~~~Bash
+```Bash
 apt-get install gcc
-~~~
+```
 
 To polecenie, które pozwala na zainstalowanie pakietów. Pakiety to paczki, które zawierają różne przydatne programy, które możemy używać w naszym systemie. APT (Advanced Packaging Tool) to menadżer pakietów systemu Ubuntu, który odpowiada za instalowanie, aktualizowanie i usuwanie pakietów. We wspomnianym wyżej poleceniu przekazujemy do terminala komendę, by przy pomocy APT'a zainstalował pakiet o określonej nazwie - tu GCC czyli paczkę, która zawiera program kompilatora.
 
@@ -108,47 +108,47 @@ Nie musisz ich zapamiętywać. W przyszłości zakładam dwie wersje wydarzeń:
 
 Pierwsze co musimy zrobić to uruchomić terminal (ctrl + alt + T) i wpisać polecenie:
 
-~~~Bash
+```Bash
 sudo apt-get install gcc
-~~~
+```
 
 Potrzebne są jeszcze narzędzia do kompilowania naszych programów i debugowania.
 
 Tym poleceniem instalujemy wymagane pakiety:
 
-~~~Bash
+```Bash
 sudo apt-get install build-essential gdb
-~~~
+```
 
 Na koniec instalujemy biliotekę Ncurses
 
-~~~Bash
+```Bash
 sudo apt-get install libncurses5-dev libncursesw5-dev
-~~~
+```
 
 Gratuluję, udało Ci się przejść wszystkie niezbędne kroki by skonfigurować swoje środowisko do pracy z C++ i Ncurses. W następnej części przejdziemy do pisania programów i tworzenia naszej gry od podstaw.
 
 Jeśli na szybko potrzebujesz zainstalować wszystkie pakiety, które są niezbędne do kompilowania i działania programu skorzystaj z następującego polecenia w terminalu, który możesz otworzyć za pomocą skrótu Ctrl + Alt + T:
 
-~~~Bash
+```Bash
 sudo apt-get install gcc build-essential gdb libncurses5-dev libncursesw5-dev
-~~~
+```
 
 ### Stwórzmy plik z kodem
 
 Jeśli jeszcze nie zdążyłeś zamknąć terminala to możesz za jego pomocą stworzyć folder na projekty i nowy plik o nazwie `main.cpp` w następujący sposób:
 
-~~~Bash
+```Bash
 mkdir ~/projects/CppNcurses
 cd ~/projects/CppNcurses
 touch main.cpp
-~~~
+```
 
 Następnie wpisz następującą komendę by otworzyć w nim VSCode:
 
-~~~Bash
+```Bash
 code main.cpp
-~~~
+```
 
 Ewentualnie możesz też otworzyć VSCode za pomocą polecenia `code` lub znajdując go w głównym menu 'start'.
 Po otwarciu programu pojawi się ekran powitalny, który powinien przypominać coś w tym rodzaju:
@@ -176,24 +176,24 @@ Teraz tworzymy już nasz plik na którym będziemy pracować
 Po stworzeniu nowego pliku musimy stworzyć główną funkcję, która obsługuje nasz program.
 Stwórzmy tą funkcję - w nowym oknie wpisz:
 
-~~~Cpp
+```Cpp
 int main()
 {
 return 0;
 }
-~~~
+```
 
 Brzmi dość enigmatycznie - ale to co widzisz wyżej jest właśnie główną funkcją programu. Każdy program gdzieś musi się rozpoczynać i kończyć, a za to odpowiedzialna jest główna funkcja. Wyobraź sobie, że funkcja to po prostu kawałek kodu, który możemy wykonać w określonym momencie.
 
 Rozbijmy to co napisaliśmy na czynniki pierwsze. To co napisałem wyżej, można przedstawić symbolicznie w taki sposób - w nawiasach kwadratowych wpisuję co jest czym:
 
-~~~Cpp
+```Cpp
 [Typ zwracanej wartości przez funkcję][Nazwa funkcji]([Lista argumentów])
 {
 [Kod funkcji]
 [Zwracana wartość];
 }
-~~~
+```
 
 - **`Typ zwracanej wartości przez funkcję`** - u nas `int` - każda funkcja przed jej nazwą musi określić jaki typ danych będzie zwracać. Dzięki temu kompilator wie, czego się spodziewać po zakończeniu funkcji. Twórcy języka uznali, że główna funkcja musi zwracać wartość liczby całkowitej, więc wpisaliśmy int.
 - **`Nazwa funkcji`** - u nas `main` - główna funkcja zawsze musi się nazywać main, inne funkcje możemy nazywać w sposób (prawie)dowolny, istnieje kilka reguł, których musimy przestrzegać, ale o tym przy okazji tworzenia innych funkcji.
@@ -201,7 +201,7 @@ Rozbijmy to co napisaliśmy na czynniki pierwsze. To co napisałem wyżej, możn
 - **`{}`** - nawiasy klamrowe, wewnątrz których musi się znajdować kod funkcji.
 - **`Zwracana wartość`** - musi wystąpić słowo kluczowe `return` oraz jaka wartość jest zwracana - u nas 0, co oznacza nic innego jak to, że funkcja główna wykonała się prawidłowo. `return` w języku angielskim oznacza nic innego jak po prostu zwróć coś.
 - **;** - Bardzo istotnym fragmentem każdego programu są średniki, które wskazują na kończenie danego fragmentu kodu. Bez nich program nie będzie działał, a kompilator wyświetli nam błąd.
-Jeśli to co przeczytałeś wyżej wydaje Ci się skomplikowane, to pamiętaj, że zawsze możesz wrócić do tego posta później, albo wpisać w wyszukiwarkę frazę np. "Funkcja główna C++", a wtedy znajdziesz wiele materiałów, dzięki którym odświeżysz sobie składnię.
+  Jeśli to co przeczytałeś wyżej wydaje Ci się skomplikowane, to pamiętaj, że zawsze możesz wrócić do tego posta później, albo wpisać w wyszukiwarkę frazę np. "Funkcja główna C++", a wtedy znajdziesz wiele materiałów, dzięki którym odświeżysz sobie składnię.
 
 Zapamiętaj, że w programowaniu nie chodzi o to by uczyć się na pamięć składni języka. Prędzej czy później i tak zapamiętasz ją samoistnie. Dużo ważniejsze jest to żebyś zapamiętał określone koncepcje, takie jak w tym przypadku - główna funkcja - a później w razie potrzebny potrafił je samemu wyszukać. Jeśli zapomnisz jak tworzy się główną funkcję w C++ to po prostu wpisz taką frazę w Google. Analogicznie z wszystkimi innymi częściami języka.
 
@@ -211,15 +211,15 @@ Po wpisaniu powyższego kodu, zapisz plik.
 
 Żeby skompilować napisany przez nas program, musimy wpisać w terminalu polecenie:
 
-~~~Bash
+```Bash
 g++ main.cpp -o main.out
-~~~
+```
 
 Rozbijmy to na czynniki pierwsze by wiedzieć z czym mamy do czynienia:
 
-~~~Bash
+```Bash
 [Nazwa polecenia][Nazwa pliku, który chcemy skompilować][Flagi][Nazwa pliku wyjściowego]
-~~~
+```
 
 - **`Nazwa polecenia`** - u nas `g++` - polecenie, które uruchamia kompilator g++
 - **`Nazwa pliku, który chcemy skompilować`** - u nas `main.cpp` - lub inna nazwa pliku, który zawiera kod naszego programu
@@ -232,9 +232,9 @@ W Visual Studio Code za pomocą skrótu klawiszowego Ctrl + ` (znaczek zazwyczaj
 
 Po skompilowaniu programu możemy go uruchomić następującym poleceniem:
 
-~~~Bash
+```Bash
 ./main.out
-~~~
+```
 
 - **`./`** - to jest skrót, który oznacza, że uruchamiamy program z katalogu w którym obecnie się znajdujemy.
 - **`main.out`** - to nazwa pliku wyjściowego, który został skompilowany.
@@ -247,20 +247,20 @@ Może tego nie widać, ale właśnie skompilowaliśmy i uruchomiliśmy nasz pier
 
 W świecie programistów przyjęło się, że naukę programowania zaczyna się od napisania programu Hello World. Zróbmy to i tym razem - musimy dokonać następujących zmian w naszym programie:
 
-~~~Cpp
+```Cpp
 #include <iostream>
 
 int main() {
 std::cout << "Hello World!" << std::endl;
 return 0;
 }
-~~~
+```
 
 Skompilujemy teraz i uruchomimy program tak jak poprzednio, a za chwilę wytłumaczę co się zmieniło:
 
-~~~Bash
+```Bash
 g++ main.cpp -o main.out && ./main.out
-~~~
+```
 
 Tu połączyłem dwa poprzednie polecenia podwójnym znakiem Ampersand. Powłoka Linuxowa odczytuje ten znak jako logiczny AND - nie wnikając w szczegóły - łącząc tym sposobem dwa polecenia, drugie z nich uruchomi się tylko wtedy, gdy pierwsze zostanie wykonane prawidłowo.
 
@@ -276,20 +276,20 @@ W kodzie programu pojawiły się następujące zmiany
 
 - **`std::cout << "Hello World!" << std::endl;`** - Ta linia wypisuje tekst `Hello World!` na ekran. Pojawia się tu sporo nowych rzeczy - `std::` to połączenie dwóch rzeczy - tak zwany rodzaj przestrzeni nazw w tym wypadku `std` i operator zakresu `::`. Wyobraź sobie, że w swoim programie stworzyłeś np. funkcję licz() i chcesz skorzystać z innej biblioteki, gdzie jej autor też nazwał swoją funkcję licz(). Co teraz? Która funkcja będzie wywołana? Aby uniknąc takich problemów korzystamy z przestrzeni nazw, czyli czegoś w rodzaju zbiorczej nazwy - a raczej przedrostka - dla nazwy wszystkich funkcji. By skorzystać z funkcji z biblioteki standardowej takich jak np. cout musimy więc na początku dodać operator zakresu `std::`, co finalnie daje nam `std::cout`. Dalej do `std::cout` przy pomocy operatora `<<` przekazujemy nasz tekst który chcemy wyświetlić czyli `Hello World`, a następnie ponownie przy pomocy operatora `<<` przekazujemy `std::endl` - czyli koniec linii. Gdybyśmy teraz dodali kolejny tekst to wyświetli się on w nowej linii np. tak (zauważ, że średnik `;` przesuwamy też na koniec linii):
 
-~~~Cpp
+```Cpp
 #include <iostream>
 
 int main() {
 std::cout << "Hello World!" << std::endl << " i jeszcze..." ;
 return 0;
 }
-~~~
+```
 
 Kompilujemy i uruchamiamy:
 
-~~~Bash
+```Bash
 g++ main.cpp -o main.out && ./main.out
-~~~
+```
 
 I efekt:
 

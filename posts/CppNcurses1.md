@@ -4,9 +4,9 @@ date: '2022-02-01'
 excerpt: The first part of the series, where I describe the process of creating a console game Pong using the C ++ language and the Ncurses library. A practical guide to the basics of the language and their application to programming.
 coverImage: '/images/posts/CppNcurses1/1.webp'
 keywords:
-- 'C++'
-- 'Ncurses'
-- Basics
+  - 'C++'
+  - 'Ncurses'
+  - Basics
 ---
 
 ![A modern pong game table](/images/posts/CppNcurses1/1.webp#postMainImage)
@@ -27,7 +27,6 @@ keywords:
 - [Classic Hello World](#classic-hello-world)
   - [What has changed?](#what-has-changed)
 - [Summary](#summary)
-
 
 ## Introduction
 
@@ -68,9 +67,9 @@ The instruction [How to download and install Visual Studio Code for Linux can be
 
 You can usually launch the terminal by using the ctrl + alt + T shortcut. Alternatively, you can find it in the main programs menu. If you have a problem with the instructions above and your distribution supports Snap packages (Ubuntu supports them), you can install Visual Studio Code with the command
 
-~~~Bash
+```Bash
 sudo snap install code --classic
-~~~
+```
 
 ## I have installed Ubuntu and VSCode, can I finally write programs?
 
@@ -86,15 +85,15 @@ What is a compiler and what is it needed for? Simply put - a compiler is a progr
 
 Good question - at the very beginning of my adventure with Linux I was wondering what it all meant.
 
-~~~Bash
+```Bash
 sudo
-~~~
+```
 
 It stands for SuperUser DO - which means doing something as the system administrator. In Windows, during the installation of programs, a window pops up asking us to confirm that we want to install the program as an administrator. There is no such window in Linux, we do it with the sudo command.
 
-~~~Bash
+```Bash
 apt-get install gcc
-~~~
+```
 
 This is the command that allows you to install packages. Packages contain various useful programs that we can use on our system. APT (Advanced Packaging Tool) is the Ubuntu package manager responsible for installing, updating, and removing packages. In the above-mentioned command, we pass the command to the terminal to use APT to install the package with the specified name - in this case, GCC, which is a package that contains the compiler program.
 
@@ -109,47 +108,47 @@ You don't have to remember them. In the future, I assume two versions of the eve
 
 The first thing we need to do is run the terminal (ctrl + alt + T) and type the command:
 
-~~~Bash
+```Bash
 sudo apt-get install gcc
-~~~
+```
 
 We also need tools for compiling our programs and debugging.
 
 With this command, we install the required packages:
 
-~~~Bash
+```Bash
 sudo apt-get install build-essential gdb
-~~~
+```
 
 Finally, we install the Ncurses library
 
-~~~Bash
+```Bash
 sudo apt-get install libncurses5-dev libncursesw5-dev
-~~~
+```
 
 Congratulations, you have managed to complete all the necessary steps to configure your environment to work with C++ and Ncurses. In the next section, we'll move on to writing programs and building our game from scratch.
 
 If you need to quickly install all the packages that are necessary for compiling and running the program, use the following command in the terminal, which you can open with the Ctrl + Alt + T shortcut:
 
-~~~ Bash
+```Bash
 sudo apt-get install gcc build-essential gdb libncurses5-dev libncursesw5-dev
-~~~
+```
 
 ### Let's create a code file
 
 If you haven't already closed the terminal, you can use it to create a projects folder and a new file called `main.cpp` as follows:
 
-~~~Bash
+```Bash
 mkdir ~/projects/CppNcurses
 cd ~/projects/CppNcurses
 touch main.cpp
-~~~
+```
 
 Then enter the following command to open VSCode in it:
 
-~~~Bash
+```Bash
 code main.cpp
-~~~
+```
 
 Alternatively, you can also open VSCode with the `code` command or by finding it in the main 'start' menu.
 When you open the program, you'll see a welcome screen that should resemble something like this:
@@ -177,24 +176,24 @@ Now we create our file on which we will work
 After creating a new file, we need to create the main function that handles our program.
 Let's create this function - in the new window enter:
 
-~~~Cpp
+```Cpp
 int main()
 {
 return 0;
 }
-~~~
+```
 
 It sounds quite enigmatic - but what you see above is the main function of the program. Every program has to start and end somewhere, which is what the main function is responsible for. Imagine that a function is just a piece of code that we can execute at a certain point in time and reuse.
 
 Let's break down what we wrote into prime factors. What I wrote above can be represented symbolically in this way - (in square brackets I wrote what is what):
 
-~~~Cpp
+```Cpp
 [Type of return value by the function][Name of the function]([List of arguments])
 {
 [Function code]
 [Return Value];
 }
-~~~
+```
 
 - **`Type of the value returned by the function`** - here it is `int` - before its name, each function must define what type of data it will return. This lets the compiler know what to expect at the end of the function. The developers decided that the main function needed to return an integer value, so we typed int.
 - **`Function name`** - here `main` - the main function must always be called main, other functions can be called (almost) arbitrarily, there are a few rules that we have to follow, but we will get to this when we start creating other functions.
@@ -213,17 +212,17 @@ After entering the above code, save the file.
 
 To compile the program we wrote, we need to enter the following command in the terminal:
 
-~~~ Bash
+```Bash
 g ++ main.cpp -o main.out
-~~~
+```
 
 Let's break it down into prime factors to know what we're dealing with:
 
-~~~ Bash
+```Bash
 [Command Name] [Name of the file we want to compile] [Flags] [Name of the output file]
-~~~
+```
 
-- **`Command name`** - for us` g ++ `- the command that runs the g ++ compiler
+- **`Command name`** - for us`g ++`- the command that runs the g ++ compiler
 - **`Name of the file we want to compile`** - with us`main.cpp` - or another name of the file that contains the code of our program
 - **`Flags`** - with us`-o` - this way in most commands we can pass arguments with which a given program is to be called. Normally, if you run g++ and specify an input file name (e.g. `main.cpp`) the compiler output file will be named`a.out`, thanks to the `-o` flag we can rename the output file.
 - **`Name of the output file`** - here`main.out` - but you can name this file anything you want. Linux, unlike Windows, doesn't care what extension the output file has.
@@ -234,9 +233,9 @@ In Visual Studio Code, we can open a terminal in the main window using the Ctrl 
 
 After compiling the program, we can run it with the following command:
 
-~~~Bash
+```Bash
 ./main.out
-~~~
+```
 
 - **`./`** - this means that we run the program from the current directory.
 - **`main.out`** - is the name of the output file that has been compiled.
@@ -249,20 +248,20 @@ You may not see it, but we just compiled and ran our first program. There is not
 
 It has been accepted in the programming world that learning programming begins with writing Hello World. Let's do it this time - we need to make the following changes to our program:
 
-~~~Cpp
+```Cpp
 #include <iostream>
 
 int main () {
 std::cout << "Hello World!" << std::endl;
 return 0;
 }
-~~~
+```
 
 We will now compile and run the program as before, and in a moment I will explain what has changed:
 
-~~~ Bash
+```Bash
 g++ main.cpp -o main.out && ./main.out
-~~~
+```
 
 Here I combined the previous two commands with the double sign Ampersand. The Linux shell reads this character as a logical AND operator - without going into the details - thus combining two commands, the second of which will only run if the first is executed correctly.
 
@@ -276,22 +275,22 @@ The following changes have been made to the program code
 
 - **`# include <iostream>`** - This line adds the library `<iostream>` to our program. It is an abbreviation of Input-Output Stream. A library is a collection of functions, classes, and other useful tools that someone else wrote that we can use in our program to carry out specific activities. Thanks to this, we do not have to rewrite all functionalities, and we can use those that have been created and tested earlier by others. Instead of writing our own function to output text, we can use functions from the library like for example `std::cout`.
 
-- **`std::cout << "Hello World!" << std::endl;`** - This line prints the text` Hello World! `to the screen. A lot of new stuff comes up here - `std::` is a combination of two things - the so-called namespace type in this case, `std` and the scope operator `::`. Imagine that in your program, you created the function count() and you want to use another library, where its author also named his function count(). What now? Which function will be called? To avoid such problems, we use a namespace, which is something like a collective name - or rather a prefix - for the name of all functions in it. To use standard library functions such as `cout`, we need to add the scope operator `std::` first, which ultimately gives us `std::cout`. Further to `std::cout`, with the `<<` operator, we pass the text we want to display, i.e.`Hello World`, and then again with the `<<` operator, we pass `std::endl` - that is, the end of the line. If we were to add another text now, it will be displayed on a new line, e.g. like this (note that the semicolon `;` is also moved to the end of the line):
+- **`std::cout << "Hello World!" << std::endl;`** - This line prints the text`Hello World!`to the screen. A lot of new stuff comes up here - `std::` is a combination of two things - the so-called namespace type in this case, `std` and the scope operator `::`. Imagine that in your program, you created the function count() and you want to use another library, where its author also named his function count(). What now? Which function will be called? To avoid such problems, we use a namespace, which is something like a collective name - or rather a prefix - for the name of all functions in it. To use standard library functions such as `cout`, we need to add the scope operator `std::` first, which ultimately gives us `std::cout`. Further to `std::cout`, with the `<<` operator, we pass the text we want to display, i.e.`Hello World`, and then again with the `<<` operator, we pass `std::endl` - that is, the end of the line. If we were to add another text now, it will be displayed on a new line, e.g. like this (note that the semicolon `;` is also moved to the end of the line):
 
-~~~Cpp
+```Cpp
 #include <iostream>
 
 int main() {
 std::cout << "Hello World!" << std::endl << " and more..." ;
 return 0;
 }
-~~~
+```
 
 Compile and run
 
-~~~Bash
+```Bash
 g++ main.cpp -o main.out && ./main.out
-~~~
+```
 
 And the effect:
 

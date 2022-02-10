@@ -44,11 +44,11 @@ const Post: React.FC<Props> = ({
         ref={ref}
         className={`${
           inView && !initialView && 'animate__fadeInUp'
-        } animate__animated  Post group col-span-12 md:col-span-6  bg-white rounded-lg transition-all cursor-pointer relative shadow`}
+        } animate__animated  Post group relative col-span-12  cursor-pointer rounded-lg bg-white shadow transition-all md:col-span-6`}
         key={slug}
       >
-        <div className="flex w-full h-40  xs:h-[204px] md:h-[187px] xl:h-[266px] overflow-hidden rounded-t-lg">
-          <div className="w-full relative cardImageContainer">
+        <div className="flex h-40 w-full  overflow-hidden rounded-t-lg xs:h-[204px] md:h-[187px] xl:h-[266px]">
+          <div className="cardImageContainer relative w-full">
             <Image
               src={coverImage}
               alt={title}
@@ -59,23 +59,23 @@ const Post: React.FC<Props> = ({
           </div>
         </div>
 
-        <div className="shadow-none rounded-lg p-4 flex flex-col">
-          <h3 className=" transition-all text-[#444444] hover:text-[#222] text-start md:text-left text-md md:text-xl font-extrabold">
+        <div className="flex flex-col rounded-lg p-4 shadow-none">
+          <h3 className=" text-start text-md font-extrabold text-[#444444] transition-all hover:text-[#222] md:text-left md:text-xl">
             {title}
           </h3>
-          <p className="transition-all group-hover:text-gray-400  text-gray-300 text-xs lg:text-sm ">
+          <p className="text-xs text-gray-300  transition-all group-hover:text-gray-400 lg:text-sm ">
             {date.split('-').reverse().join('-')}
           </p>
 
-          <p className="line-clamp-3  transition-all group-hover:text-gray-600 text-gray-500 text-xs md:text-sm  pt-2">
+          <p className="pt-2  text-xs text-gray-500 transition-all line-clamp-3 group-hover:text-gray-600  md:text-sm">
             {excerpt}
           </p>
 
-          <div className="flex pt-2 flex-wrap">
+          <div className="flex flex-wrap pt-2">
             {keywords?.map((keyword) => (
               <span
                 key={keyword}
-                className="transition-all group-hover:text-gray-400 text-gray-300 text-xs md:text-sm pt-1 mr-1"
+                className="mr-1 pt-1 text-xs text-gray-300 transition-all group-hover:text-gray-400 md:text-sm"
               >
                 #{keyword}
               </span>

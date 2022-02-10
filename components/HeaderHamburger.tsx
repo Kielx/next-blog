@@ -10,7 +10,7 @@ const HeaderHamburger: React.FC<Props> = ({ open, setOpen }) => {
     <button
       type="button"
       onClick={() => setOpen(!open)}
-      className={`${styles.hamburger} ml-auto text-right cursor-pointer font-bold text-white text-2xl pr-6`}
+      className={`${styles.hamburger} ml-auto cursor-pointer pr-6 text-right text-2xl font-bold text-white`}
     >
       <div id={styles.navIcon1} className={`${open ? styles.open : ''}`}>
         <span />

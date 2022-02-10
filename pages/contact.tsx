@@ -42,8 +42,8 @@ const Contact = () => {
     <>
       <Header />
 
-      <div className="p-2 bg-black bg-[url('/images/contact-bg.webp')] bg-no-repeat bg-cover w-full h-[calc(100%-44px)] flex-col md:flex items-center justify-center">
-        <h1 className="transition-all py-8 2xl:absolute 2xl:bottom-24 2xl:left-24 text-center text-2xl text-white md:text-5xl font-bold tracking-widest">
+      <div className="h-[calc(100%-44px)] w-full flex-col items-center justify-center bg-black bg-[url('/images/contact-bg.webp')] bg-cover bg-no-repeat p-2 md:flex">
+        <h1 className="py-8 text-center text-2xl font-bold tracking-widest text-white transition-all md:text-5xl 2xl:absolute 2xl:bottom-24 2xl:left-24">
           {messageSending ? t('sending') : t('h1')}
         </h1>
         {messageSending && <Sending />}
@@ -54,7 +54,7 @@ const Contact = () => {
           onSubmit={handleSubmit}
           className={`${
             messageSending && 'invisible'
-          } w-full max-w-lg grid grid-cols-2 auto-rows-auto row rounded-lg shadow bg-white text-gray-800 gap-4 px-4 py-8`}
+          } row grid w-full max-w-lg auto-rows-auto grid-cols-2 gap-4 rounded-lg bg-white px-4 py-8 text-gray-800 shadow`}
         >
           <p hidden>
             <label htmlFor="bot">
@@ -62,7 +62,7 @@ const Contact = () => {
             </label>
           </p>
 
-          <label htmlFor="name" className="col-span-2 md:col-span-1 row-span-1">
+          <label htmlFor="name" className="col-span-2 row-span-1 md:col-span-1">
             <input
               type="text"
               id="name"
@@ -70,12 +70,12 @@ const Contact = () => {
               required
               placeholder={t('name')}
               onChange={handleChange}
-              className="transition-all hover:border-b-black border-b border-b-gray-300 w-full pt-3 px-4 bg-white text-gray-700 placeholder-gray-400  text-base focus:outline-none focus:border-b-black"
+              className="w-full border-b border-b-gray-300 bg-white px-4 pt-3 text-base text-gray-700 placeholder-gray-400 transition-all  hover:border-b-black focus:border-b-black focus:outline-none"
             />
           </label>
           <label
             htmlFor="email"
-            className="col-span-2 md:col-span-1 row-span-1"
+            className="col-span-2 row-span-1 md:col-span-1"
           >
             <input
               type="email"
@@ -84,7 +84,7 @@ const Contact = () => {
               required
               placeholder={t('email')}
               onChange={handleChange}
-              className="transition-all hover:border-b-black border-b border-b-gray-300 w-full pt-3 px-4 bg-white text-gray-700 placeholder-gray-400  text-base focus:outline-none focus:border-b-black"
+              className="w-full border-b border-b-gray-300 bg-white px-4 pt-3 text-base text-gray-700 placeholder-gray-400 transition-all  hover:border-b-black focus:border-b-black focus:outline-none"
             />
           </label>
           <label htmlFor="message" className="col-span-2 row-span-2">
@@ -95,12 +95,12 @@ const Contact = () => {
               placeholder={t('message')}
               rows={5}
               onChange={handleChange}
-              className="resize-none rounded-sm border-transparent appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-1 focus:ring-black focus:border-transparent hover:ring-black hover:ring-1 transition-all"
+              className="w-full resize-none appearance-none rounded-sm border border-transparent border-gray-300 bg-white py-2 px-4 text-base text-gray-700 placeholder-gray-400 shadow-sm transition-all hover:ring-1 hover:ring-black focus:border-transparent focus:outline-none focus:ring-1 focus:ring-black"
             />
           </label>
           <button
             type="submit"
-            className="col-span-2 row-span-1 py-2 px-4 flex justify-center gap-2  bg-black hover:bg-gray-800 focus:ring-gray-800 focus:ring-offset-gray-800 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg"
+            className="col-span-2 row-span-1 flex w-full justify-center gap-2 rounded-lg  bg-black py-2 px-4 text-center text-base font-semibold text-white shadow-md transition duration-200 ease-in hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 focus:ring-offset-2  focus:ring-offset-gray-800"
           >
             {t('send')}
             <SendIcon />

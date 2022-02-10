@@ -48,10 +48,10 @@ const Home: NextPage<Props> = ({ posts }) => {
   return (
     <>
       <Header />
-      <div className="font-body flex flex-wrap w-full ">
+      <div className="flex w-full flex-wrap font-body ">
         <Head {...(locale === 'pl' ? metaTagsPL : metaTags)} />
 
-        <div className="grid grid-cols-12 gap-6 w-full cardsContainer xs:px-8 px-4 md:px-0 py-8 md:py-12 max-w-[692px] xl:max-w-[980px] m-auto justify-center gap-y-10 box-border">
+        <div className="cardsContainer m-auto box-border grid w-full max-w-[692px] grid-cols-12 justify-center gap-6 gap-y-10 px-4 py-8 xs:px-8 md:px-0 md:py-12 xl:max-w-[980px]">
           {posts.map((post, index) =>
             index < 1 ? (
               <MainPost

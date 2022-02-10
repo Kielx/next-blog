@@ -15,17 +15,16 @@ describe('Navigation', () => {
 })
 
 describe('Multi check navigation from top to bottom + PL', () => {
-
   const linksSet = new Set()
   const visitedSet = new Set()
-  const checkAllLinks = (link : string) => {
+  const checkAllLinks = (link: string) => {
     // Start from the index page
     cy.visit(link)
     // Wont work without this wait
     cy.wait(200)
     // Get all links on the page
     cy.get('a').each(($anchor1) => {
-      // Wrap each of anchors 
+      // Wrap each of anchors
       cy.wrap($anchor1).then(($anchor1a) => {
         // Get href attribute
         const href = $anchor1a.prop('href')
@@ -43,7 +42,7 @@ describe('Multi check navigation from top to bottom + PL', () => {
                 if (hreff && !linksSet.has(hreff)) {
                   // Push link to links set - prevents checking same links twice
                   linksSet.add(hreff)
-                  // Check the link  
+                  // Check the link
                   cy.request({
                     url: hreff,
                     failOnStatusCode: true,
@@ -62,9 +61,7 @@ describe('Multi check navigation from top to bottom + PL', () => {
   it('should have working links on all pages', () => {
     checkAllLinks('http://localhost:3000/')
     checkAllLinks('http://localhost:3000/pl')
-    })
+  })
 })
-
-
 
 export {}

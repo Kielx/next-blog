@@ -22,11 +22,11 @@ const MainPost: React.FC<Props> = ({
   <Link href={`/posts/${slug}`} passHref>
     <a
       href="replace"
-      className="Post group hover:shadow-sm relative  transition-all  col-span-12 mx-auto md:col-span-12 mainCard w-full flex flex-wrap md:flex-nowrap bg-white rounded-lg cursor-pointer shadow"
+      className="Post group mainCard relative  col-span-12  mx-auto flex w-full cursor-pointer flex-wrap rounded-lg bg-white shadow transition-all hover:shadow-sm md:col-span-12 md:flex-nowrap"
       key={slug}
     >
-      <div className="mb-4 md:mb-0 flex w-full md:w-8/12 min-h-[30vh]  md:min-h-[10vh] md:h-auto overflow-hidden rounded-t-lg md:rounded-l-lg md:rounded-r-none">
-        <div className="w-full relative cardImageContainer">
+      <div className="mb-4 flex min-h-[30vh] w-full overflow-hidden rounded-t-lg  md:mb-0 md:h-auto md:min-h-[10vh] md:w-8/12 md:rounded-l-lg md:rounded-r-none">
+        <div className="cardImageContainer relative w-full">
           <Image
             src={coverImage}
             alt={title}
@@ -37,21 +37,21 @@ const MainPost: React.FC<Props> = ({
           <div className="overlay" />
         </div>
       </div>
-      <div className=" bg-white rounded-lg px-3 md:py-6 md:px-4 xl:p-8 xl:pb-4 md:w-4/12 flex flex-col ">
-        <h3 className="font-bold transition-all text-[#444444] hover:text-[#222] text-md xl:text-2xl text-start md:leading-5 xl:leading-7 pb-1">
+      <div className=" flex flex-col rounded-lg bg-white px-3 md:w-4/12 md:py-6 md:px-4 xl:p-8 xl:pb-4 ">
+        <h3 className="text-md text-start pb-1 font-bold text-[#444444] transition-all hover:text-[#222] md:leading-5 xl:text-2xl xl:leading-7">
           {title}
         </h3>
-        <p className="transition-all group-hover:text-gray-400  text-gray-300 text-xs pb-2">
+        <p className="pb-2 text-xs  text-gray-300 transition-all group-hover:text-gray-400">
           {date.split('-').reverse().join('-')}
         </p>
-        <p className="transition-all group-hover:text-gray-500  m-auto text-[#828282] text-xs md:text-sm xl:text-base xl:leading-[1.65rem]  pt-2 ">
+        <p className="m-auto pt-2  text-xs text-[#828282] transition-all group-hover:text-gray-500 md:text-sm xl:text-base  xl:leading-[1.65rem] ">
           {excerpt}
         </p>
-        <div className="flex gap-4 mt-auto pb-2 md:pb-0">
+        <div className="mt-auto flex gap-4 pb-2 md:pb-0">
           {keywords.map((keyword) => (
             <span
               key={keyword}
-              className="text-xs transition-all group-hover:text-gray-400  text-gray-300 pt-2 xl:pt-4"
+              className="pt-2 text-xs text-gray-300  transition-all group-hover:text-gray-400 xl:pt-4"
             >
               #{keyword}
             </span>
@@ -59,7 +59,7 @@ const MainPost: React.FC<Props> = ({
         </div>
       </div>
 
-      <div className="w-10/12 z-[-100] h-12 bg-transparent left-1/2 transform -translate-x-1/2 bottom-0 absolute shadow-[0_4px_32px_rgba(0,0,0,0.12)]" />
+      <div className="absolute left-1/2 bottom-0 z-[-100] h-12 w-10/12 -translate-x-1/2 transform bg-transparent shadow-[0_4px_32px_rgba(0,0,0,0.12)]" />
     </a>
   </Link>
 )
