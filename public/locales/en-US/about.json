@@ -1,3 +1,10 @@
 {
-  "h1": "Hi, there! I'm Chris - a motivated software developer who found that the pursuit of knowledge brings pleasure and is an end in itself. Experienced in building modern and elegant Next.js and React applications. Exploring new paths like C++ and Cloud Computing and sharing the journey with the world. Computer Science Sophomore at the Kielce University of Technology 🇵🇱. Actively looking for a full-time position in the field of web development."
+  "about-me": "O mnie",
+  "about": "O mnie",
+  "h1": "Cześć! Jestem Krzysztof",
+  "about1": "Zmotywowany programista, który odkrył, że pogoń za wiedzą może być celem samym w sobie.",
+  "about2": "Specjalizuję się w budowaniu nowoczesnych i eleganckich aplikacji wykorzystując frameworki Next.js i React. Tworząc moje projekty korzystałem też z rozmaitych innych technologii m.in Redux, TailwindCSS, Firebase, AWS.",
+  "about3": "W wolnych chwilach staram się opisywać to czego się nauczyłem programując przez ostatnie dwa lata.",
+  "about4": "Studiuję Informatykę na Politechnice Świętokrzyskiej 🇵🇱.",
+  "about5": "Aktualnie poszukuję pracy jako software developer."
 }
