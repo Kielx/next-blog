@@ -8,7 +8,9 @@ const nextConfig = {
     return config
   },
   reactStrictMode: true,
-
+  images: {
+    domains: ['raw.githubusercontent.com'],
+  },
   i18n: {
     // These are all the locales you want to support in
     // your application

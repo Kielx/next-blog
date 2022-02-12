@@ -1,10 +1,10 @@
 {
   "about-me": "O mnie",
   "about": "O mnie",
-  "h1": "Cześć! Jestem Krzysztof",
-  "about1": "Zmotywowany programista, który odkrył, że pogoń za wiedzą może być celem samym w sobie.",
-  "about2": "Specjalizuję się w budowaniu nowoczesnych i eleganckich aplikacji wykorzystując frameworki Next.js i React. Tworząc moje projekty korzystałem też z rozmaitych innych technologii m.in Redux, TailwindCSS, Firebase, AWS.",
-  "about3": "W wolnych chwilach staram się opisywać to czego się nauczyłem programując przez ostatnie dwa lata.",
-  "about4": "Studiuję Informatykę na Politechnice Świętokrzyskiej 🇵🇱.",
-  "about5": "Aktualnie poszukuję pracy jako Software Developer."
+  "h1": "Hi there! I'm Krzysztof",
+  "about1": "A motivated developer who has discovered that the pursuit of knowledge can be an end in itself.",
+  "about2": "I specialize in building modern and elegant applications using the Next.js and React frameworks. When creating my projects, I also used various other technologies, including Redux, TailwindCSS, Firebase, AWS.",
+  "about3": "In my free time, I try to describe what I have learned while programming over the last two years.",
+  "about4": "I study IT at the Kielce University of Technology 🇵🇱",
+  "about5": "I am currently looking for a job as a Software Developer."
 }
