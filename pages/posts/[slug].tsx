@@ -80,7 +80,7 @@ const PostPage: NextPage<Props> = ({
         />
 
         <div className="m-auto flex min-h-screen w-full max-w-[920px] flex-col rounded-md bg-white md:w-3/4 lg:w-8/12">
-          <h2 className="text-center text-xl font-bold text-[#444444] xs:text-2xl  sm:text-3xl">
+          <h2 className="text-center text-xl font-bold text-[#2c2c2c] xs:text-2xl  sm:text-3xl">
             {frontmatter.title}
           </h2>
           <p className="pt-1 pb-4 text-center text-gray-300">

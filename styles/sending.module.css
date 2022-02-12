@@ -9,7 +9,7 @@
   margin: auto;
 }
 .sendingContainer::after {
-  color: white;
+  color: #2c2c2c;
   font-weight: 700;
   position: absolute;
   bottom: -50px;
@@ -23,7 +23,7 @@
 }
 
 .sendingBorder {
-  background: white;
+  background: #2c2c2c;
   position: absolute;
 }
 

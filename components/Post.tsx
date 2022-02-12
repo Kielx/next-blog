@@ -60,7 +60,7 @@ const Post: React.FC<Props> = ({
         </div>
 
         <div className="flex flex-col rounded-lg p-4 shadow-none">
-          <h3 className=" text-start text-md font-extrabold text-[#444444] transition-all hover:text-[#222] md:text-left md:text-xl">
+          <h3 className=" text-start text-md font-extrabold text-[#2c2c2c] transition-all hover:text-[#222] md:text-left md:text-xl">
             {title}
           </h3>
           <p className="text-xs text-gray-300  transition-all group-hover:text-gray-400 lg:text-sm ">

@@ -22,7 +22,7 @@ const MainPost: React.FC<Props> = ({
   <Link href={`/posts/${slug}`} passHref>
     <a
       href="replace"
-      className="Post group mainCard relative  col-span-12  mx-auto flex w-full cursor-pointer flex-wrap rounded-lg bg-white shadow transition-all hover:shadow-sm md:col-span-12 md:flex-nowrap"
+      className="Post group mainCard relative  col-span-12  mx-auto flex w-full cursor-pointer flex-wrap rounded-lg bg-white shadow transition-all hover:shadow-md md:col-span-12 md:flex-nowrap"
       key={slug}
     >
       <div className="mb-4 flex min-h-[30vh] w-full overflow-hidden rounded-t-lg  md:mb-0 md:h-auto md:min-h-[10vh] md:w-1/2 md:rounded-l-lg md:rounded-r-none">
@@ -38,7 +38,7 @@ const MainPost: React.FC<Props> = ({
         </div>
       </div>
       <div className=" flex flex-col rounded-lg bg-white px-3 md:w-1/2 md:py-6 md:px-4 xl:p-8 xl:pb-4 ">
-        <h3 className="text-md text-start pb-1 font-extrabold text-[#444444] transition-all hover:text-[#222] md:leading-5 xl:text-2xl xl:leading-7">
+        <h3 className="text-md text-start pb-1 font-extrabold text-[#2c2c2c] transition-all hover:text-[#222] md:leading-5 xl:text-2xl xl:leading-7">
           {title}
         </h3>
         <p className="pb-2 text-xs  text-gray-300 transition-all group-hover:text-gray-400">
