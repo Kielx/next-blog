@@ -14,7 +14,7 @@ type NavItems = {
 
 const navItems: NavItems = [
   {
-    name: 'Home',
+    name: 'Index',
     href: '/',
     type: 'link',
   },
@@ -69,7 +69,7 @@ const Header = () => {
 
   return (
     <>
-      <div className="mobileNavbar flex h-11 w-full flex-wrap bg-[#111312] lg:hidden">
+      <div className="mobileNavbar flex h-11 w-full flex-wrap bg-[#2C2C2C] lg:hidden">
         <Link href="/" passHref>
           <a href="replace" className="relative flex h-full w-1/2 py-[2px]">
             <Image
@@ -87,7 +87,7 @@ const Header = () => {
         <div
           className={`${
             open ? 'max-h-[100vh] opacity-100' : 'invisible max-h-0 opacity-0'
-          }  mobileMenu  transition-[max-height opacity] z-20 flex w-full flex-col items-start  justify-end divide-y bg-[#111312] px-10 py-4 text-lg font-extralight text-[#EEEEEE] duration-[150ms]`}
+          }  mobileMenu  transition-[max-height opacity] z-20 flex w-full flex-col items-start  justify-end divide-y bg-[#2C2C2C] px-10 py-4 text-lg font-extralight text-[#EEEEEE] duration-[150ms]`}
         >
           {mapNavItems(navItems)}
           {/* This button is used to push the page to the next language
@@ -112,7 +112,7 @@ const Header = () => {
         </div>
       </div>
 
-      <div className="desktopNavbar hidden h-11 w-full place-content-around items-center bg-[#111312] px-4 lg:flex lg:px-20 ">
+      <div className="desktopNavbar hidden h-11 w-full place-content-around items-center bg-[#2C2C2C] px-4 lg:flex lg:px-20 ">
         <div className="flex w-full max-w-[1600px] items-center">
           <Link href="/" passHref>
             <a

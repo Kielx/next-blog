@@ -2,14 +2,14 @@
 title: 'Jak zacząć przygodę z C++ i Ncurses - Cz. 1 - Wprowadzenie'
 date: '2022-02-01'
 excerpt: 'Pierwsza część serii, gdzie opisuję przebieg tworzenia konsolowej gry Pong przy pomocy języka C++ i biblioteki Ncurses. Praktyczny przewodnik na temat podstaw języka i ich zastosowania w programowaniu.'
-coverImage: '/images/posts/CppNcurses1/1.webp'
+coverImage: '/images/posts/CppNcurses1/2.gif'
 keywords:
   - 'C++'
   - 'Ncurses'
   - Podstawy
 ---
 
-![Nowoczesny stół do gry w pong](/images/posts/CppNcurses1/1.webp#postMainImage)
+![Jak wygląda gra](/images/posts/CppNcurses1/2.gif#postMiniImage)
 
 ## Spis treści
 
@@ -36,8 +36,6 @@ Ten post można potraktować jako prequel do głównego procesu tworzenia gry. O
 ## Co będziemy tworzyć?
 
 Celem jest stworzenie prostej gry Pong, w której gracz steruje paletką i odbija piłkę w oknie terminala. Każde udane odbicie to punkty dla gracza, natomiast spadnięcie piłki za mapę oznacza przegraną. By stworzyć tą grę, korzystać będziemy z języka C++ oraz dodatkowej biblioteki o nazwie NCurses.
-
-![Jak wygląda gra](/images/posts/CppNcurses1/2.gif#postMiniImage)
 
 ### Dla kogo jest ten poradnik i w jakim celu będziemy tworzyć tą grę?
 
