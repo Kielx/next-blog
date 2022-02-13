@@ -1,5 +1,6 @@
 import type { GetStaticProps, NextPage } from 'next'
 import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import fs from 'fs'
 import path from 'path'
@@ -44,6 +45,7 @@ const metaTagsPL = {
 }
 
 const Home: NextPage<Props> = ({ posts }) => {
+  const { t } = useTranslation('common')
   const router = useRouter()
   const locale = router.locale as string
   return (
@@ -54,8 +56,8 @@ const Home: NextPage<Props> = ({ posts }) => {
         <Head {...(locale === 'pl' ? metaTagsPL : metaTags)} />
 
         <div className="cardsContainer m-auto box-border grid w-full max-w-[692px] grid-cols-12 justify-center gap-6 gap-y-10 px-4 py-8 xs:px-8 md:px-0 md:py-12 xl:max-w-[980px]">
-          <h2 className="col-span-12 text-2xl font-bold text-[#2c2c2c]">
-            Recent Posts
+          <h2 className="col-span-12 -mt-4 text-xl font-semibold text-[#2c2c2c]">
+            {t('latestPosts')}
           </h2>
           {posts.map((post, index) =>
             index < 1 ? (
@@ -111,7 +113,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
       posts,
-      ...(await serverSideTranslations(locale, ['header', 'hero'])),
+      ...(await serverSideTranslations(locale, ['header', 'hero', 'common'])),
     },
   }
 }

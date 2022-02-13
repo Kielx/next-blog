@@ -22,10 +22,10 @@ const MainPost: React.FC<Props> = ({
   <Link href={`/posts/${slug}`} passHref>
     <a
       href="replace"
-      className="Post group mainCard relative  col-span-12  mx-auto flex w-full cursor-pointer flex-wrap rounded-lg bg-white shadow transition-all hover:shadow-md md:col-span-12 md:flex-nowrap"
+      className="Post group mainCard relative col-span-12  mx-auto  -mt-6 flex w-full cursor-pointer flex-wrap rounded-lg bg-white shadow transition-all hover:shadow-md md:col-span-12 md:flex-nowrap"
       key={slug}
     >
-      <div className="mb-4 flex min-h-[30vh] w-full overflow-hidden rounded-t-lg  md:mb-0 md:h-auto md:min-h-[10vh] md:w-1/2 md:rounded-l-lg md:rounded-r-none">
+      <div className=" mb-4 flex min-h-[30vh] w-full overflow-hidden rounded-t-lg  md:mb-0 md:h-auto md:min-h-[10vh] md:w-1/2 md:rounded-l-lg md:rounded-r-none">
         <div className="cardImageContainer relative w-full">
           <Image
             src={coverImage}
