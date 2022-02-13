@@ -5,6 +5,7 @@
   "message": "Message",
   "send": "Send",
   "sending": "Sending...",
+  "paragraph": "If you have any questions, opinions, suggestions or found a bug, please feel free to contact me. Use the form to send me a message.",
   "success": "Your message has been sent. Thank you!",
   "error": "There was an error sending your message. Please try again later."
 }
