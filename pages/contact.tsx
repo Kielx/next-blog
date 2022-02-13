@@ -42,7 +42,7 @@ const Contact = () => {
     <div className="flex min-h-full min-w-full flex-col bg-white">
       <Header />
 
-      <div className="m-auto h-[calc(100%-44px)] w-full max-w-[980px]  flex-col items-center justify-items-center bg-white p-2 md:flex md:flex-row">
+      <div className="m-auto h-[calc(100%-44px)] w-full max-w-[980px]  flex-col items-center justify-items-center bg-white p-2 lg:flex lg:flex-row">
         <div className="m-auto max-w-lg py-4 text-center text-3xl font-extrabold tracking-widest text-[#2c2c2c] transition-all md:text-5xl lg:w-1/2 ">
           {messageSending ? (
             t('sending')
