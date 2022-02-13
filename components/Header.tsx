@@ -45,24 +45,29 @@ const Header = () => {
     return items.map((item) => {
       if (item.type === 'link') {
         return (
-          <Link href={item.href} key={item.name} passHref>
-            <a
-              href="replace"
-              className="w-full cursor-pointer py-1 transition-all hover:text-gray-400 lg:w-auto lg:py-0 "
-            >
-              {t(item.name)}
-            </a>
-          </Link>
+          <span className="relative w-full lg:w-auto">
+            <Link href={item.href} key={item.name} passHref>
+              <a
+                href="replace"
+                className={`${
+                  router.pathname === item.href ? 'active text-gray-500' : ''
+                } navLink w-full cursor-pointer py-1 transition-all hover:text-gray-400 lg:w-auto lg:py-0`}
+              >
+                {t(item.name)}
+              </a>
+            </Link>
+          </span>
         )
       }
       return (
-        <a
-          className="w-full cursor-pointer py-1 transition-all hover:text-gray-400 lg:w-auto lg:py-0"
-          href={item.href}
-          key={item.name}
-        >
-          {t(item.name)}
-        </a>
+        <span key={item.name} className="relative w-full lg:w-auto">
+          <a
+            className="navLink w-full cursor-pointer py-1 transition-all hover:text-gray-400 lg:w-auto lg:py-0"
+            href={item.href}
+          >
+            {t(item.name)}
+          </a>
+        </span>
       )
     })
   }

@@ -90,3 +90,34 @@ img[src*='#postMiniImage'] {
 .markdown-body li {
   @apply list-disc;
 }
+
+.navLink::after {
+  border-radius: 9999px;
+  content: '';
+  display: block;
+  left: 0;
+  position: absolute;
+  transform: scaleX(0);
+  transform-origin: center left;
+  transition-duration: 0.4s;
+  transition-property: transform;
+  width: 100%;
+  background-color: currentColor;
+  bottom: -4px;
+  height: 2px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .navLink::after {
+    height: 0px;
+  }
+}
+
+.active.navLink::after {
+  transform: scaleX(1);
+  transition-duration: 0.2s;
+}
+
+.navLink:hover:after {
+  transform: scaleX(1);
+}
