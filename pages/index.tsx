@@ -23,23 +23,23 @@ type Props = {
 }
 
 const metaTags = {
-  title: 'Pan-Media Blog Main Page',
+  title: 'Krzysztof Pantak Blog Main Page',
   description:
-    'Pan-Media provides insightful articles about programming with topics ranging from JavaScript and Frontend to C++ and Computer Science basics.',
+    'Blog provides insightful articles about programming with topics ranging from JavaScript and Frontend to C++ and Computer Science basics.',
   image: 'https://blog.pantak.net/logo.png',
   url: 'https://blog.pantak.net',
-  imageAltText: 'Pan-Media Logo',
-  siteName: 'Pan-Media Blog',
+  imageAltText: 'Pantak Logo',
+  siteName: 'Pantak Blog',
 }
 
 const metaTagsPL = {
-  title: 'Pan-Media Blog Strona Główna',
+  title: 'Krzysztof Pantak Blog Strona Główna',
   description:
-    'Pan-Media dostarcza interesujące artykuły dotyczące programowania z tematami z zakresu JavaScript i Frontend aż po C++ i ogólną informatykę',
+    'Blog dostarcza interesujące artykuły dotyczące programowania z tematami z zakresu JavaScript i Frontend aż po C++ i ogólną informatykę',
   image: 'https://blog.pantak.net/logo.png',
   url: 'https://blog.pantak.net',
-  imageAltText: 'Logo Pan-Media',
-  siteName: 'Pan-Media Blog',
+  imageAltText: 'Pantak Logo',
+  siteName: 'Pantak Blog',
 }
 
 const Home: NextPage<Props> = ({ posts }) => {
