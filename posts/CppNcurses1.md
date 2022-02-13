@@ -1,7 +1,7 @@
 ---
 title: 'How to get started with C++ and Ncurses - Vol. 1 - Introduction'
 date: '2022-02-01'
-excerpt: The first part of the series, where I describe the process of creating a console game Pong using the C ++ language and the Ncurses library. A practical guide to the basics of the language and their application to programming.
+excerpt: The first part of the series, where I describe the process of creating a console game Pong using the C++ language and the Ncurses library. A practical guide to the basics of the language and their application to programming.
 coverImage: '/images/posts/CppNcurses1/2.gif'
 keywords:
   - 'C++'

@@ -8,6 +8,7 @@ import MainPost from '../components/MainPost'
 import Post from '../components/Post'
 import Head from '../components/Head'
 import Header from '../components/Header'
+import Hero from '../components/Hero'
 
 type Props = {
   posts: {
@@ -48,10 +49,14 @@ const Home: NextPage<Props> = ({ posts }) => {
   return (
     <>
       <Header />
+      <Hero imageLink="/myPhoto.webp" />
       <div className="flex w-full flex-wrap font-body ">
         <Head {...(locale === 'pl' ? metaTagsPL : metaTags)} />
 
         <div className="cardsContainer m-auto box-border grid w-full max-w-[692px] grid-cols-12 justify-center gap-6 gap-y-10 px-4 py-8 xs:px-8 md:px-0 md:py-12 xl:max-w-[980px]">
+          <h2 className="col-span-12 text-2xl font-bold text-[#2c2c2c]">
+            Recent Posts
+          </h2>
           {posts.map((post, index) =>
             index < 1 ? (
               <MainPost
@@ -106,7 +111,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
       posts,
-      ...(await serverSideTranslations(locale, ['header'])),
+      ...(await serverSideTranslations(locale, ['header', 'hero'])),
     },
   }
 }
