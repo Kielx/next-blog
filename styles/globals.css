@@ -2,6 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  scrollbar-width: thin;
+  scrollbar-color: black transparent;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #2c2c2c;
+  border-radius: 10px;
+}
+
 pre {
   padding: 3rem 1rem 1.6rem 1rem !important;
   border-radius: 12px !important;
