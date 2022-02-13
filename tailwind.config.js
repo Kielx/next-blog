@@ -11,7 +11,7 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        body: ['Montserrat', 'sans-serif'],
+        body: ['Poppins', 'sans-serif'],
       },
     },
   },
