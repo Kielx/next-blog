@@ -45,8 +45,8 @@ const Header = () => {
     return items.map((item) => {
       if (item.type === 'link') {
         return (
-          <span className="relative w-full lg:w-auto">
-            <Link href={item.href} key={item.name} passHref>
+          <span key={item.name} className="relative w-full lg:w-auto">
+            <Link href={item.href} passHref>
               <a
                 href="replace"
                 className={`${
