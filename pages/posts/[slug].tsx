@@ -12,6 +12,8 @@ import NotFoundPL from '../../components/NotFoundPL'
 import Head from '../../components/Head'
 import HeadingRenderer from '../../components/ReactMarkdownHeadingRenderer'
 import Header from '../../components/Header'
+import 'prismjs/plugins/line-numbers/prism-line-numbers'
+import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
 
 interface IParams extends ParsedUrlQuery {
   slug: string
@@ -67,7 +69,7 @@ const PostPage: NextPage<Props> = ({
   return (
     <>
       <Header />
-      <div className="bg-white py-6 px-2 xs:px-4 sm:py-20">
+      <div className=" bg-white py-6 px-2 xs:px-4 sm:py-20">
         <Head
           title={`${frontmatter.title} - Pan-Media Blog`}
           description={frontmatter.excerpt}
@@ -86,7 +88,7 @@ const PostPage: NextPage<Props> = ({
           <p className="pt-1 pb-4 text-center text-gray-300">
             {frontmatter.date}
           </p>
-          <div className="markdown-body" key="uniqueKey">
+          <div className="markdown-body line-numbers" key="uniqueKey">
             {mounted && (
               <ReactMarkdown components={components}>{content}</ReactMarkdown>
             )}

@@ -1,3 +1,16 @@
+/*To show line numbers in posts and styke accordingly*/
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas,
+    Liberation Mono, monospace;
+  font-size: 12px;
+  word-wrap: normal;
+  /*To show line numbers in posts and style accordingly*/
+  padding-left: 3.8em !important;
+  display: flex;
+}
+
 /* @media (prefers-color-scheme: dark) {
   .markdown-body {
     color-scheme: dark;
@@ -421,15 +434,6 @@
   font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas,
     Liberation Mono, monospace;
   font-size: 12px;
-}
-
-.markdown-body pre {
-  margin-top: 0;
-  margin-bottom: 0;
-  font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas,
-    Liberation Mono, monospace;
-  font-size: 12px;
-  word-wrap: normal;
 }
 
 .markdown-body .octicon {
