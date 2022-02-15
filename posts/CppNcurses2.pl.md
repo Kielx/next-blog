@@ -11,6 +11,17 @@ keywords:
 
 ![Jak wygląda gra](/images/posts/CppNcurses2/1.webm#postVideo)
 
+## Spis treści
+
+- [Wstęp](#wstęp)
+- [Główna pętla](#główna-pętla)
+- [Tworzymy piłkę do gry](#tworzymy-piłkę-do-gry)
+  - [Co to jest klasa i obiekt?](#co-to-jest-klasa-i-obiekt)
+- [Coś ekstra - tworzymy więcej piłek](#coś-ekstra---tworzymy-więcej-piłek)
+  - [Wprawmy piłki w ruch](#wprawmy-piłki-w-ruch)
+- [Podsumowanie](#podsumowanie)
+- [Źródła](#źródła)
+
 ## Wstęp
 
 W tym poście przechodzimy do prawdziwego działania. Konfigurację zostawiamy za nami, a skupiamy się na tworzeniu gry.
@@ -299,3 +310,12 @@ I oto efekt finalny:
 ## Podsumowanie
 
 W tej części udało nam się stworzyć prosty program, w którym za pomocą biblioteki Ncurses tworzymy ekran a na nim wyświetlamy obiekty symbolizujące piłki. Opanowaliśmy podstawy obiektowości tworząc klasę piłki i cztery obiekty, które następnie wprawiliśmy w ruch. Dzięki tym podstawom jesteśmy na najlepszej drodze do stworzenia w pełni funkcjonalnej gry.
+
+## Źródła
+
+Tworząc tego posta korzystałem intensywnie z poniższych źródeł, które warto sprawdzić jeśli chcesz pogłębić swoją wiedzę na temat Ncurses i innych tematów, które poruszałem w tym poście:
+
+<https://tldp.org/HOWTO/NCURSES-Programming-HOWTO/>
+<https://invisible-island.net/ncurses/announce.html>
+<https://linux.die.net/man/3/ncurses>
+<https://www.reddit.com/r/explainlikeimfive/comments/65658b/comment/dg8nxqk/?utm_source=share&utm_medium=web2x&context=3>
