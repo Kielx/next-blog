@@ -314,7 +314,7 @@ In this part, we managed to create a simple program in which, using the Ncurses 
 
 When creating this post, I used the following sources extensively, which are worth checking out if you want to reinforce your knowledge of Ncurses and other topics that I covered in this post:
 
-<https://tldp.org/HOWTO/NCURSES-Programming-HOWTO/>
-<https://invisible-island.net/ncurses/announce.html>
-<https://linux.die.net/man/3/ncurses>
-<https://www.reddit.com/r/explainlikeimfive/comments/65658b/comment/dg8nxqk/?utm_source=share&utm_medium=web2x&context=3>
+[Ncurses Programming HowTo](https://tldp.org/HOWTO/NCURSES-Programming-HOWTO/)
+[Ncurses Man Pages](https://invisible-island.net/ncurses/announce.html)
+[Ncurses - Linux man page](https://linux.die.net/man/3/ncurses)
+[Beautiful explanation of classes and objects](https://www.reddit.com/r/explainlikeimfive/comments/65658b/comment/dg8nxqk/?utm_source=share&utm_medium=web2x&context=3)

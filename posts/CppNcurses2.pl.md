@@ -315,7 +315,7 @@ W tej części udało nam się stworzyć prosty program, w którym za pomocą bi
 
 Tworząc tego posta korzystałem intensywnie z poniższych źródeł, które warto sprawdzić jeśli chcesz pogłębić swoją wiedzę na temat Ncurses i innych tematów, które poruszałem w tym poście:
 
-<https://tldp.org/HOWTO/NCURSES-Programming-HOWTO/>
-<https://invisible-island.net/ncurses/announce.html>
-<https://linux.die.net/man/3/ncurses>
-<https://www.reddit.com/r/explainlikeimfive/comments/65658b/comment/dg8nxqk/?utm_source=share&utm_medium=web2x&context=3>
+[Ncurses Programming HowTo](https://tldp.org/HOWTO/NCURSES-Programming-HOWTO/)
+[Ncurses Man Pages](https://invisible-island.net/ncurses/announce.html)
+[Ncurses - Linux man page](https://linux.die.net/man/3/ncurses)
+[Klasy i obiekty dla pięciolatków](https://www.reddit.com/r/explainlikeimfive/comments/65658b/comment/dg8nxqk/?utm_source=share&utm_medium=web2x&context=3)
