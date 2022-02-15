@@ -32,11 +32,8 @@ const About = () => {
           </h1>
           <div className="flex flex-col gap-4 ">
             <p>{t('about1')}</p>
-
             <p>{t('about2')}</p>
             <p>{t('about3')}</p>
-            <p>{t('about4')}</p>
-            <p>{t('about5')}</p>
           </div>
         </div>
       </div>
