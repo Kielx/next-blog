@@ -11,6 +11,7 @@ import Prism from 'prismjs'
 import NotFoundPL from '../../components/NotFoundPL'
 import Head from '../../components/Head'
 import HeadingRenderer from '../../components/ReactMarkdownHeadingRenderer'
+import VideoOrImageRenderer from '../../components/ReactMarkdownVideoOrImageRenderer'
 import Header from '../../components/Header'
 import 'prismjs/plugins/line-numbers/prism-line-numbers'
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
@@ -63,7 +64,7 @@ const PostPage: NextPage<Props> = ({
     h3: HeadingRenderer,
     h4: HeadingRenderer,
     h5: HeadingRenderer,
-    h6: HeadingRenderer,
+    img: VideoOrImageRenderer,
   }
 
   return (
