@@ -7,3 +7,4 @@
 - [ ] Style about me page
 - [ ] Add new posts with content
 - [ ] Google gtag
+- [ ] Add space between mobile menu items
