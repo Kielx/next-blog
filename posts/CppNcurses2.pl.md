@@ -2,7 +2,7 @@
 title: 'Jak zacząć przygodę z C++ i Ncurses - Cz. 2 - Ekran i sterowanie'
 date: '2022-02-14'
 excerpt: 'Druga część poradnika, w której tworzymy okno i obiekt piłki'
-coverImage: '/images/posts/CppNcurses2/1.gif'
+coverImage: '/images/posts/CppNcurses2/1.webm'
 keywords:
 - C++
 - Ncurses

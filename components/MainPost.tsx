@@ -27,13 +27,25 @@ const MainPost: React.FC<Props> = ({
     >
       <div className=" mb-4 flex min-h-[30vh] w-full overflow-hidden rounded-t-lg  md:mb-0 md:h-auto md:min-h-[10vh] md:w-1/2 md:rounded-l-lg md:rounded-r-none">
         <div className="cardImageContainer relative w-full">
-          <Image
-            src={coverImage}
-            alt={title}
-            layout="fill"
-            objectFit="cover"
-            objectPosition="center"
-          />
+          {coverImage.match(/.webm/) ? (
+            <video
+              src={coverImage}
+              playsInline
+              autoPlay
+              muted
+              loop
+              className="h-auto w-full max-w-full"
+            />
+          ) : (
+            <Image
+              src={coverImage}
+              alt={title}
+              layout="fill"
+              objectFit="cover"
+              objectPosition="center"
+            />
+          )}
+
           <div className="overlay" />
         </div>
       </div>

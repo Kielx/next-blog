@@ -2,7 +2,7 @@
 title: 'How to get started with C++ and Ncurses - Vol. 2 - Screen and controls'
 date: '2022-02-14'
 excerpt: 'Second part of the tutorial where we create a window with a ball class and object'
-coverImage: '/images/posts/CppNcurses2/1.gif'
+coverImage: '/images/posts/CppNcurses2/1.webm'
 keywords:
 - C++
 - Ncurses
