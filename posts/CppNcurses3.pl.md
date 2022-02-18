@@ -2,14 +2,14 @@
 title: 'Jak zacząć przygodę z C++ i Ncurses - Cz. 3 - Paletka i piłka'
 date: '2022-02-17'
 excerpt: 'Trzecia część poradnika, w której tworzymy paletkę by odbijać piłkę'
-coverImage: '/images/posts/CppNcurses3/1.webp'
+coverImage: '/images/posts/CppNcurses3/3.webm'
 keywords:
 - C++
 - Ncurses
 - Podstawy
 ---
 
-![Jak wygląda gra](/images/posts/CppNcurses2/1.webm#postVideo)
+![Jak wygląda gra](/images/posts/CppNcurses3/3.webm#postVideo)
 
 ## Spis treści
 
@@ -219,19 +219,257 @@ Paletka ma trzy pola:
 Zmienne możemy deklarować na osobnych liniach, albo tak jak wyżej w jednej linii.
 
 Do naszej funkcji `single_player` zaraz po deklaracji piłki, dodajemy więc deklarację paletki i jej wartości:
-```cpp
 
+```cpp
   Paddle paddle1;
-  paddle1.x = getbegx(win) + 1;
-  paddle1.y = getmaxy(win) - 1;
+  paddle1.x = getmaxx(win) / 2;
+  paddle1.y = getmaxy(win) - 2;
   paddle1.width = 5;
 ```
 
 Tu analogicznie do tego jak deklarowaliśmy piłkę, deklarujemy naszą paletkę. Różnica jest taka, że do zmiennej x przypisujemy wynik funkcji `getbegx(win) + 1` - a zwraca ona nic innego jak początek osi x okna, które przekazano jako argument. My przekazujemy jako argument nasze wcześniej stworzone okno. Efektem wywołania funkcji będzie poczatek naszego okna, tylko, że na pozycji 0 znajduje się ramka. Dlatego musimy dodać do tego wyniku 1. Wtedy nasza paletka będzie znajdować się na pozycji 1 w tym oknie.
-Podobnie postępujemy przy wartości y - chcemy by nasza paletka była przy dolnej krawędzi ekranu więc korzystamy z funkcji `getmaxy(win) - 1` - która zwraca wysokość okna. Podobnie jak wcześniej gdybyśmy umieścili paletkę na krawędzi okna, to będzie się ona pokrywać z ramką. Dlatego musimy odjąć od tego wyniku 1. 
+Podobnie postępujemy przy wartości y - chcemy by nasza paletka była przy dolnej krawędzi ekranu więc korzystamy z funkcji `getmaxy(win) - 1` - która zwraca wysokość okna. Podobnie jak wcześniej gdybyśmy umieścili paletkę na krawędzi okna, to będzie się ona pokrywać z ramką. Dlatego musimy odjąć od tego wyniku 1.
 Na koniec ustawiamy szerokość paletki na 5.
 
+Paletka gotowa. Pora na dodanie sterowania.
 
+## Sterowanie paletka
+
+Kontynuujemy dzielenie programu na funkcje, dlatego zaczniemy od deklaracji funkcji `move_paddle`. Tym razem zamiast opisywać funkcję pod kodem, dodam od razu odpowiedni komentarz w formacie DOXYGEN - opisując w ten sposób wszystkie funkcje możemy w łatwy sposób wygenerować później dokumentację dla całego projektu. O generowaniu dokumentacji postaram się napisać post na koniec poradnika.
+
+```cpp
+/**
+ * @brief Funkcja odpowiedzialna za sterowanie paletka
+ *
+ * @param win - okno gry w którym będzie się poruszać paletka
+ * @param paddle - paletka, którą sterujemy
+ * @return int - zwraca 1 gdy użytkownik chce opuścić grę
+ */
+int move_paddle(WINDOW *win, Paddle &paddle)
+{
+  // pętla odpowiedzialna za tworzenie dodatkowych pól w kształcie paletki
+  // np. jeśli nasza paletka ma szerokość 5 to musimy stworzyć 5 pól
+  for (int i = 0; i < paddle.width; i++)
+  {
+    mvwprintw(win, paddle.y, paddle.x + i, "-");
+  }
+  // Pobieramy klawisz sterowania od użytkownika,
+  // w przypadku klawisza 'q' opuszczamy grę zwracając 1
+  int ch;
+  ch = getch();
+  switch (ch)
+  {
+  case 'q':
+    return 1;
+  // Przesuwamy paletkę o jeden w lewo po naciśnięciu klawisza strzałki w lewo `<-`
+  case KEY_LEFT:
+    if (paddle.x > getbegx(win))
+    {
+      paddle.x--;
+    // Pętla odpowiedzialna za tworzenie dodatkowych pól w kształcie paletki
+    // np. jeśli nasza paletka ma szerokość 5 to musimy stworzyć 5 pól
+    // Dodatkowo usuwamy pola paletki z poprzedniego miejsca
+      for (int i = 0; i < paddle.width; i++)
+      {
+        mvwprintw(win, paddle.y, paddle.x + i, "-");
+        mvwprintw(win, paddle.y, paddle.x + i + 1, " ");
+      }
+    }
+    break;
+  // Przesuwamy paletkę o jeden w prawo po naciśnięciu klawisza strzałki w prawo `->`
+  case KEY_RIGHT:
+    if (paddle.x < getmaxx(win) - 1 - paddle.width)
+    {
+      paddle.x += 1;
+      // Pętla odpowiedzialna za tworzenie dodatkowych pól w kształcie paletki
+      // np. jeśli nasza paletka ma szerokość 5 to musimy stworzyć 5 pól
+      // Dodatkowo usuwamy pola paletki z poprzedniego miejsca
+      for (int i = 0; i < paddle.width; i++)
+      {
+        mvwprintw(win, paddle.y, paddle.x + i, "-");
+        // W tym warunku sprawdzamy czy nasza paletka nie znajduje się przy krawedzi ekranu
+        // Jeśli tak to nie usuwamy znaku sprzed paletki
+        // W przeciwnym wypadku zmazywalibyśmy znak krawedzi ekranu
+        if (paddle.x - i != getbegx(win) - 1)
+          mvwprintw(win, paddle.y, paddle.x - i, " ");
+      }
+    }
+
+    break;
+  }
+  return 0;
+}
+```
+
+To dość długa funkcja i mimo, że są w niej od razu komentarze, to warto prześledzić po kolei co robi:
+
+- W 8 linii definiujemy funkcję `move_paddle`, która przyjmuje dwa argumenty - wskaźnik na okno i referencję do paletki, którą będziemy sterować
+- W 12 linii korzystamy z pętli for, by wypisać wszystkie pola paletki symbolizowane znakiem `-`. Musimy skorzystać z pętli, gdyż nasza paletka ma określoną szerokość. Gdyby wynosiłą ona 1, to równie dobrze moglibyśmy skorzystać z jednej instrukcji mvwprintw. W naszym przypadku w zależności od szerokości paletki musimy wypisać określoną liczbę znaków stąd potrzeba tej funkcji.
+- Linia 18 i 19 odpowiadają za pobieranie klawisza sterowania od użytkownika.
+- W linii 20 za pomocą switcha sprawdzamy jaki klawisz został naciśnięty i wykonujemy odpowiednie działanie:
+  - W każdym z wariantów sprawdzamy też czy paletka nie wychodzi za ekran. Jeśli nie to dopiero wtedy wykonujemy daną operację.
+- Funkcja zwraca 1 jeśli użytkownik wcisnął klawisz `q`, który odpowiada  za opuszczenie gry. W przeciwnym wypadku zwraca 0, a gra jest kontynuuowana.
+
+By odzwierciedlić zmiany w kodzie musimy też zaktualizować funkcję single player. Zmieniamy kod odpowiedzialny za grę dodająć pętlę while, która wywołuje funkcję `move_paddle` i przypisuje ją do wartości `int quit`. Dzięki temu możemy wyjśc z gry. Dodatkowo odświeżamy ekran co 500 mikrosekund by umożliwić graczowi sterowanie. 
+
+```cpp
+void single_player(WINDOW *win)
+{
+  Ball ball1;
+  ball1.x = 10;
+  ball1.y = 10;
+  mvwprintw(win, ball1.x, ball1.y, "o");
+  Paddle paddle1;
+  paddle1.x = getmaxx(win) / 2;
+  paddle1.y = getmaxy(win) - 2;
+  paddle1.width = 5;
+  while (true)
+  {
+    int quit = move_paddle(win, paddle1);
+    if (quit == 1)
+    {
+      break;
+    }
+    usleep(500);
+    wrefresh(win);
+  }
+}
+```
+
+## Podsumowanie
+
+Nasz cały obecny program wygląda tak:
+
+```cpp
+#include <ncurses.h>
+#include <unistd.h>
+
+class Ball
+{
+public:
+  int x;
+  int y;
+};
+
+class Paddle
+{
+public:
+  int x, y, width;
+};
+
+WINDOW *
+init_screen()
+{
+  WINDOW *win; /* Okno gry */
+
+  initscr();                  /* Włączamy tryb curses */
+  win = newwin(30, 80, 1, 1); /* Tworzymy okno gry */
+  refresh();                  /* Odświeżamy ekran */
+  box(win, 0, 0);             /* Rysujemy ramkę */
+  keypad(stdscr, TRUE);       /* Włączamy klawisze strzałek*/
+  noecho();                   /* Nie wyświetlaj klawisza na ekran */
+  curs_set(0);                /* Ukryj kursor */
+  nodelay(stdscr, TRUE);      /* Nie czekaj na wprowadzenie znaku */
+  return win;                 /* Zwracamy okno gry */
+}
+
+/**
+ * @brief Funkcja odpowiedzialna za sterowanie paletka
+ *
+ * @param win - okno gry w którym będzie się poruszać paletka
+ * @param paddle - paletka, którą sterujemy
+ * @return int - zwraca 1 gdy użytkownik chce opuścić grę
+ */
+int move_paddle(WINDOW *win, Paddle &paddle)
+{
+  // pętla odpowiedzialna za tworzenie dodatkowych pól w kształcie paletki
+  // np. jeśli nasza paletka ma szerokość 5 to musimy stworzyć 5 pól
+  for (int i = 0; i < paddle.width; i++)
+  {
+    mvwprintw(win, paddle.y, paddle.x + i, "-");
+  }
+  // Pobieramy klawisz sterowania od użytkownika,
+  // w przypadku klawisza 'q' opuszczamy grę zwracając 1
+  int ch;
+  ch = getch();
+  switch (ch)
+  {
+  case 'q':
+    return 1;
+  // Przesuwamy paletkę o jeden w lewo po naciśnięciu klawisza strzałki w lewo `<-`
+  case KEY_LEFT:
+    if (paddle.x > getbegx(win))
+    {
+      paddle.x--;
+      // Pętla odpowiedzialna za tworzenie dodatkowych pól w kształcie paletki
+      // np. jeśli nasza paletka ma szerokość 5 to musimy stworzyć 5 pól
+      // Dodatkowo usuwamy pola paletki z poprzedniego miejsca
+      for (int i = 0; i < paddle.width; i++)
+      {
+        mvwprintw(win, paddle.y, paddle.x + i, "-");
+        mvwprintw(win, paddle.y, paddle.x + i + 1, " ");
+      }
+    }
+    break;
+  // Przesuwamy paletkę o jeden w prawo po naciśnięciu klawisza strzałki w prawo `->`
+  case KEY_RIGHT:
+    if (paddle.x < getmaxx(win) - 1 - paddle.width)
+    {
+      paddle.x += 1;
+      // Pętla odpowiedzialna za tworzenie dodatkowych pól w kształcie paletki
+      // np. jeśli nasza paletka ma szerokość 5 to musimy stworzyć 5 pól
+      // Dodatkowo usuwamy pola paletki z poprzedniego miejsca
+      for (int i = 0; i < paddle.width; i++)
+      {
+        mvwprintw(win, paddle.y, paddle.x + i, "-");
+        // W tym warunku sprawdzamy czy nasza paletka nie znajduje się przy krawedzi ekranu
+        // Jeśli tak to nie usuwamy znaku sprzed paletki
+        // W przeciwnym wypadku zmazywalibyśmy znak krawedzi ekranu
+        if (paddle.x - i != getbegx(win) - 1)
+          mvwprintw(win, paddle.y, paddle.x - i, " ");
+      }
+    }
+
+    break;
+  }
+  return 0;
+}
+
+void single_player(WINDOW *win)
+{
+  Ball ball1;
+  ball1.x = 10;
+  ball1.y = 10;
+  mvwprintw(win, ball1.x, ball1.y, "o");
+  Paddle paddle1;
+  paddle1.x = getmaxx(win) / 2;
+  paddle1.y = getmaxy(win) - 2;
+  paddle1.width = 5;
+  while (true)
+  {
+    int quit = move_paddle(win, paddle1);
+    if (quit == 1)
+    {
+      break;
+    }
+    usleep(500);
+    wrefresh(win);
+  }
+}
+
+int main()
+{
+
+  WINDOW *win = init_screen();
+  single_player(win);
+  endwin();
+  return 0;
+}
+```
+
+A po skompilowaniu i uruchomieniu:
+
+![Efekt po trzeciej części](/images/posts/CppNcurses3/3.webm#postVideo)
 
 
 ## Źródła
