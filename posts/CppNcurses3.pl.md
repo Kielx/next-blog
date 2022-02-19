@@ -1,15 +1,15 @@
 ---
-title: 'Jak zacząć przygodę z C++ i Ncurses - Cz. 3 - Paletka i piłka'
+title: 'Jak zacząć przygodę z C++ i Ncurses - Cz. 3 - Paletka i sterowanie'
 date: '2022-02-17'
-excerpt: 'Trzecia część poradnika, w której tworzymy paletkę by odbijać piłkę'
-coverImage: '/images/posts/CppNcurses3/3.webm'
+excerpt: 'Trzecia część poradnika, w której porządkujemy nasz program, tworzymy paletkę oraz funkcje umożliwiające sterowanie'
+coverImage: '/images/posts/CppNcurses3/main.svg'
 keywords:
 - C++
 - Ncurses
 - Podstawy
 ---
 
-![Jak wygląda gra](/images/posts/CppNcurses3/3.webm#postVideo)
+![Post hero image](/images/posts/CppNcurses3/main.svg#postMiniImage)
 
 ## Spis treści
 
