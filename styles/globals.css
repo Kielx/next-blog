@@ -84,7 +84,7 @@ img[src*='#postMainImage'] {
 }
 
 img[src*='#postMiniImage'] {
-  @apply m-auto max-h-[400px] w-full max-w-[400px];
+  @apply m-auto max-h-[400px] w-full max-w-[400px] object-contain;
 }
 
 .markdown-body li {
