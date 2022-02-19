@@ -1,15 +1,15 @@
 ---
-title: 'How to get started with C++ and Ncurses - Vol. 2 - Screen and controls'
+title: 'How to get started with C++ and Ncurses - Vol. 2 - Screen and ball'
 date: '2022-02-14'
 excerpt: 'Second part of the tutorial where we create a window with a ball class and object'
-coverImage: '/images/posts/CppNcurses2/1.webm'
+coverImage: '/images/posts/CppNcurses2/main.svg'
 keywords:
 - C++
 - Ncurses
 - Basics
 ---
 
-![What are we going to create](/images/posts/CppNcurses2/1.webm#postVideo)
+![Header image](/images/posts/CppNcurses2/main.svg#postMainImage)
 
 ## Table of contents
 
@@ -177,7 +177,7 @@ Great, our ball came to the screen!
 You've probably noticed a blinking cursor next to our ball - take it easy, we'll get into that in a moment.
 Now let's do something extra to better understand why we created the ball class and object.
 
-## Something extra - we create more balls
+## Something extra - we can create more balls
 
 For object-oriented training, let's now create some new balls and display them on the screen.
 In the main loop, after the first ball, we add the next three:
@@ -314,7 +314,7 @@ In this part, we managed to create a simple program in which, using the Ncurses 
 
 When creating this post, I used the following sources extensively, which are worth checking out if you want to reinforce your knowledge of Ncurses and other topics that I covered in this post:
 
-[Ncurses Programming HowTo](https://tldp.org/HOWTO/NCURSES-Programming-HOWTO/)
-[Ncurses Man Pages](https://invisible-island.net/ncurses/announce.html)
-[Ncurses - Linux man page](https://linux.die.net/man/3/ncurses)
-[Beautiful explanation of classes and objects](https://www.reddit.com/r/explainlikeimfive/comments/65658b/comment/dg8nxqk/?utm_source=share&utm_medium=web2x&context=3)
+- [Ncurses Programming HowTo](https://tldp.org/HOWTO/NCURSES-Programming-HOWTO/)
+- [Ncurses Man Pages](https://invisible-island.net/ncurses/announce.html)
+- [Ncurses - Linux man page](https://linux.die.net/man/3/ncurses)
+- [Beautiful explanation of classes and objects](https://www.reddit.com/r/explainlikeimfive/comments/65658b/comment/dg8nxqk/?utm_source=share&utm_medium=web2x&context=3)
