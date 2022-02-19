@@ -22,13 +22,7 @@ const Hero = ({ imageLink }: Props) => {
         </div>
         <div className="pt-8 lg:order-1 lg:w-2/3">
           <h1 className="pb-6 text-2xl font-extrabold text-[#2c2c2c] transition-all md:gap-3 md:text-3xl ">
-            <span className="pr-2">{`${t(`h1`)}`}</span>
-            <Image
-              width={30}
-              height={30}
-              alt="waving hand"
-              src="https://raw.githubusercontent.com/Kielx/Kielx/main/wave.gif"
-            />
+            {`${t(`h1`)} 👋`}
           </h1>
           <p className="pb-2">{t(`p1`)}</p>
           <p>{t(`p2`)}</p>
