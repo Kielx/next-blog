@@ -6,6 +6,7 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import { ParsedUrlQuery } from 'querystring'
+import LazyLoad from 'react-lazyload'
 import ReactMarkdown from 'react-markdown'
 import Prism from 'prismjs'
 import NotFoundPL from '../../components/NotFoundPL'
@@ -91,7 +92,9 @@ const PostPage: NextPage<Props> = ({
           </p>
           <div className="markdown-body line-numbers" key="uniqueKey">
             {mounted && (
-              <ReactMarkdown components={components}>{content}</ReactMarkdown>
+              <LazyLoad height="200" once>
+                <ReactMarkdown components={components}>{content}</ReactMarkdown>
+              </LazyLoad>
             )}
           </div>
         </div>

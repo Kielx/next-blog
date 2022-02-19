@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useInView } from 'react-intersection-observer'
+import LazyLoad from 'react-lazyload'
 
 type Props = {
   slug: string
@@ -50,14 +51,16 @@ const Post: React.FC<Props> = ({
         <div className="flex h-40 w-full  overflow-hidden rounded-t-lg xs:h-[204px] md:h-[187px] xl:h-[266px]">
           <div className="cardImageContainer relative w-full">
             {coverImage.match(/.webm/) ? (
-              <video
-                src={coverImage}
-                playsInline
-                autoPlay
-                muted
-                loop
-                className="h-auto w-full max-w-full"
-              />
+              <LazyLoad height="200">
+                <video
+                  src={coverImage}
+                  playsInline
+                  autoPlay
+                  muted
+                  loop
+                  className="h-auto w-full max-w-full"
+                />
+              </LazyLoad>
             ) : (
               <Image
                 src={coverImage}
