@@ -15,7 +15,7 @@ keywords:
 
 - [Wstęp](#wstęp)
 - [Porządkujemy program](#porządkujemy-program)
-- [Porządki cz.2](#porządki-cz2)
+- [Porządki cz.2](#porządki-cz--)
 - [Paletka](#paletka)
 - [Sterowanie paletka](#sterowanie-paletka)
 - [Podsumowanie](#podsumowanie)
