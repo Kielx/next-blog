@@ -15,7 +15,7 @@ keywords:
 
 - [Introduction](#introduction)
 - [Cleanup](#cleanup)
-- [Cleanup, part 2](#cleanup-part-2)
+- [Cleanup, part 2](#cleanup-part--)
 - [Paddle](#paddle)
 - [Controls](#controls)
 - [Summary](#summary)
