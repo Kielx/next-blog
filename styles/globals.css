@@ -87,6 +87,10 @@ img[src*='#postMiniImage'] {
   @apply m-auto max-h-[400px] w-full max-w-[400px] object-contain;
 }
 
+pre[class*='language-'] code {
+  display: block;
+}
+
 .markdown-body li {
   @apply list-disc;
 }
