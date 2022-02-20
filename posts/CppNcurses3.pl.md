@@ -9,15 +9,50 @@ keywords:
 - Podstawy
 ---
 
-![Post hero image](/images/posts/CppNcurses3/main.svg#postMiniImage)
+![Obraz główny](/images/posts/CppNcurses3/main.svg#postMiniImage)
 
 ## Spis treści
 
+- [Wstęp](#wstęp)
+- [Porządkujemy program](#porządkujemy-program)
+- [Porządki cz.2](#porządki-cz2)
+- [Paletka](#paletka)
+- [Sterowanie paletka](#sterowanie-paletka)
+- [Podsumowanie](#podsumowanie)
+- [Źródła](#źródła)
+
 ## Wstęp
 
-W trzeciej części poradnika rozwijamy nasz program - tym razem dodamy do niego paletkę, która będzie odbijać piłkę. Jeśli jakimś trafem udało Ci się ominąć dwie poprzednie części poradnika to nasz dotychczasowy program wyglądał tak (z pominięciem dodanych piłek):
+W trzeciej części poradnika dalej rozwijamy nasz program - tym razem dodamy do niego paletkę, która będzie odbijać piłkę. Jeśli jakimś trafem udało Ci się ominąć dwie poprzednie części poradnika to nasz dotychczasowy program wyglądał tak (z pominięciem dodanych piłek):
 
-[Program z części 2](https://raw.githubusercontent.com/Kielx/ncurses-pong/12d6f257754e6083f920129bb11f6a362955995c/main.cpp?token=GHSAT0AAAAAABOVH5I5XZIJZ5LQ36FHTNC6YQ2AS3Q)
+```cpp
+#include <ncurses.h>
+#include <unistd.h>
+
+class Ball
+{
+public:
+int x;
+int y;
+};
+
+int main()
+{
+Ball ball1;
+ball1.x = 10;
+ball1.y = 10;
+
+WINDOW *win; 
+initscr(); 
+win = newwin(30, 80, 1, 1);
+refresh();
+box(win, 0, 0);
+mvwprintw(win, ball1.x, ball1.y, "o");
+wrefresh(win);
+getch();
+return 0;
+}
+```
 
 ## Porządkujemy program
 
@@ -35,9 +70,9 @@ WINDOW *init_screen()
 }
 ```
 
-Pamiętaj, że funkcja to nic innego jak fragment kodu, który możemy używać w dowolnym miejscu zamiast kopiować wszystkie linijki. W tym przypadku funkcja jest typu wskaźnikowego i zwraca wskaźnik do okna. Stąd operator `*`.
+Pamiętaj, że funkcja to nic innego jak fragment kodu, który możemy używać w dowolnym miejscu zamiast kopiować wszystkie linijki kodu. W tym przypadku funkcja jest typu wskaźnikowego i zwraca wskaźnik do okna. Stąd operator `*`.
 
-Jeśli wskaźniki są dla Ciebie czyś nowym lub masz problemy ze zrozumieniem czym są to najprościej rzecz ujmując można powiedzieć, że wskaźniki to nic innego jak adres w pamięci. Jeszcze prościej - czasami w programie chcemy użyć tych samych danych. Zamiast wysyłać całość danych, albo kopiować całe dane, wygodniej jest po prostu przesłać **wskaźnik** czyli adres do tych danych. Ten adres to nic innego jak nasz wskaźnik. Dzięki temu jesli jedna część programu zmieni określone dane, to zmieni się on w pozostałych częściach programu. Gdybyśmy zainicjalizowali to okno w funkcji i nie skorzystali ze wskaźnika, to nasz obiekt okna istniał by tylko w tej funkcji, natomiast pozostąła część programu by nie mogła się do niego dostać. Dzięki temu, że zwracamy wskaźnik do tego okna, nasza główna funkcja i funkcja gry może korzystać z tego okna i odpowiednio go modyfikować w razie konieczności.
+Jeśli wskaźniki są dla Ciebie czyś nowym lub masz problemy ze zrozumieniem czym są to najprościej rzecz ujmując można powiedzieć, że wskaźniki to nic innego jak adres w pamięci. Jeszcze prościej - czasami w programie chcemy użyć tych samych danych. Zamiast wysyłać całość danych, albo kopiować całe dane, wygodniej jest po prostu przesłać **wskaźnik** czyli adres do tych danych. Dzięki temu jesli jedna część programu zmieni określone dane, to zmieni się on w pozostałych częściach programu. Gdybyśmy zainicjalizowali to okno w funkcji i nie skorzystali ze wskaźnika, to nasz obiekt okna istniał by tylko w tej funkcji, natomiast pozostąła część programu by nie mogła się do niego dostać. Dzięki temu, że zwracamy wskaźnik do tego okna, nasza główna funkcja i funkcja gry może korzystać z tego okna i odpowiednio go modyfikować w razie konieczności.
 
 Jeśli chcesz poczytać więcej na temat wskaźników w języku C++ możesz to zrobić np. tu:
 
@@ -114,7 +149,7 @@ int main()
 }
 ```
 
-Skompilowany i uruchomiony poleceniem
+Skompilowany i uruchomiony poleceniem:
 
 ```bash
 g++ main.cpp -o main.out -lncurses && ./main.out
@@ -128,7 +163,7 @@ Będzie wyglądał tak:
 
 Pozostało nam jeszcze kilka szczegółów, które pominęliśmy w poprzednich etapach.
 
-Jako czujny obserwator zapewne zauważyłeś, że przy naszych piłkach symbolizowanych przez literę `o` pojawia się migający kursor. Jako, że nie będziemy nic tam wpisywać, to nie będzie nam potrzebny.
+Jako czujny obserwator zapewne zauważyłeś, że przy naszych piłkach symbolizowanych przez literę `o` pojawia się migający kursor. Jako, że nie będziemy nic tam wpisywać, to kursor nie będzie nam potrzebny.
 By wyłączyć kursor musimy skorzystać z instrukcji `curs_set(0)`.
 
 Dodatkowo za każdym razem gdy naciskaliśmy jakiś klawisz na klawiaturze, to automatycznie był on wypisywany w oknie terminala. Nasza gra również nie potrzebuje tego, więc wyłączymy tą funkcję za pomocą instrukcji `noecho()`.
@@ -201,8 +236,8 @@ Do naszej funkcji `single_player` zaraz po deklaracji piłki, dodajemy więc dek
   paddle1.width = 5;
 ```
 
-Tu analogicznie do tego jak deklarowaliśmy piłkę, deklarujemy naszą paletkę. Różnica jest taka, że do zmiennej x przypisujemy wynik funkcji `getbegx(win) + 1` - a zwraca ona nic innego jak początek osi x okna, które przekazano jako argument. My przekazujemy jako argument nasze wcześniej stworzone okno. Efektem wywołania funkcji będzie poczatek naszego okna, tylko, że na pozycji 0 znajduje się ramka. Dlatego musimy dodać do tego wyniku 1. Wtedy nasza paletka będzie znajdować się na pozycji 1 w tym oknie.
-Podobnie postępujemy przy wartości y - chcemy by nasza paletka była przy dolnej krawędzi ekranu więc korzystamy z funkcji `getmaxy(win) - 1` - która zwraca wysokość okna. Podobnie jak wcześniej gdybyśmy umieścili paletkę na krawędzi okna, to będzie się ona pokrywać z ramką. Dlatego musimy odjąć od tego wyniku 1.
+Tu analogicznie do tego jak deklarowaliśmy piłkę, deklarujemy naszą paletkę. Różnica jest taka, że do zmiennej x przypisujemy wynik funkcji `getmaxx(win) / 2` - a zwraca ona nic innego jak koniec osi x okna, które przekazano jako argument, a następnie dzieli je na dwa. Efektem wywołania funkcji będzie umieszczenie naszej paletki na środku ekranu.
+Podobnie postępujemy przy wartości y - chcemy by nasza paletka była przy dolnej krawędzi ekranu więc korzystamy z funkcji `getmaxy(win) - 2` - która zwraca wysokość okna. Gdybyśmy umieścili paletkę na krawędzi okna, to będzie się ona pokrywać z ramką. Dlatego musimy odjąć od tego wyniku 2.
 Na koniec ustawiamy szerokość paletki na 5.
 
 Paletka gotowa. Pora na dodanie sterowania.
@@ -324,6 +359,6 @@ A po skompilowaniu i uruchomieniu:
 
 Tworząc tego posta korzystałem intensywnie z poniższych źródeł, które warto sprawdzić jeśli chcesz pogłębić swoją wiedzę na temat Ncurses i innych tematów, które poruszałem w tym poście:
 
-[Ncurses Programming HowTo](https://tldp.org/HOWTO/NCURSES-Programming-HOWTO/)
-[Ncurses Man Pages](https://invisible-island.net/ncurses/announce.html)
-[Ncurses - Linux man page](https://linux.die.net/man/3/ncurses)
+- [Ncurses Programming HowTo](https://tldp.org/HOWTO/NCURSES-Programming-HOWTO/)
+- [Ncurses Man Pages](https://invisible-island.net/ncurses/announce.html)
+- [Ncurses - Linux man page](https://linux.die.net/man/3/ncurses)
