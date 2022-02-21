@@ -14,7 +14,11 @@
 /* To fix misaligning of code blocks highglithing */
 .line-highlight {
   margin: 3rem 1rem 1.6rem 0rem !important;
-  border: 1px dotted #4c4c4c !important;
+  background: linear-gradient(
+    to right,
+    hsl(24deg 20% 50% / 20%) 70%,
+    hsla(24, 20%, 50%, 0)
+  ) !important;
 }
 
 /* To improve looks and add mac buttons to code snippets */
