@@ -25,21 +25,67 @@ Kod naszego obecnego programu wygląda tak:
 
 By piłka mogła się poruszać konieczne będzie dodanie dwóch zmiennych, które będą określać kierunek a jednocześnie prędkość na płaszczyznach X i Y.
 
-Do naszej klasy Ball musimy dodać dwie zmienne by klasa wyglądała tak:
+Do naszej klasy Ball musimy dodać dwie zmienne - `x_speed` i `y_speed` by nasza klasa wyglądała tak:
 
-```cpp
+```cpp 5
 class Ball
 {
 public:
-int x, y, x_speed, y_speed;
+int x, y,
+int x_speed, y_speed;
 };
 ```
 
-Założenie jest proste - nasza piłka przesuwa się automatycznie po osi X i Y o jej prędkość co określony przedział czasowy. Ustawiając prędkość na 0, piłka nie będzie się poruszać, ustawiająć prędkość na 1, piłka będzie się poruszać o jedną jednostkę w każdym kierunku, ustawiając prędkość na -1, piłka będzie się poruszać o jedną jednostkę w odwrotnym kierunku.
+Założenie jest proste - nasza piłka przesuwa się automatycznie po osi X i Y o wartość jej prędkości - co określony przedział czasowy (do przedziału czasowego dojdziemy nieco później). Ustawiając prędkość na 0, piłka nie będzie się poruszać, ustawiająć prędkość na 1, piłka będzie się poruszać o jedną jednostkę w danym kierunku, ustawiając prędkość na -1, piłka będzie się poruszać o jedną jednostkę w odwrotnym kierunku.
 
-Odbijanie piłki będzie się odbywać poprzez sprawdzenie czy piłka graniczy z naszą paletką, a wówczas zmienimy jej kierunek ruchu na przeciwny. Tak samo zrobimy jeżeli piłka napotka krawędź ekranu.
+Odbijanie piłki będzie się odbywać poprzez sprawdzenie czy piłka graniczy z naszą paletką, a wówczas zmienimy jej kierunek ruchu na przeciwny. Tak samo zrobimy jeżeli piłka napotka krawędź ekranu. Jeśli piłka przejdzie za paletkę to gracz przegrywa.
 
 W naszej funkcji single_player dodajemy następujące linie:
+
+```cpp 7-8,16-18
+// ...Pozostała część programu 
+void single_player(WINDOW *win)
+{
+  Ball ball1;
+  ball1.x = 10;
+  ball1.y = 10;
+  ball1.x_speed = 1;
+  ball1.y_speed = 1;
+  mvwprintw(win, ball1.x, ball1.y, "o");
+  Paddle paddle1;
+  paddle1.x = getmaxx(win) / 2;
+  paddle1.y = getmaxy(win) - 2;
+  paddle1.width = 5;
+  while (true)
+  {
+    ball1.x += ball1.x_speed;
+    ball1.y += ball1.y_speed;
+    mvwprintw(win, ball1.x, ball1.y, "o");
+    int quit = move_paddle(win, paddle1);
+    if (quit == 1)
+    {
+      break;
+    }
+
+    usleep(500);
+    wrefresh(win);
+  }
+}
+```
+
+- Linia 7-8 ustawia prędkość x i y piłki na 1
+- Linia 16-18 sprawia, że co iteracja naszej gry pozycja naszej piłki zwiększa się o prędkość x i y piłki.
+
+W teorii nasz program powinien zadziałać tak, że piłka będzie się przesuwać po ekranie, aż z niego nie wyleci. Sprawdźmy czy tak jest.
+Kompilujemy i uruchamiamy program:
+
+```bash
+g++ main.cpp -o main.out -lncurses && ./main.out
+```
+
+A efekt po uruchomieniu wygląda mniej więcej tak:
+
+![Efekt uruchomienia programu z piłką](/images/posts/CppNcurses4/1.webp#postMiniImage)
 
 
 
