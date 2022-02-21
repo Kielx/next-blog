@@ -21,17 +21,6 @@
   border-radius: 10px;
 }
 
-pre {
-  padding: 3rem 1rem 1.6rem 1rem !important;
-  border-radius: 12px !important;
-  margin-bottom: 1rem !important;
-  margin-top: 1rem !important;
-  background-image: url('/window-buttons.png') !important;
-  background-repeat: no-repeat !important;
-  background-size: 44px 10px !important;
-  background-position: 16px 14px !important;
-}
-
 html,
 body,
 #__next {
@@ -75,20 +64,6 @@ body {
   transform: scale(1.03);
   transition: 400ms cubic-bezier(0.4, 0, 0.25, 1);
   cursor: pointer;
-}
-
-/* Markdown post styles */
-
-img[src*='#postMainImage'] {
-  @apply my-6 h-[40vh] w-full object-cover;
-}
-
-img[src*='#postMiniImage'] {
-  @apply m-auto max-h-[400px] w-full max-w-[400px] object-contain;
-}
-
-.markdown-body li {
-  @apply list-disc;
 }
 
 .navLink::after {

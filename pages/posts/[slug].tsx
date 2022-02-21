@@ -16,6 +16,9 @@ import VideoOrImageRenderer from '../../components/ReactMarkdownVideoOrImageRend
 import Header from '../../components/Header'
 import 'prismjs/plugins/line-numbers/prism-line-numbers'
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
+import 'prismjs/plugins/line-highlight/prism-line-highlight'
+import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
+import ReactMarkdownLineHighlight from '../../components/ReactMarkdownLineHighlight'
 
 interface IParams extends ParsedUrlQuery {
   slug: string
@@ -52,7 +55,7 @@ const PostPage: NextPage<Props> = ({
     if (mounted && router.isReady) {
       setTimeout(() => {
         Prism.highlightAll()
-      }, 0)
+      }, 500)
     }
   }, [mounted, router.isReady])
 
@@ -66,6 +69,7 @@ const PostPage: NextPage<Props> = ({
     h4: HeadingRenderer,
     h5: HeadingRenderer,
     img: VideoOrImageRenderer,
+    pre: ReactMarkdownLineHighlight,
   }
 
   return (

@@ -11,6 +11,38 @@
   display: flex;
 }
 
+/* To fix misaligning of code blocks highglithing */
+.line-highlight {
+  margin: 3rem 1rem 1.6rem 0rem !important;
+  border: 1px dotted #4c4c4c !important;
+}
+
+/* To improve looks and add mac buttons to code snippets */
+pre {
+  padding: 3rem 1rem 1.6rem 1rem !important;
+  border-radius: 12px !important;
+  margin-bottom: 1rem !important;
+  margin-top: 1rem !important;
+  background-image: url('/window-buttons.png') !important;
+  background-repeat: no-repeat !important;
+  background-size: 44px 10px !important;
+  background-position: 16px 14px !important;
+}
+
+/* Markdown post styles */
+
+img[src*='#postMainImage'] {
+  @apply my-6 h-[40vh] w-full object-cover;
+}
+
+img[src*='#postMiniImage'] {
+  @apply m-auto max-h-[400px] w-full max-w-[400px] object-contain;
+}
+
+.markdown-body li {
+  @apply list-disc;
+}
+
 /* @media (prefers-color-scheme: dark) {
   .markdown-body {
     color-scheme: dark;
