@@ -19,6 +19,7 @@
     hsl(24deg 20% 50% / 20%) 70%,
     hsla(24, 20%, 50%, 0)
   ) !important;
+  padding-bottom: 0px !important;
 }
 
 /* To improve looks and add mac buttons to code snippets */
