@@ -47,7 +47,7 @@ initscr();
 win = newwin(30, 80, 1, 1);
 refresh();
 box(win, 0, 0);
-mvwprintw(win, ball1.x, ball1.y, "o");
+mvwprintw(win, ball1.y, ball1.x, "o");
 wrefresh(win);
 getch();
 return 0;
@@ -86,7 +86,7 @@ void single_player(WINDOW *win)
   Ball ball1;
   ball1.x = 10;
   ball1.y = 10;
-  mvwprintw(win, ball1.x, ball1.y, "o");
+  mvwprintw(win, ball1.y, ball1.x,"o");
   wrefresh(win);
   getch();
 }
@@ -136,7 +136,7 @@ void single_player(WINDOW *win)
   Ball ball1;
   ball1.x = 10;
   ball1.y = 10;
-  mvwprintw(win, ball1.x, ball1.y, "o");
+  mvwprintw(win, ball1.y, ball1.x, "o");
   wrefresh(win);
   getch();
 }
@@ -327,7 +327,7 @@ void single_player(WINDOW *win)
   Ball ball1;
   ball1.x = 10;
   ball1.y = 10;
-  mvwprintw(win, ball1.x, ball1.y, "o");
+  mvwprintw(win, ball1.y, ball1.x,"o");
   Paddle paddle1;
   paddle1.x = getmaxx(win) / 2;
   paddle1.y = getmaxy(win) - 2;

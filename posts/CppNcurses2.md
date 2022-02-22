@@ -155,7 +155,7 @@ initscr();
 win = newwin(30, 80, 1, 1);
 refresh();
 box(win, 0, 0);
-mvwprintw(win, ball1.x, ball1.y, "o");
+mvwprintw(win, ball1.y, ball1.x, "o");
 wrefresh(win);
 getch();
 return 0;
@@ -199,9 +199,9 @@ ball4.y = 12;
 And after the mvprintw function we show our three more balls on the screen:
 
 ```cpp
-mvwprintw(win, ball2.x, ball2.y, "o");
-mvwprintw(win, ball3.x, ball3.y, "o");
-mvwprintw(win, ball4.x, ball4.y, "o");
+mvwprintw(win, ball2.y, ball2.x, "o");
+mvwprintw(win, ball3.y, ball3.x, "o");
+mvwprintw(win, ball4.y, ball4.x, "o");
 ```
 
 Effect:
@@ -229,10 +229,10 @@ ball3.y++;
 ball4.x--;
 wclear(win);
 box(win, 0, 0);
-mvwprintw(win, ball1.x, ball1.y, "o");
-mvwprintw(win, ball2.x, ball2.y, "o");
-mvwprintw(win, ball3.x, ball3.y, "o");
-mvwprintw(win, ball4.x, ball4.y, "o");
+mvwprintw(win, ball1.y, ball1.x, "o");
+mvwprintw(win, ball2.y, ball2.x, "o");
+mvwprintw(win, ball3.y, ball3.x, "o");
+mvwprintw(win, ball4.y, ball4.x, "o");
 usleep(50000);
 wrefresh(win);
 }
@@ -276,10 +276,10 @@ initscr();
 win = newwin(30, 80, 1, 1);
 refresh();
 box(win, 0, 0);
-mvwprintw(win, ball1.x, ball1.y, "o");
-mvwprintw(win, ball2.x, ball2.y, "o");
-mvwprintw(win, ball3.x, ball3.y, "o");
-mvwprintw(win, ball4.x, ball4.y, "o");
+mvwprintw(win, ball1.y, ball1.x, "o");
+mvwprintw(win, ball2.y, ball2.x, "o");
+mvwprintw(win, ball3.y, ball3.x, "o");
+mvwprintw(win, ball4.y, ball4.x, "o");
 wrefresh(win);
 for (int i = 0; i < 70; i++)
 {
@@ -289,10 +289,10 @@ ball3.y++;
 ball4.x--;
 wclear(win);
 box(win, 0, 0);
-mvwprintw(win, ball1.x, ball1.y, "o");
-mvwprintw(win, ball2.x, ball2.y, "o");
-mvwprintw(win, ball3.x, ball3.y, "o");
-mvwprintw(win, ball4.x, ball4.y, "o");
+mvwprintw(win, ball1.y, ball1.x, "o");
+mvwprintw(win, ball2.y, ball2.x, "o");
+mvwprintw(win, ball3.y, ball3.x, "o");
+mvwprintw(win, ball4.y, ball4.x, "o");
 usleep(50000);
 wrefresh(win);
 }
