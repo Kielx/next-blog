@@ -39,7 +39,7 @@ Celem jest stworzenie prostej gry Pong, w której gracz steruje paletką i odbij
 
 ### Dla kogo jest ten poradnik i w jakim celu będziemy tworzyć tą grę?
 
-Być może jesteś początkującym programistą, który zapoznał się już z główną składnią języka i chciałbyś w prosty sposób przełożyć ją na praktyczne zastosowania. Może jesteś studentem, który w toku studiów musi stworzyć coś przy wykorzystaniu Ncurses. Tak czy inaczej, mam nadzieję, to co napisałem pomoże Ci w dalszym rozwoju i w osiągnięciu swoich celów.
+Być może jesteś początkującym programistą, który zapoznał się już z główną składnią języka i chciałbyś w prosty sposób przełożyć ją na praktyczne zastosowania. Może jesteś studentem, który w toku studiów musi stworzyć coś przy wykorzystaniu Ncurses. Tak czy inaczej, mam nadzieję, że to co napisałem pomoże Ci w dalszym rozwoju i w osiągnięciu swoich celów.
 
 Większość poradników skupia się albo na czystej teorii - np. jak działają funkcje i klasy lub wyłącznie na praktycznej części przygotowania programu.
 
