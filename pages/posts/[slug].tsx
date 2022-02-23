@@ -19,6 +19,7 @@ import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
 import 'prismjs/plugins/line-highlight/prism-line-highlight'
 import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
 import ReactMarkdownLineHighlight from '../../components/ReactMarkdownLineHighlight'
+import ReactMarkdownA from '../../components/ReactMarkdownA'
 
 interface IParams extends ParsedUrlQuery {
   slug: string
@@ -70,6 +71,7 @@ const PostPage: NextPage<Props> = ({
     h5: HeadingRenderer,
     img: VideoOrImageRenderer,
     pre: ReactMarkdownLineHighlight,
+    a: ReactMarkdownA,
   }
 
   return (
