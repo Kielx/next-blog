@@ -44,14 +44,14 @@ int x_speed, y_speed;
 };
 ```
 
-Założenie jest proste - nasza piłka przesuwa się automatycznie po osi X i Y o wartość jej prędkości - co określony przedział czasowy (do przedziału czasowego dojdziemy nieco później). Ustawiając prędkość na 0, piłka nie będzie się poruszać, ustawiająć prędkość na 1, piłka będzie się poruszać o jedną jednostkę w danym kierunku, ustawiając prędkość na -1, piłka będzie się poruszać o jedną jednostkę w odwrotnym kierunku.
+The assumption is simple - our ball moves automatically along the X and Y axes by the value of its speed at every specified time interval (we will get to the time interval a bit later). If you set the speed to 0, the ball will not move, set the speed to 1, the ball will move one unit in each direction, if you set the speed to -1, the ball will move one unit in the opposite direction.
 
-Odbijanie piłki będzie się odbywać poprzez sprawdzenie czy piłka graniczy z naszą paletką, a wówczas zmienimy jej kierunek ruchu na przeciwny. Tak samo zrobimy jeżeli piłka napotka krawędź ekranu. Jeśli piłka przejdzie za paletkę to gracz przegrywa.
+Bouncing the ball will take place by checking whether the ball is adjacent to our paddle, and then we will change its direction of movement to the opposite. We will do the same if the ball hits the edge of the screen. If the ball passes behind the paddle, the player loses.
 
-W naszej funkcji single_player dodajemy następujące linie:
+In our single_player function we add the following lines:
 
 ```cpp 7-8,16-18
-// ...Pozostała część programu 
+// ...Rest of the program...
 void single_player(WINDOW *win)
 {
   Ball ball1;
@@ -81,24 +81,24 @@ void single_player(WINDOW *win)
 }
 ```
 
-- Linia 7-8 ustawia prędkość x i y piłki na 1
-- Linia 16-18 sprawia, że co iteracja naszej gry pozycja naszej piłki zwiększa się o prędkość x i y piłki.
+- Line 7-8 sets the x and y speed of the ball to 1
+- Line 16-18 makes the position of our ball increase by the speed of x and y of the ball every iteration of our game.
 
-W teorii nasz program powinien zadziałać tak, że piłka będzie się przesuwać po ekranie, aż z niego nie wyleci. Sprawdźmy czy tak jest.
-Kompilujemy i uruchamiamy program:
+In theory, our program should work in such a way that the ball will move across the screen until it comes out of it. Let's see if it is so.
+We compile and run the program:
 
 ```bash
 g++ main.cpp -o main.out -lncurses && ./main.out
 ```
 
-A efekt po uruchomieniu wygląda mniej więcej tak:
+And the effect after launching it looks something like this:
 
-![Efekt uruchomienia programu z piłką](/images/posts/CppNcurses4/1.webp#postMiniImage)
+![Effect after launching the program in current state](/images/posts/CppNcurses4/1.webp#postMiniImage)
 
-Jak widać nie jest to nasz oczekiwany cel. Piłka w sekundzie przemieściła się na koniec ekranu i zostawiła niepotrzebne ślady.
-Naprawmy te błędy.
+As you can see, this is not our expected goal. The ball moved to the end of the screen in a second and left unnecessary tracks.
+Let's fix these bugs.
 
-W funkcji `single_player` w pętli `while` dodajemy 4 linię, która będzie usuwać poprzednią pozycję piłki.
+In the function `single_player` in the `while` loop, we add a 4th line that will delete the previous position of the ball.
 
 ```cpp 4
 while (true)
@@ -113,49 +113,49 @@ while (true)
   }
 ```
 
-Po uruchomieniu programu w takiej wersji szybko zauważymy jednak, że dalej piłka w mgnieniu oka wymyka się poza ekran - śladu faktycznie nie ma, ale piłka też znikła.
+In this version we quickly noticed that the ball slipped out of the screen in the blink of an eye. This time there are no tracks left - but the ball also disappeared.
 
-Mogli byśmy teraz zmienić naszą funkcję `usleep` i dodać do niej większą wartość czasu. Spowoduje to, że piłka będzie się przesuwać wolniej, gdyż pętla while w której piłka się porusza będzie się wykonywać co dłuższy odstęp czasu. Problem w tym, że wtedy nasza paletka takżę stanie się mniej responsywna - będzie się przesuwać wolniej.
+To fix this we could try to change the `usleep` function and increase its time value. This will make the ball move slower -  because the while loop in which the ball is moving, will be paused for longer time. The problem is that then our paddle will also become less responsive - it will move more slowly because it will be also waiting for th same amunt of time as the ball.
 
-By rozwiązać ten problem, musimy zrobić coś co jednocześnie spowolni piłkę, ale nie spowolni naszej paletki.
-Wpadłem na pomysł by rozwiązać to w następujący sposób:
+To solve this problem, we need to do something that will simultaneously slow the ball down but keep the speed of our paddle.
+I found an idea on how to solve this issue:
 
-- Tworzymy nową zmienną o nazwie `counter`
-- W pętli while co każdą iterację pętli (czyli w co każdej klatce gry) zwiększamy zmienną `counter` o 1.
-- Teraz musimy sprawić, że nasza piłka będzie się przesuwać np. co 300 klatka, a paletka może się przesuwać co każda klatka.
-- By to zrobić za każdym razem będziemy spradzać za pomocą operatora modulo `%` czy zmienna `counter` jest podzielna przez 50. Jeśli tak, to będziemy przesuwać piłkę o pole. Natomiast niezależnie od tego, w każdej iteracji pętli możemy przesuwać paletkę.
+- We create a new variable named `counter`
+- In the while loop, on every iteration of the loop (i.e. every frame of the game) we increment the variable `counter` by 1.
+- We make our ball move, but only on (for example) every 300 frame, and the paddle can move every frame.
+- To do this, we will check whether the variable `counter` is divisible by 300 using the `%` modulo operator. If so, we will move the ball. Regardless of this, we can move the paddle in each iteration of the loop.
 
-By nasz plan zadziałał wprowadźmy następujące zmiany w pętli `while` znajdującej się w funkcji `single_player` (do funkcji dodałem też komentarze by opisać nasz kod na przyszłość):
+For our plan to work, let's make the following changes to the `while` loop in the `single_player` function (I also added comments to the function to describe our code for the future):
 
 ```cpp 21-22,27-35
 /**
- * @brief Funkcja odpowiedzialna za gre dla jednego gracza
+ * @brief Function for single player game
  *
- * @param win - okno, w którym odbywa się gra
+ * @param win - window in which the game is played
  */
 void single_player(WINDOW *win)
 {
-  // Deklaracja piłki oraz jej początkowej pozycji i prędkości
+  // Declaration of ball, its initial position and speed
   Ball ball1;
   ball1.x = 10;
   ball1.y = 10;
   ball1.x_speed = 1;
   ball1.y_speed = 1;
   mvwprintw(win, ball1.y, ball1.x, "o");
-  // Deklaracja paletki, jej pozycji w połowie ekranu na osi X oraz na przedostatniej linii osi Y
+  // Declaration of paddle, its initial x position in the middle of the screen on X axis and its penultimate line of the Y axis
   Paddle paddle1;
   paddle1.x = getmaxx(win) / 2;
   paddle1.y = getmaxy(win) - 2;
   paddle1.width = 5;
 
-  /* Counter pozwala na przesuwanie piłki z opóźnieniem */
+  /* Counter allows us to move the ball with a delay */
   int counter = 0;
 
-  // Funkcja w której znajduje się cała logika gry
+  // Loop containing logic for the game
   while (true)
   {
     counter++;
-    // Co 300 klatek przesuwamy piłkę, usuwając stary ślad
+    // We move the ball each 300 frames, clearing the previous position
     if (counter % 300 == 0)
     {
       mvwprintw(win, ball1.y, ball1.x, " ");
@@ -163,40 +163,42 @@ void single_player(WINDOW *win)
       ball1.y += ball1.y_speed;
       mvwprintw(win, ball1.y, ball1.x, "o");
     }
-    // Funkcja odpowiedzialna za przesuwanie paletki
+    // Function responsible for paddle steering
     int quit = move_paddle(win, paddle1);
     if (quit == 1)
     {
       break;
     }
-    // Usypiamy program na 500 mikrosekund i odświeżamy okno z nowymi danymi
+    // Sleep for 500 microseconds and refresh the window with new data
     usleep(500);
     wrefresh(win);
   }
 }
 ```
 
-Udało się! Teraz piłka faktycznie przesuwa się, a nasza paletka działa płynnie. Piłka jednak cały czas wylatuje za ekran i nie odbija się od paletki. Pora to zmienić.
+Success! Now the ball is actually moving and our paddle is moving smoothly. The ball, however, continues to fly behind the screen and does not bounce off the paddle. It's time to change that.
 
-## Odbicie piłki
+## Ball bounce
 
-Zasady odbijania piłki są relatywnie proste:
+The rules for bouncing the ball are relatively simple:
 
-- Piłka domyślnie przesuwa się o jedno pole w prawo i jedno pole w dół - czyli co iteracja pętli while dodajemy 1 do współrzędnej X i Y piłki.
-- Jeżeli piłka odbija się od ściany lub paletki to zmieniamy kierunek odbicia - więc przesuwać będziemy wtedy co iterację o -1 współrzędne X i Y.
-- Jedyna trudność polega na tym, że piłka musi się odbijać od paletki - musimy więc sprawdzić dwie rzeczy:
-  - Czy piłka znajduje się w wierszu bezpośrednio nad paletką
-  - Czy w momencie gdy znajduje się tam piłka, znajduje się tam także paletka od której ma się odbić piłka
-  - Żeby spełnić powyższy podpunkt, musimy też sprawdzić wszystkie pola paletki (która ma określoną szerokość) czy piłka znajduje się na jednym z tych miejsc
+- By default, the ball moves one square to the right and one square down - that is - on every iteration of the while loop, we add 1 to the X and Y coordinates of the ball.
+- If the ball bounces off the wall or paddle, we change the direction of the movement - so we will move X and Y coordinates on every iteration by -1.
+- The only difficulty is the fact that the ball has to bounce off the paddle - so we need to check two things:
+  - The ball is in the line directly above the paddle
+  - When the ball is there, is the paddle also in the same position as the ball?
+  - We also have to make sure to check the point above for all elements of the paddle (the paddle has width - its not a single line)
   
-Plan jest - bierzmy się do roboty - do funkcji `while(true)` znajdującej się w funkcji `single_player` wprowadzamy takie zmiany:
+The plan is ready - let's get down to work!
+
+Let's make the following changes to the `while (true)` loop in the `single_player` function:
 
 ```cpp 14-37
-// Funkcja w której znajduje się cała logika gry
+// Loop containing logic for the game
   while (true)
   {
     counter++;
-    // Co 300 klatek przesuwamy piłkę, usuwając stary ślad
+    // Each 300 frames we move the ball clearing the previous position
     if (counter % 200 == 0)
     {
       mvwprintw(win, ball1.y, ball1.x, " ");
@@ -205,7 +207,7 @@ Plan jest - bierzmy się do roboty - do funkcji `while(true)` znajdującej się 
       mvwprintw(win, ball1.y, ball1.x, "o");
     }
 
-    /* Odbijanie piłki */
+    /* Ball bounce */
     if (ball1.y == getmaxy(win) - 3)
     {
       for (int i = paddle1.x; i < paddle1.x + paddle1.width; i++)
@@ -228,32 +230,32 @@ Plan jest - bierzmy się do roboty - do funkcji `while(true)` znajdującej się 
     {
       ball1.x_speed = 1;
     }
-    /* Odbijanie piłki */
+    /* Ball bounce */
 
-    // Funkcja odpowiedzialna za przesuwanie paletki
+    // Function responsible for paddle steering
     int quit = move_paddle(win, paddle1);
     if (quit == 1)
     {
       break;
     }
-    // Usypiamy program na 500 mikrosekund i odświeżamy okno z nowymi danymi
+    // Sleep the program for 500 microseconds and refresh the window with new data
     usleep(500);
     wrefresh(win);
   }
 ```
 
-Nasze nowe warunki `if` sprawdzają:
+Our new `if` conditions check:
 
-- Linie 15-24 - Czy piłka znajduje się w wierszu nad paletka i styka się z nią. Jeżeli tak to zmieniamy prędkość y na -1,
-- Linie 25-28 - Czy piłka odbija się od górnej części ekranu - jeśli tak to ustawiamy prędkość y na 1,
-- Linie 29-32 - Czy piłka odbija się od prawej częsci ekranu - jesli tak to ustawiamy prędkość x na -1
-- Linie 33-36 - Czy piłka odbija się od lewej części ekranu - jesli tak to ustawiamy prędkość x na 1.
+- Lines 15-24 - Whether the ball is in the line above and is touching the paddle. If so, we change the `ball1.y_speed` to -1,
+- Lines 25-28 - Does the ball bounce off the top of the screen - if so, set the `ball1.y_speed` to 1,
+- Lines 29-32 - Does the ball bounce off the right side of the screen - if so, set the `ball1.x_speed` to -1
+- Lines 33-36 - Does the ball bounce off the left side of the screen - if so, set the `ball1.x_speed` to 1.
 
-### Porządki
+### Cleanups
 
-Z zasady program powinien najpierw działać, a później powinniśmy się zajmować jego optymalizacją. Dlatego też, skoro nasze odbijanie działa, warto teraz uporzadkować program i przenieść logikę odpowiedzialną za odbijanie piłki do innej funkcji by nie zaśmiecała nam funkcji `single_player`.
+As a rule of thumb, the program should be working first, and only then should we optimize it. Therefore, since our ball bouncing works as expected, it is a good idea to clean our program and transfer the logic responsible for bouncing the ball to another function so that it does not clutter the `single_player` function.
 
-Wycinamy kod z warunkami spomiędzy komentarza `/* odbijanie piłki */` i wstawiamy go do nowej funkcji:
+We cut the code with conditions from the comment `/* ball bounce */` and paste it into the new function:
 
 ```cpp
 int ball_bounce(WINDOW *win, Ball &ball, Paddle &paddle)
@@ -284,37 +286,37 @@ int ball_bounce(WINDOW *win, Ball &ball, Paddle &paddle)
 }
 ```
 
-W funkcji `single_player` zmieniamy kod tak, żeby wywoływała się funkcja `ball_bounce` zamiast warunków if `if`:
+In the `single_player` function, we change the code so that the `ball_bounce` function is called instead of the if `if` conditions:
 
 ```cpp
-    /* Odbijanie piłki */
+    /* Ball bounce */
     ball_bounce(win, ball1, paddle1);
 ```
 
-## Punkty i przegrana
+## Points and loss
 
-By nazwać nasz program **grą** potrzebujemy jeszcze dwóch rzeczy:
-Możliwości zdobywania punktów i możliwości przegranej - oczywiście tylko wtedy, gdy piłka wyleci za ekran.
+To call our program a **game**, we need two more things:
+The possibility of scoring points and the possibility of losing - of course only when the ball goes off the screen.
 
-Najlepszą metodą jesli chodzi o programowanie jest rozbijanie problemu na coraz mniejsze problemy, aż do momentu w którym jesteśmy w stanie zacząć je rozwiązywać. Następnie po kolei rozwiązujemy te mikro problemy, aż dojdziemy do momentu, gdy mamy ukończony program. Tak i tym razem rozbijmy nasz problem na na mniejsze i wypiszmy sobie listę wszystkich rzeczy, które potrzebujemy.
+The best method when it comes to programming is to break the problem down into smaller and smaller problems until you are able to start solving them. Then we solve these micro problems one by one until we come to the point where we have the program finished. Let's break down our problem into smaller ones and write down a list of all the things we need.
 
-By gracz mógł przegrać nasza piłka musi wylecieć za ekran - innymi słowy musi się znaleźć co najmniej na poziomie paletki. W naszej wcześniejszej funkcji sprawdzaliśmy czy piłka jest na pozycji o jeden większej od pozycji paletki na osi Y. Jeśli tak było to piłka się odbijała. W przeciwnym wypadku zakładamy, że piłka znalazła się na równi z paletką, co oznacza, że gracz przegrał.
+In order for the player to lose, our ball must fly out of the screen - in other words, it must be at least at the racket level. In our earlier function, we checked if the ball was in a position one greater than the position of the paddle on the Y axis. If so, the ball bounced. If this condition is false we assume that the ball got past the paddle, which means that the player has lost.
 
-Więc nasz warunek jest prosty - Jeśli piłka znajduje się na pozycji takiej samej jak paletka, to gracz przegrał.
+So our condition is simple - If the ball is in the same position as the paddle, the player has lost.
 
-W kodzie będzie to wyglądać tak:
+In the code it will look like this:
 
 ```cpp
   if (ball1.y == getmaxy(win) - 1) {
-    /* Przegrana */
+    /* Game over */
   }
 ```
 
-Sprawdzamy czy pole .y naszej piłki jest równe maksymalnemu poziomowi-Y naszego ekranu `win` -1 (bo tam jest paletka). Jeśli tak to robimy coś, co oznacza, że gracz przegrał.
+We check whether the `ball1.y` field of our ball is equal to the maximum Y-level of our `win - 1` screen (because there is a paddle there). If so, we are free to do something in case of game over.
 
-W grze po przegranej dobrze jest wyświetlić informację o przegranej oraz wyświetlić wynik gracza. Zrobimy to, ale musimy pamiętać, że musimy najpierw wyczyścić ekran, by usunąc z niego paletkę. W tym celu użyjemy funkcji `wclear(win)` z curses. Po jej użyciu musimy ponownie narysować ramkę, gdyż funkcja wyczyściła cały ekran. Następnie możemy wypisać stosowne komunikaty.
+In the game, after a loss, it is a good idea to display information about the loss and show the player's result. We will do this, but we must remember that we must first clean the screen to remove the paddle from it. For this we will use the `wclear (win)` function from curses. After using it, we need to draw the bpx again, because the function cleared the entire screen (including the border). Then we can print the appropriate messages.
 
-W naszej funkcji `single_player` w pętli `while(true)` po linii odpowiedzialnej za odbijanie piłki dodajemy następujący kod:
+In our `single_player` function in the `while (true)` loop, we add the following code after the line responsible for bouncing the ball:
 
 ```cpp 3-11
 /* ... */

@@ -115,7 +115,7 @@ while (true)
 
 Po uruchomieniu programu w takiej wersji szybko zauważymy jednak, że dalej piłka w mgnieniu oka wymyka się poza ekran - śladu faktycznie nie ma, ale piłka też znikła.
 
-Mogli byśmy teraz zmienić naszą funkcję `usleep` i dodać do niej większą wartość czasu. Spowoduje to, że piłka będzie się przesuwać wolniej, gdyż pętla while w której piłka się porusza będzie się wykonywać co dłuższy odstęp czasu. Problem w tym, że wtedy nasza paletka takżę stanie się mniej responsywna - będzie się przesuwać wolniej.
+Mogli byśmy teraz zmienić naszą funkcję `usleep` i dodać do niej większą wartość czasu. Spowoduje to, że piłka będzie się przesuwać wolniej, gdyż pętla while w której piłka się porusza będzie się wykonywać co dłuższy odstęp czasu. Problem w tym, że wtedy nasza paletka takżę stanie się mniej responsywna - będzie się przesuwać wolniej, gdyż będzie oczekiwać taką samą ilość czasu jak piłka.
 
 By rozwiązać ten problem, musimy zrobić coś co jednocześnie spowolni piłkę, ale nie spowolni naszej paletki.
 Wpadłem na pomysł by rozwiązać to w następujący sposób:
@@ -123,7 +123,7 @@ Wpadłem na pomysł by rozwiązać to w następujący sposób:
 - Tworzymy nową zmienną o nazwie `counter`
 - W pętli while co każdą iterację pętli (czyli w co każdej klatce gry) zwiększamy zmienną `counter` o 1.
 - Teraz musimy sprawić, że nasza piłka będzie się przesuwać np. co 300 klatka, a paletka może się przesuwać co każda klatka.
-- By to zrobić za każdym razem będziemy spradzać za pomocą operatora modulo `%` czy zmienna `counter` jest podzielna przez 50. Jeśli tak, to będziemy przesuwać piłkę o pole. Natomiast niezależnie od tego, w każdej iteracji pętli możemy przesuwać paletkę.
+- By to zrobić za każdym razem będziemy spradzać za pomocą operatora modulo `%` czy zmienna `counter` jest podzielna przez 300. Jeśli tak, to będziemy przesuwać piłkę o pole. Natomiast niezależnie od tego, w każdej iteracji pętli możemy przesuwać paletkę.
 
 By nasz plan zadziałał wprowadźmy następujące zmiany w pętli `while` znajdującej się w funkcji `single_player` (do funkcji dodałem też komentarze by opisać nasz kod na przyszłość):
 
@@ -151,7 +151,7 @@ void single_player(WINDOW *win)
   /* Counter pozwala na przesuwanie piłki z opóźnieniem */
   int counter = 0;
 
-  // Funkcja w której znajduje się cała logika gry
+  // Pętla w której znajduje się cała logika gry
   while (true)
   {
     counter++;
@@ -183,16 +183,18 @@ Udało się! Teraz piłka faktycznie przesuwa się, a nasza paletka działa pły
 Zasady odbijania piłki są relatywnie proste:
 
 - Piłka domyślnie przesuwa się o jedno pole w prawo i jedno pole w dół - czyli co iteracja pętli while dodajemy 1 do współrzędnej X i Y piłki.
-- Jeżeli piłka odbija się od ściany lub paletki to zmieniamy kierunek odbicia - więc przesuwać będziemy wtedy co iterację o -1 współrzędne X i Y.
+- Jeżeli piłka odbija się od ściany lub paletki to zmieniamy kierunek poruszania - więc przesuwać będziemy wtedy współrzędne X i Y co iterację każdą iterację o -1.
 - Jedyna trudność polega na tym, że piłka musi się odbijać od paletki - musimy więc sprawdzić dwie rzeczy:
   - Czy piłka znajduje się w wierszu bezpośrednio nad paletką
   - Czy w momencie gdy znajduje się tam piłka, znajduje się tam także paletka od której ma się odbić piłka
   - Żeby spełnić powyższy podpunkt, musimy też sprawdzić wszystkie pola paletki (która ma określoną szerokość) czy piłka znajduje się na jednym z tych miejsc
   
-Plan jest - bierzmy się do roboty - do funkcji `while(true)` znajdującej się w funkcji `single_player` wprowadzamy takie zmiany:
+Plan jest gotowy - bierzmy się do roboty!
+
+Wprowadźmy następujące zmiany do pętli `while(true)` znajdującej się w funkcji `single_player`:
 
 ```cpp 14-37
-// Funkcja w której znajduje się cała logika gry
+// Pętla w której znajduje się logika gry
   while (true)
   {
     counter++;
