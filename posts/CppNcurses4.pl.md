@@ -232,7 +232,7 @@ Wprowadźmy następujące zmiany do pętli `while(true)` znajdującej się w fun
     }
     /* Odbijanie piłki */
 
-    // Funkcja odpowiedzialna za przesuwanie paletki
+    // Pętla odpowiedzialna za przesuwanie paletki
     int quit = move_paddle(win, paddle1);
     if (quit == 1)
     {
@@ -253,7 +253,7 @@ Nasze nowe warunki `if` sprawdzają:
 
 ### Porządki
 
-Z zasady program powinien najpierw działać, a później powinniśmy się zajmować jego optymalizacją. Dlatego też, skoro nasze odbijanie działa, warto teraz uporzadkować program i przenieść logikę odpowiedzialną za odbijanie piłki do innej funkcji by nie zaśmiecała nam funkcji `single_player`.
+Z zasady program powinien najpierw działać, a dopiero później powinniśmy się zajmować jego optymalizacją. Dlatego też, skoro nasze odbijanie działa, warto teraz uporzadkować program i przenieść logikę odpowiedzialną za odbijanie piłki do innej funkcji by nie zaśmiecała nam funkcji `single_player`.
 
 Wycinamy kod z warunkami spomiędzy komentarza `/* odbijanie piłki */` i wstawiamy go do nowej funkcji:
 
@@ -362,13 +362,13 @@ int single_player(WINDOW *win)
   /* Counter pozwala na przesuwanie piłki z opóźnieniem */
   int counter = 0;
   int score = 0;
-  // Funkcja w której znajduje się cała logika gry
+  // Pętla w której znajduje się cała logika gry
   while (true)
   {
     counter++;
-    mvwprintw(win, 0, 0, "Score: %d", score / 125);
-    // Co 125 klatek przesuwamy piłkę, usuwając stary ślad
-    if (counter % 125 == 0)
+    mvwprintw(win, 0, 0, "Score: %d", score / 300);
+    // Co 300 klatek przesuwamy piłkę, usuwając stary ślad
+    if (counter % 300 == 0)
     {
       mvwprintw(win, ball1.y, ball1.x, " ");
       ball1.x += ball1.x_speed;
@@ -383,7 +383,7 @@ int single_player(WINDOW *win)
       wclear(win);
       box(win, 0, 0);
       mvwprintw(win, getmaxy(win) / 2, getmaxx(win) / 2, "GAME OVER");
-      mvwprintw(win, getmaxy(win) / 2 + 1, getmaxx(win) / 2, "Your score: %d", score / 125);
+      mvwprintw(win, getmaxy(win) / 2 + 1, getmaxx(win) / 2, "Your score: %d", score / 300);
       mvwprintw(win, getmaxy(win) / 2 + 2, getmaxx(win) / 2, "Press any key to continue");
       mvwprintw(win, getmaxy(win) / 2 + 3, getmaxx(win) / 2, "Press q to quit");
       wrefresh(win);
@@ -417,8 +417,8 @@ int single_player(WINDOW *win)
 
 - Ustawiamy typ zmiennej na int - będziemy zwracać jej wartość w funkcji `main`
 - Ustawiamy opcję `nodelay(stdcr, FALSE)` - oznacza to, że program nie będzie kontynuował swojego działania dopóki nie wprowadzimy jakiegoś klawisza. Naszym celem jest wyświetlić ekran z wynikiem, a później oczekiwać na wprowadzenie klawisza do kontynuowania gry lub wyjścia z gry.
-- Linie 13-14 umożliwiają pobranie klawisza z klawiatury od użytkownika za pomoca funkcji getch()
-- W linii 16 sprawdzamy czy klawisz wyjścia z gry został naciśnięty - jesli tak to wychodzimy z funkcji single player zwracająć wartość 1 by program wiedział, że opuściliśmy grę dla jednego gracza (może się to przydać w przyszłości np. gdybyśmy chcieli stworzyć menu z różnymi opcjami gry)
+- Linie 13-14 umożliwiają pobranie klawisza z klawiatury od użytkownika za pomoca funkcji `getch()`
+- W linii 16 sprawdzamy czy klawisz wyjścia z gry został naciśnięty - jesli tak to wychodzimy z funkcji `single_player` zwracająć wartość 1 by program wiedział, że opuściliśmy grę dla jednego gracza (może się to przydać w przyszłości np. gdybyśmy chcieli stworzyć menu z różnymi opcjami gry)
 - W 18 linii w warunku else ustalamy, że jeśli gracz nie wybrał klawisza 'q' lub 'Q' to czyścimy poprzedni ekran, tworzymy nową ramkę oraz ustawiamy opcję `nodelay(stdscr, TRUE)`, która pozwoli na dalszą grę bez blokowania klatek w oczekiwaniu na klawisz od gracza (nasza piłka powinna się przesuwać bez względu na to czy ruszamy paletką czy nie - bez tej opcji nie będzie się ona poruszać dopóki nie naciśniemy klawisza).Na koniec zwracamy funkcję single player używając `return`. Gdybyśmy nie użyli return, tylko wstawili samą funkcję `single_player(win)` to została by ona wywołana [rekurencyjnie](https://www.youtube.com/watch?v=jNi_X5bvmQ0) przez pierwszą funkcję. Teoretycznie gra by działała prawidłowo ALE przy próbie wyjścia, po naciśnięciu klawisza 'q' wyszlibyśmy tylko z jednej funkcji, a nie z całej gry. Pozostałe wywołania by dalej były aktywne, więć wyjście z gry by było możliwe dopiero po naciśnięciu 'q' tyle razy, ile razy uruchomiliśmy ponownie grę. Użycie słowa kluczowego `return` pozwala nam zakończyć bieżące wywołanie funkcji i uruchomić nowe.
 
 ## Podsumowanie

@@ -334,41 +334,41 @@ In our `single_player` function in the `while (true)` loop, we add the following
 /* ... */
 ```
 
-Po skompilowaniu jednak dalej pojawia nam się paletka i możemy nią sterować. Możemy wyjść z gry, ale nasza opcja wyboru by kontynuować grę nie działa.
+However, after compiling, the paddle still appears on the screen and we can control it. We can quit the game, but our option to continue playing does not work.
 
-Wobec tego musimy zrobić następujące rzeczy:
+Therefore, we must do the following:
 
-- Sprawić by paletka zniknęłą po wyświetleniu ekranu końcowego
-- Umożliwić graczowi wybór pomiędzy kontynuowaniem gry, a wyjściem z niej
+- Make the paddle disappear when the end screen is displayed
+- Allow the player to choose between continuing the game or quitting the game
 
-Zrobimy to zmieniając kod wyżej w następujący sposób:
+We will do this by modifying the code above as follows:
 
 ```cpp 1, 44-57
 int single_player(WINDOW *win)
 {
-  // Deklaracja piłki oraz jej początkowej pozycji i prędkości
+  // Declaration of ball, its initial position and speed
   Ball ball1;
   ball1.x = 10;
   ball1.y = 10;
   ball1.x_speed = 1;
   ball1.y_speed = 1;
   mvwprintw(win, ball1.y, ball1.x, "o");
-  // Deklaracja paletki, jej pozycji w połowie ekranu na osi X oraz na przedostatniej linii osi Y
+  // Declaration of paddle, its initial x position in the middle of the screen on X axis and its penultimate line of the Y axis
   Paddle paddle1;
   paddle1.x = getmaxx(win) / 2;
   paddle1.y = getmaxy(win) - 2;
   paddle1.width = 5;
 
-  /* Counter pozwala na przesuwanie piłki z opóźnieniem */
+  /* Counter allows us to move the ball with a delay */
   int counter = 0;
   int score = 0;
-  // Funkcja w której znajduje się cała logika gry
+  // Loop containing logic for the game
   while (true)
   {
     counter++;
-    mvwprintw(win, 0, 0, "Score: %d", score / 125);
-    // Co 125 klatek przesuwamy piłkę, usuwając stary ślad
-    if (counter % 125 == 0)
+    mvwprintw(win, 0, 0, "Score: %d", score / 300);
+    // We move the ball each 300 frames, clearing the previous position
+    if (counter % 300 == 0)
     {
       mvwprintw(win, ball1.y, ball1.x, " ");
       ball1.x += ball1.x_speed;
@@ -376,14 +376,14 @@ int single_player(WINDOW *win)
       mvwprintw(win, ball1.y, ball1.x, "o");
     }
 
-    /* Odbijanie piłki */
+    /* Ball bounce */
     ball_bounce(win, ball1, paddle1, score);
     if (ball1.y == getmaxy(win) - 1)
     {
       wclear(win);
       box(win, 0, 0);
       mvwprintw(win, getmaxy(win) / 2, getmaxx(win) / 2, "GAME OVER");
-      mvwprintw(win, getmaxy(win) / 2 + 1, getmaxx(win) / 2, "Your score: %d", score / 125);
+      mvwprintw(win, getmaxy(win) / 2 + 1, getmaxx(win) / 2, "Your score: %d", score / 300);
       mvwprintw(win, getmaxy(win) / 2 + 2, getmaxx(win) / 2, "Press any key to continue");
       mvwprintw(win, getmaxy(win) / 2 + 3, getmaxx(win) / 2, "Press q to quit");
       wrefresh(win);
@@ -401,13 +401,13 @@ int single_player(WINDOW *win)
         return single_player(win);
       }
     }
-    // Funkcja odpowiedzialna za przesuwanie paletki
+    // Function responsible for paddle steering
     int quit = move_paddle(win, paddle1);
     if (quit == 1)
     {
       break;
     }
-    // Usypiamy program na 500 mikrosekund i odświeżamy okno z nowymi danymi
+    // Sleep for 500 microseconds and refresh the window with new data
     usleep(500);
     wrefresh(win);
   }
@@ -415,45 +415,45 @@ int single_player(WINDOW *win)
 }
 ```
 
-- Ustawiamy typ zmiennej na int - będziemy zwracać jej wartość w funkcji `main`
-- Ustawiamy opcję `nodelay(stdcr, FALSE)` - oznacza to, że program nie będzie kontynuował swojego działania dopóki nie wprowadzimy jakiegoś klawisza. Naszym celem jest wyświetlić ekran z wynikiem, a później oczekiwać na wprowadzenie klawisza do kontynuowania gry lub wyjścia z gry.
-- Linie 13-14 umożliwiają pobranie klawisza z klawiatury od użytkownika za pomoca funkcji getch()
-- W linii 16 sprawdzamy czy klawisz wyjścia z gry został naciśnięty - jesli tak to wychodzimy z funkcji single player zwracająć wartość 1 by program wiedział, że opuściliśmy grę dla jednego gracza (może się to przydać w przyszłości np. gdybyśmy chcieli stworzyć menu z różnymi opcjami gry)
-- W 18 linii w warunku else ustalamy, że jeśli gracz nie wybrał klawisza 'q' lub 'Q' to czyścimy poprzedni ekran, tworzymy nową ramkę oraz ustawiamy opcję `nodelay(stdscr, TRUE)`, która pozwoli na dalszą grę bez blokowania klatek w oczekiwaniu na klawisz od gracza (nasza piłka powinna się przesuwać bez względu na to czy ruszamy paletką czy nie - bez tej opcji nie będzie się ona poruszać dopóki nie naciśniemy klawisza).Na koniec zwracamy funkcję single player używając `return`. Gdybyśmy nie użyli return, tylko wstawili samą funkcję `single_player(win)` to została by ona wywołana [rekurencyjnie](https://www.youtube.com/watch?v=jNi_X5bvmQ0) przez pierwszą funkcję. Teoretycznie gra by działała prawidłowo ALE przy próbie wyjścia, po naciśnięciu klawisza 'q' wyszlibyśmy tylko z jednej funkcji, a nie z całej gry. Pozostałe wywołania by dalej były aktywne, więć wyjście z gry by było możliwe dopiero po naciśnięciu 'q' tyle razy, ile razy uruchomiliśmy ponownie grę. Użycie słowa kluczowego `return` pozwala nam zakończyć bieżące wywołanie funkcji i uruchomić nowe.
+- We set the type of the variable to int - we will return its value in the `main` function
+- We set the option `nodelay (stdcr, FALSE)` - this means that the program will not continue running until we enter a key. Our goal is to display the result screen and then wait for a key to be entered to continue or exit the game.
+- Lines 13-14 allow us to get a character from the keyboard input from the user using the `getch()` function
+- On line 16 we check whether the exit key has been pressed - if so, we exit the `single_player` function returning the value 1 so that the program knows that we have left the game for one player (it may be useful in the future, e.g. if we wanted to create a menu with different options for the game)
+- In the 18th line in the else condition we determine that if the player did not choose the `'q'` or `'Q'` key, then we clear the previous screen, create a new frame and set the `nodelay (stdscr, TRUE)` option, which will allow the game to continue without blocking frames while waiting for the key from the player (our ball should move regardless of whether we move the paddle or not - without this option it will not move until we press the key). Finally, we return the single player function using `return`. If we hadn't used return and had only inserted the function `single_player(win)` itself then it would have been called [recursively] (<https://www.youtube.com/watch?v=MwfvXDfaZeI>) by the first function. Theoretically, the game would work properly BUT if you tried to exit, after pressing the 'q' key you would only exit from one function, not the whole game. The rest of the calls would remain active, so quitting the game would only be possible after pressing 'q' as many times as we restarted the game. Using the `return` keyword allows us to terminate the current function call and start a new one.
 
-## Podsumowanie
+## Summary
 
-Sukces! Nasza gra działa zgodnie z wszystkimi założeniami.
+Success! Our game works as expected.
 
-![Ukończona gra](/images/posts/CppNcurses4/finishedGameplay.webm#postVideo)
+![Finished game](/images/posts/CppNcurses4/finishedGameplay.webm#postVideo)
 
-[Kod programu z ukończoną grą](https://raw.githubusercontent.com/Kielx/ncurses-pong/42c0b01acfddf02de8a484be41f23b0cca41e186/main.cpp)
+[Finished game code](https://raw.githubusercontent.com/Kielx/ncurses-pong/42c0b01acfddf02de8a484be41f23b0cca41e186/main.cpp)
 
-**Co udało nam się stworzyć:**
+**What we managed to create:**
 
-- Klasy i obiekty - piłka i paletka
-- Ekran główny gry
-- Logika gry
-  - Sterowanie paletką
-  - Odbijanie piłki
-  - Punktacja
+- Classes and objects - ball and paddle
+- The main screen of the game
+- Game logic
+  - Paddle control
+  - Bouncing the ball
+  - Scoring
 
-**Programistyczne koncepcje wykorzystane podczas tworzenia tej gry:**
+**Development concepts used in the development of this game:**
 
-- Prymitywne typy danych
-- Zmienne
-- Komentarze
-- Pętle
-- Funkcje
-- Klasy i obiekty
-- Zewnętrzne biblioteki
-- Wskaźniki / Przekazywanie jako wartość / Referencje
+- Primitive data types
+- Variables
+- Comments
+- Loops
+- Functions
+- Classes and objects
+- External Libraries
+- Indicators / Passing as value / References
 
-## Źródła
+## Sources
 
-Tworząc tego posta korzystałem intensywnie z poniższych źródeł, które warto sprawdzić jeśli chcesz pogłębić swoją wiedzę na temat Ncurses i innych tematów, które poruszałem w tym poście:
+When creating this post, I used the following sources extensively, which are worth checking out if you want to deepen your knowledge of Ncurses and other topics that I covered in this post:
 
-- [Film Mirosława Zelenta na temat Rekurencji](https://www.youtube.com/watch?v=jNi_X5bvmQ0)
+- [CodeBeauty recursion tutorial](https://www.youtube.com/watch?v=MwfvXDfaZeI)
 - [Ncurses Programming HowTo](https://tldp.org/HOWTO/NCURSES-Programming-HOWTO/)
 - [Ncurses Man Pages](https://invisible-island.net/ncurses/announce.html)
 - [Ncurses - Linux man page](https://linux.die.net/man/3/ncurses)
