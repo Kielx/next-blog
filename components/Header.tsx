@@ -76,7 +76,10 @@ const Header = () => {
     <>
       <div className="mobileNavbar flex h-11 w-full flex-wrap bg-primary lg:hidden">
         <Link href="/" passHref>
-          <a href="replace" className="relative flex h-full w-1/2 py-[2px]">
+          <a
+            href="replace"
+            className="relative flex h-full w-1/2 py-[2px] pl-2 sm:pl-4 md:pl-8"
+          >
             <Image
               src="/logo.svg"
               alt="logo"
