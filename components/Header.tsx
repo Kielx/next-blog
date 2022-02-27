@@ -78,7 +78,7 @@ const Header = () => {
         <Link href="/" passHref>
           <a href="replace" className="relative flex h-full w-1/2 py-[2px]">
             <Image
-              src="/logoDark.svg"
+              src="/logo.svg"
               alt="logo"
               width={156}
               height={40}
@@ -125,7 +125,7 @@ const Header = () => {
               className="relative  flex h-full  w-1/2 justify-items-start"
             >
               <Image
-                src="/logoDark.svg"
+                src="/logo.svg"
                 alt="logo"
                 width={156}
                 height={40}
