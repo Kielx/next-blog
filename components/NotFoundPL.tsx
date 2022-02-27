@@ -8,10 +8,10 @@ type Props = {
 const NotFoundPL = ({ slug }: Props) => {
   return (
     <div className="absolute top-[50%] left-[50%] m-auto flex w-full max-w-[920px] translate-x-[-50%] translate-y-[-50%] flex-col rounded-md md:w-3/4 lg:w-8/12">
-      <h2 className="text-center text-xl font-bold text-[#2c2c2c] xs:text-2xl  sm:text-3xl">
+      <h2 className="text-center text-xl font-bold text-primary xs:text-2xl  sm:text-3xl">
         Ups... Ten post nie istnieje w tym tłumaczeniu
       </h2>
-      <div className="pt-3 text-center text-[#2c2c2c]">
+      <div className="pt-3 text-center text-primary">
         Spróbuj w{' '}
         <Link href={slug} locale="en-US" passHref>
           <a

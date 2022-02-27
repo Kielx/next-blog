@@ -21,7 +21,7 @@ const Hero = ({ imageLink }: Props) => {
           />
         </div>
         <div className="pt-8 lg:order-1 lg:w-2/3">
-          <h1 className="pb-6 text-2xl font-extrabold text-[#2c2c2c] transition-all md:gap-3 md:text-3xl ">
+          <h1 className="pb-6 text-2xl font-extrabold text-primary transition-all md:gap-3 md:text-3xl ">
             {`${t(`h1`)} 👋`}
           </h1>
           <p className="pb-2">{t(`p1`)}</p>

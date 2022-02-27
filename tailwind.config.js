@@ -1,4 +1,5 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
@@ -12,6 +13,11 @@ module.exports = {
     extend: {
       fontFamily: {
         body: ['Poppins', 'sans-serif'],
+      },
+      colors: {
+        primary: '#333333',
+        navLink: '#f5f5f7',
+        secondary: '#6e6e73',
       },
     },
   },

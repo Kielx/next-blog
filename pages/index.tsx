@@ -56,7 +56,7 @@ const Home: NextPage<Props> = ({ posts }) => {
         <Head {...(locale === 'pl' ? metaTagsPL : metaTags)} />
 
         <div className="cardsContainer m-auto box-border grid w-full max-w-[692px] grid-cols-12 justify-center gap-6 gap-y-10 px-4 py-8 xs:px-8 md:px-0 md:py-12 xl:max-w-[980px]">
-          <h2 className="col-span-12 -mt-4 text-xl font-semibold text-[#2c2c2c]">
+          <h2 className="col-span-12 -mt-4 text-xl font-semibold text-primary">
             {t('latestPosts')}
           </h2>
           {posts.map((post, index) =>

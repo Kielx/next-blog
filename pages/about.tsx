@@ -21,7 +21,7 @@ const About = () => {
           />
         </div>
         <div className="w-full pt-8">
-          <h1 className="pb-6 text-2xl font-extrabold text-[#2c2c2c] transition-all md:gap-3 md:text-3xl ">
+          <h1 className="pb-6 text-2xl font-extrabold text-primary transition-all md:gap-3 md:text-3xl ">
             {`${t('h1')}   `}
             <Image
               width={30}

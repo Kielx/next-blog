@@ -50,20 +50,20 @@ const MainPost: React.FC<Props> = ({
         </div>
       </div>
       <div className=" flex flex-col rounded-lg bg-white px-3 md:w-1/2 md:py-6 md:px-4 xl:p-8 xl:pb-4 ">
-        <h3 className="text-md text-start pb-1 font-extrabold text-[#2c2c2c] transition-all hover:text-[#222] md:leading-5 xl:text-2xl xl:leading-7">
+        <h3 className="text-md text-start pb-1 font-extrabold text-primary transition-all hover:text-[#222] md:leading-5 xl:text-2xl xl:leading-7">
           {title}
         </h3>
-        <p className="pb-2 text-xs  text-gray-300 transition-all group-hover:text-gray-400">
+        <p className="pb-2 text-xs  text-secondary transition-all group-hover:text-secondary">
           {date.split('-').reverse().join('-')}
         </p>
-        <p className="m-auto pt-2  text-xs text-[#828282] transition-all group-hover:text-gray-500 md:text-sm xl:text-base  xl:leading-[1.65rem] ">
+        <p className="m-auto pt-2  text-xs text-secondary transition-all group-hover:text-secondary md:text-sm xl:text-base  xl:leading-[1.65rem] ">
           {excerpt}
         </p>
         <div className="mt-auto flex gap-4 pb-2 md:pb-0">
           {keywords.map((keyword) => (
             <span
               key={keyword}
-              className="pt-2 text-xs text-gray-300  transition-all group-hover:text-gray-400 xl:pt-4"
+              className="pt-2 text-xs text-secondary  transition-all group-hover:text-secondary xl:pt-4"
             >
               #{keyword}
             </span>
