@@ -12,3 +12,5 @@
 - [ ] Add space between mobile menu items
 - [ ] Remove about me gif
 - [ ] Fix blocking od sług pages (branch)
+- [ ] Add button to go back to top of the page
+- [ ] Add footer
