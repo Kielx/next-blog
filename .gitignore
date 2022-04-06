@@ -38,4 +38,5 @@ yarn-error.log*
 
 /cypress/screenshots
 /cypress/videos
-dialogflowcreds.json
+dialogflowcreds.
+.idea
