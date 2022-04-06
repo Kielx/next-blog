@@ -59,11 +59,11 @@ const MainPost: React.FC<Props> = ({
         <p className="m-auto pt-2  text-xs text-secondary transition-all group-hover:text-secondary md:text-sm xl:text-base  xl:leading-[1.65rem] ">
           {excerpt}
         </p>
-        <div className="mt-auto flex gap-4 pb-2 md:pb-0">
+        <div className="mt-auto flex flex-wrap gap-x-4 pt-2 pb-2 md:pb-0">
           {keywords.map((keyword) => (
             <span
               key={keyword}
-              className="pt-2 text-xs text-secondary  transition-all group-hover:text-secondary xl:pt-4"
+              className="text-xs text-secondary  transition-all group-hover:text-secondary"
             >
               #{keyword}
             </span>
