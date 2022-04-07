@@ -31,6 +31,44 @@ z Twoim kodem, będą mogły łatwiej z niego korzystać i łatwiej im będzie z
 
 Aby zacząć korzystać z Doxygen, musimy go najpierw zainstalować.
 
+By to zrobić trzeba wpisać w okno terminala następujące polecenie:
+
+```bash
+sudo apt install doxygen doxygen-doc graphviz
+```
+
+To polecenie zainstaluje główną bibliotekę doxygen, dokumentację oraz graphviz, który później możemy użyć by wygenerować grafy zależności.
+
+### Doxyfile / Doxyconfig
+
+By korzystać z Doxygen w naszym projekcie musimy najpierw wygenerować plik konfiguracyjny (lub użyć istniejącego, ale zakładam, że zaczynamy od zera)
+
+By to zrobić musimy w folderze z naszym projektem uruchomić polecenie:
+
+```bash
+doxygen -g doxyfile
+```
+
+Polecenie to stworzy nowy plik konfiguracyjny o nazwie `doxyfile` (choć nazwa jest dowolna i możesz go nazwać jak chcesz)
+
+### Uruchamiamy doxygen
+
+By wygenerować dokumentację dla naszego projektu musimy skorzystać z polecenia 
+
+```bash
+doxygen doxyfile
+```
+
+Po tym w naszym folderze pojawią się pliki z dokumentacją, które znajdziemy w folderach html i latex. Wchodząc do folderu html możemy uruchomić znajdujący się tam plik index.html by wyświetlić zawartą w nim dokumentację:
+
+```bash
+cd html
+firefox index.html
+```
+
+W chwili obecnej nie ma w tym pliku zbyt wiele. By to zmienić musimy dokonać pewnych zmian w pliku konfiguracyjnym. Wrócmy do katalogu głównego naszego projektu i edytujmy plik doxyfile, który wygenerowaliśmy wczesniej. 
+
+
 ## Źródła
 
 Tworząc tego posta, korzystałem intensywnie z poniższych źródeł, które warto sprawdzić, jeśli chcesz pogłębić swoją
