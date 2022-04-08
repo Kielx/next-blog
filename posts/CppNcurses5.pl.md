@@ -31,43 +31,53 @@ z Twoim kodem, będą mogły łatwiej z niego korzystać i łatwiej im będzie z
 
 Aby zacząć korzystać z Doxygen, musimy go najpierw zainstalować.
 
-By to zrobić trzeba wpisać w okno terminala następujące polecenie:
+By to zrobić, trzeba wpisać w okno terminala następujące polecenie:
 
 ```bash
 sudo apt install doxygen doxygen-doc graphviz
 ```
 
-To polecenie zainstaluje główną bibliotekę doxygen, dokumentację oraz graphviz, który później możemy użyć by wygenerować grafy zależności.
+To polecenie zainstaluje główną bibliotekę doxygen, dokumentację oraz graphviz. Doxygen-doc może się przydać, jeśli
+zechcesz zapoznać się bliżej z dokumentacją biblioteki, a graphviz jest potrzebny, by wygenerować grafy zależności.
 
 ### Doxyfile / Doxyconfig
 
-By korzystać z Doxygen w naszym projekcie musimy najpierw wygenerować plik konfiguracyjny (lub użyć istniejącego, ale zakładam, że zaczynamy od zera)
+By skorzystać z Doxygen w naszym projekcie, musimy najpierw wygenerować plik konfiguracyjny (lub użyć istniejącego pliku
+konfiguracyjnego, ale zakładam, że zaczynamy od zera, dlatego wygenerujemy nowy plik)
 
-By to zrobić musimy w folderze z naszym projektem uruchomić polecenie:
+By to zrobić, musimy w folderze z naszym projektem uruchomić polecenie:
 
 ```bash
 doxygen -g doxyfile
 ```
 
-Polecenie to stworzy nowy plik konfiguracyjny o nazwie `doxyfile` (choć nazwa jest dowolna i możesz go nazwać jak chcesz)
+Polecenie to stworzy nowy plik konfiguracyjny o nazwie `doxyfile` (choć nazwa jest dowolna i możesz ten plik nazwać jak
+chcesz, to pamiętaj, żeby później w kodzie odwoływać się do wybranej nazwy)
 
 ### Uruchamiamy doxygen
 
-By wygenerować dokumentację dla naszego projektu musimy skorzystać z polecenia 
+By wygenerować dokumentację dla naszego projektu, musimy skorzystać z polecenia
 
 ```bash
 doxygen doxyfile
 ```
 
-Po tym w naszym folderze pojawią się pliki z dokumentacją, które znajdziemy w folderach html i latex. Wchodząc do folderu html możemy uruchomić znajdujący się tam plik index.html by wyświetlić zawartą w nim dokumentację:
+Po tym w naszym folderze pojawią się pliki z dokumentacją, które znajdziemy w folderach html i latex. Wchodząc do
+folderu html, możemy uruchomić znajdujący się tam plik index.html, by wyświetlić zawartą w nim dokumentację:
 
 ```bash
 cd html
 firefox index.html
 ```
 
-W chwili obecnej nie ma w tym pliku zbyt wiele. By to zmienić musimy dokonać pewnych zmian w pliku konfiguracyjnym. Wrócmy do katalogu głównego naszego projektu i edytujmy plik doxyfile, który wygenerowaliśmy wczesniej. 
+Oczywiście polecenie firefox możesz zastąpić wybraną przez Ciebie przeglądarką internetową. Ewentualnie możesz po prostu
+przejść do tego folderu w systemowej przeglądarce plików.
 
+Obecnie w wygenerowanej dokumentacji nie ma zbyt wiele. By to zmienić, musimy zmienić plik konfiguracyjny. Wróćmy do
+katalogu głównego naszego projektu i edytujmy plik doxyfile, który wygenerowaliśmy wcześniej.
+
+Otwórz plik konfiguracyjny doxygen (doxyfile), a następnie znajdź (ctrl + f) odpowiednie linie i zmień je, by wyglądały
+następująco:
 
 ## Źródła
 
