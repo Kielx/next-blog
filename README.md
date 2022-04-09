@@ -14,3 +14,4 @@
 - [ ] Fix blocking od sług pages (branch)
 - [ ] Add button to go back to top of the page
 - [ ] Add footer
+- [ ] Add links between parts of tutorial
