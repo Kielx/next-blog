@@ -20,7 +20,7 @@ Doxygen i jak z niego korzystać oraz jak wygenerować dokumentację do kodu, kt
 
 ## Co to jest Doxygen?
 
-Doxygen to przydatny program, który pozwala na generowanie dokumentacji kodu na podstawie komentarzy. Dzięki niej
+Doxygen to przydatny program, który pozwala na generowanie dokumentacji kodu na podstawie komentarzy. Dzięki temu nie musisz tworzyć osobnej dokumentacji dla projektu, gdyż wystarczy wstawić odpowiednie komentarze do kodu, a na ich podstawie program wygeneruje całą strukturę w przystępnej formie w plikach .html. Dzięki niej
 później łatwiej zrozumieć nasz kod oraz to jak działają poszczególne funkcje. Dokumentacja taka jest przydatna w
 licznych przypadkach, ale niejednokrotnie może się okazać, że także Ty, wracając do własnego kodu po dłuższym czasie,
 nie będziesz pamiętał, za co odpowiadają poszczególne funkcje lub fragmenty kodu. Jeśli dobrze udokumentujesz kod, to
@@ -73,18 +73,45 @@ firefox index.html
 Oczywiście polecenie firefox możesz zastąpić wybraną przez Ciebie przeglądarką internetową. Ewentualnie możesz po prostu
 przejść do tego folderu w systemowej przeglądarce plików.
 
-Obecnie w wygenerowanej dokumentacji nie ma zbyt wiele. By to zmienić, musimy zmienić plik konfiguracyjny. Wróćmy do
-katalogu głównego naszego projektu i edytujmy plik doxyfile, który wygenerowaliśmy wcześniej.
+Obecnie w wygenerowanej dokumentacji nie ma zbyt wiele. Wynika to z faktu, że domyślnie Doxygen nie generuje dokumentacji dla plików, które nie zostały celowo opisane za pomocą bloku zawierającego instrukcję @file.
 
-Otwórz plik konfiguracyjny doxygen (doxyfile), a następnie znajdź (ctrl + f) odpowiednie linie i zmień je, by wyglądały
-następująco:
+By to zmienić, możemy albo opisać każdy plik po kolei lub użyć opcji `EXTRACT_ALL = TRUE` w pliku konfiguracyjnym. Warto jednak opisać każdy plik, by móć później łatwiej zrozumieć jego zawartość. Dlatego w naszym głównym pliku, w pierwszej linii, jeszcze przed #include dodajmy opis:
 
-## Źródła
+```cpp
+/**
+ * @file main.cpp
+ * @author Twoje dane (Ty@TwojaDomena.com)
+ * @brief Główny plik programu
+ * @version 0.1
+ * @date 2022-04-09
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+ // Reszta programu...
+```
 
-Tworząc tego posta, korzystałem intensywnie z poniższych źródeł, które warto sprawdzić, jeśli chcesz pogłębić swoją
-wiedzę na temat Ncurses i innych tematów, które poruszałem w tym poście:
+Po dodaniu tej opcji nasza dokumentacja będzie już zawierać opis pliku `main.cpp`.
 
-- [Film Mirosława Zelenta na temat Rekurencji](https://www.youtube.com/watch?v=jNi_X5bvmQ0)
-- [Ncurses Programming HowTo](https://tldp.org/HOWTO/NCURSES-Programming-HOWTO/)
-- [Ncurses Man Pages](https://invisible-island.net/ncurses/announce.html)
-- [Ncurses - Linux man page](https://linux.die.net/man/3/ncurses)
+W pliku doxyfile warto też zmienić kilka istotnych opcji - możesz je dopasować wedle swojego uznania, z bardziej istotnych mogę wymienić kilka:
+
+```doxygen
+PROJECT_NAME = "Nazwa projektu"
+OUTPUT_DIRECTORY = "docs"
+PROJECT_BRIEF = "Opis projektu"
+PROJECT_LOGO = "logo.png"
+EXTRACT_ALL = TRUE
+OUTPUT_LANGUAGE = English
+USE_MDFILE_AS_MAINPAGE = "README.md"
+GENERATE_LATEX = NO
+```
+
+Teraz ponownie generujemy dokumentację, która teraz będzie się znajdować w folderze `docs`.
+
+```bash
+doxygen doxyfile
+```
+
+To wszystko! Udało nam się wygenerować dokumentację w formacie Doxygen, choć warto zapoznać się z resztą opcji konfiguracji dostępnych w programie. W naszym projekcie konieczne jest opisanie pozostałych funkcji i klas, których nie opisaliśmy wcześniej, ale by nie przeciągać - nie będę ich tu wstawiał. Aktualny kod programu możesz znaleźć tutaj:
+
+[Kod programu z Doxygen](https://github.com/Kielx/ncurses-pong/tree/aa62eeaf2a33a8a4c235696ed8107156a31f7cf6)
