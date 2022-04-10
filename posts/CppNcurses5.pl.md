@@ -9,9 +9,17 @@ keywords:
 
 ---
 
-![Obraz główny](/images/posts/CppNcurses5/doxygen.webp#postMainImage)
+![Obraz główny](/images/posts/CppNcurses5/doxygen.webp#postMiniImage)
 
 ## Spis treści
+
+- [Wstęp](#wstęp)
+- [Co to jest Doxygen?](#co-to-jest-doxygen)
+- [Jak wyglądają komentarze Doxygen](#jak-wyglądają-komentarze-doxygen)
+- [Jak zacząć korzystać z Doxygen?](#jak-zacząć-korzystać-z-doxygen)
+  - [Doxyfile](#doxyfile)
+  - [Uruchamiamy doxygen](#uruchamiamy-doxygen)
+- [Podsumowanie](#podsumowanie)
 
 ## Wstęp
 
@@ -111,7 +119,7 @@ Pierwsze polecenie zaktualizuje bazę danych pakietów, a następne polecenie za
 dokumentację oraz graphviz. Doxygen-doc może się przydać, jeśli zechcesz zapoznać się bliżej z dokumentacją biblioteki,
 a graphviz jest potrzebny, by wygenerować grafy zależności.
 
-### Doxyfile / Doxyconfig
+### Doxyfile
 
 By skorzystać z Doxygen w naszym projekcie, musimy najpierw wygenerować plik konfiguracyjny (lub użyć istniejącego pliku
 konfiguracyjnego, ale zakładam, że zaczynamy od zera, dlatego wygenerujemy nowy plik)
