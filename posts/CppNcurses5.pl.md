@@ -25,7 +25,7 @@ keywords:
 
 W trakcie pisania kodu zapewne zauważyłeś, że tworzyliśmy bloki z komentarzami przed każdą funkcją i być może
 zastanawiałeś się, do czego są one potrzebne. W tej części poradnika wyjaśnimy to wszystko — dowiemy się, co to jest
-Doxygen i jak z niego korzystać oraz jak wygenerować dokumentację do kodu, który napisaliśmy wcześniej.
+Doxygen - jak z niego korzystać oraz jak wygenerować dokumentację do kodu, który napisaliśmy wcześniej.
 
 ## Co to jest Doxygen?
 
@@ -156,7 +156,7 @@ przejść do tego folderu w systemowej przeglądarce plików.
 
 Obecnie w wygenerowanej dokumentacji nie ma zbyt wiele. Wynika to z faktu, że domyślnie Doxygen nie generuje dokumentacji dla plików, które nie zostały celowo opisane za pomocą bloku zawierającego instrukcję @file.
 
-By to zmienić, możemy albo opisać każdy plik po kolei lub użyć opcji `EXTRACT_ALL = TRUE` w pliku konfiguracyjnym. Warto jednak opisać każdy plik, by móć później łatwiej zrozumieć jego zawartość. Dlatego w naszym głównym pliku, w pierwszej linii, jeszcze przed #include dodajmy opis:
+By to zmienić, możemy albo opisać każdy plik po kolei lub użyć opcji `EXTRACT_ALL = TRUE` w pliku konfiguracyjnym. Warto jednak opisać każdy plik, by móć później łatwiej zrozumieć jego zawartość. Dlatego w naszym głównym pliku, w pierwszej linii, jeszcze przed `#include` dodajmy opis:
 
 ```cpp
 /**
