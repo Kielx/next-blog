@@ -15,3 +15,8 @@
 - [ ] Add button to go back to top of the page
 - [ ] Add footer
 - [ ] Add links between parts of tutorial
+- [ ] Add projects
+- [ ] Add search functionality for posts and projects
+- [ ] Add searching via keyword
+- [ ] Add footer
+- [ ] Add a little more in the about me section
