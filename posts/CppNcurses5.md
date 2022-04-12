@@ -14,18 +14,19 @@ keywords:
 
 ## Table of Contents
 
-- [Wstęp](#wstęp)
-- [Co to jest Doxygen?](#co-to-jest-doxygen)
-- [Jak wyglądają komentarze Doxygen](#jak-wyglądają-komentarze-doxygen)
-- [Jak zacząć korzystać z Doxygen?](#jak-zacząć-korzystać-z-doxygen)
+- [Introduction](#introduction)
+- [What's Doxygen?](#what-s-doxygen)
+- [What Doxygen comments look like](#what-doxygen-comments-look-like)
+- [How to start using Doxygen?](#how-to-start-using-doxygen)
   - [Doxyfile](#doxyfile)
-  - [Uruchamiamy doxygen](#uruchamiamy-doxygen)
-- [Podsumowanie](#podsumowanie)
+  - [Starting Doxygen](#starting-doxygen)
+- [Summary](#summary)
 
 ## Introduction
 
-As you were writing the code, you probably noticed that we were creating blocks with comments in front of each function and maybe
-you wondered what they are needed for. In this part of the tutorial, we'll explain all of this - we'll find out what Doxygen is - how to use it and how to generate documentation for the code we wrote earlier.
+As you were writing the code, you probably noticed that we were creating blocks with comments in front of each function,
+and maybe you wondered what they are needed for. In this part of the tutorial, we'll explain all of this - we'll find
+out what Doxygen is - how to use it and how to generate documentation for the code we wrote earlier.
 
 ## What's Doxygen?
 
@@ -121,7 +122,8 @@ To do this, we need to run the command in our project folder:
 doxygen -g doxyfile
 ```
 
-This command will create a new configuration file called `doxyfile` (although the name is optional and you can name it asyou want, remember to refer to the chosen name later in the code)
+This command will create a new configuration file called `doxyfile` (although the name is optional, and you can name it
+as you want, remember to refer to the chosen name later in the code)
 
 ![Generated configuration file](/images/posts/CppNcurses5/doxygenConfig.webp#postMiniImage)
 
@@ -143,9 +145,12 @@ firefox index.html
 Of course, you can replace the firefox command with your chosen web browser. Alternatively you can just
 navigate to this folder in the system file browser.
 
-Currently, there is not much in the generated documentation. This is because, by default, Doxygen does not generate documentation for files that are not explicitly described with a comment block containing the @file statement.
+Currently, there is not much in the generated documentation. This is because, by default, Doxygen does not generate
+documentation for files that are not explicitly described with a comment block containing the @file statement.
 
-To change this, we can either describe each file in turn or use the `EXTRACT_ALL = TRUE` option in the configuration file. Please not that, it is worth describing each file to make it easier to understand its content later. Therefore, in our main file, in the first line, before `#include`, let's add a description:
+To change this, we can either describe each file in turn or use the `EXTRACT_ALL = TRUE` option in the configuration
+file. Please note that, it is worth describing each file to make it easier to understand its content later. Therefore,
+in our main file, in the first line, before `#include`, let's add a description:
 
 ```cpp
 /**

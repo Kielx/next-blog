@@ -25,7 +25,7 @@ keywords:
 
 W trakcie pisania kodu zapewne zauważyłeś, że tworzyliśmy bloki z komentarzami przed każdą funkcją i być może
 zastanawiałeś się, do czego są one potrzebne. W tej części poradnika wyjaśnimy to wszystko — dowiemy się, co to jest
-Doxygen - jak z niego korzystać oraz jak wygenerować dokumentację do kodu, który napisaliśmy wcześniej.
+Doxygen — jak z niego korzystać oraz jak wygenerować dokumentację do kodu, który napisaliśmy wcześniej.
 
 ## Co to jest Doxygen?
 
