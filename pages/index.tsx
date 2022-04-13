@@ -5,14 +5,16 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import MainPost from '../components/MainPost'
-import Post from '../components/Post'
+import MainPost from '../components/MainPostCard'
+import PostCard from '../components/PostCard'
+import MiniPostCard from '../components/MiniPostCard'
 import Head from '../components/Head'
 import Header from '../components/Header'
 import Hero from '../components/Hero'
+import ProjectCard from '../components/ProjectCard'
 
 type Props = {
-  posts: {
+  postsCardsList: {
     slug: string
     frontmatter: {
       title: string
@@ -20,6 +22,16 @@ type Props = {
       excerpt: string
       coverImage: string
       keywords: string[]
+    }
+  }[]
+  projectsCardsList: {
+    slug: string
+    frontmatter: {
+      title: string
+      date: string
+      excerpt: string
+      coverImage: string
+      techUsed: string[]
     }
   }[]
 }
@@ -44,7 +56,7 @@ const metaTagsPL = {
   siteName: 'Pantak Blog',
 }
 
-const Home: NextPage<Props> = ({ posts }) => {
+const Home: NextPage<Props> = ({ postsCardsList, projectsCardsList }) => {
   const { t } = useTranslation('common')
   const router = useRouter()
   const locale = router.locale as string
@@ -52,24 +64,56 @@ const Home: NextPage<Props> = ({ posts }) => {
     <>
       <Header />
       <Hero imageLink="/myPhoto.webp" />
-      <div className="flex w-full flex-wrap font-body ">
+      <div className="flex w-full flex-col flex-wrap font-body ">
         <Head {...(locale === 'pl' ? metaTagsPL : metaTags)} />
+
+        <div className="cardsContainer m-auto box-border grid w-full max-w-[692px] grid-cols-12 justify-center gap-6 gap-y-2 px-4 py-8 xs:px-8 sm:gap-y-3 md:gap-y-10 md:px-0 md:py-12 xl:max-w-[980px]">
+          <h2 className="col-span-12 mb-8 text-xl font-semibold text-primary md:mb-4 md:-mt-4">
+            {t('latestPosts')}
+          </h2>
+          {postsCardsList.map((post, index) => {
+            if (index < 1) {
+              return (
+                <MainPost
+                  key={post.slug}
+                  slug={post.slug}
+                  {...post.frontmatter}
+                />
+              )
+            }
+            if (index < 3) {
+              return (
+                <PostCard
+                  key={post.slug}
+                  slug={post.slug}
+                  {...post.frontmatter}
+                />
+              )
+            }
+            if (index < 6) {
+              return (
+                <MiniPostCard
+                  key={post.slug}
+                  slug={post.slug}
+                  {...post.frontmatter}
+                />
+              )
+            }
+            return null
+          })}
+        </div>
 
         <div className="cardsContainer m-auto box-border grid w-full max-w-[692px] grid-cols-12 justify-center gap-6 gap-y-10 px-4 py-8 xs:px-8 md:px-0 md:py-12 xl:max-w-[980px]">
           <h2 className="col-span-12 -mt-4 text-xl font-semibold text-primary">
-            {t('latestPosts')}
+            {t('projects')}
           </h2>
-          {posts.map((post, index) =>
-            index < 1 ? (
-              <MainPost
-                key={post.slug}
-                slug={post.slug}
-                {...post.frontmatter}
-              />
-            ) : (
-              <Post key={post.slug} slug={post.slug} {...post.frontmatter} />
-            )
-          )}
+          {projectsCardsList.map((project) => (
+            <ProjectCard
+              key={project.slug}
+              slug={project.slug}
+              {...project.frontmatter}
+            />
+          ))}
         </div>
       </div>
     </>
@@ -77,42 +121,53 @@ const Home: NextPage<Props> = ({ posts }) => {
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  // Get files from the posts directory
   const { locale } = context
-  let files = fs.readdirSync(path.join('posts'))
-  if (locale === 'pl') {
-    files = files.filter((file) => file.endsWith('.pl.md'))
-  } else {
-    files = files.filter((file) => !file.endsWith('pl.md'))
+
+  const createCardsList = (cardItemsFolderName: string) => {
+    // Get files from the posts directory
+
+    let files = fs.readdirSync(path.join(cardItemsFolderName))
+    if (locale === 'pl') {
+      files = files.filter((file) => file.endsWith('.pl.md'))
+    } else {
+      files = files.filter((file) => !file.endsWith('pl.md'))
+    }
+
+    // Get slug and frontmatter from posts
+    const cards = files.map((filename) => {
+      // Create slug
+      const slug = filename.replace('.pl.md', '').replace('.md', '')
+
+      // Get frontmatter
+      const markdownWithMeta = fs.readFileSync(
+        path.join(cardItemsFolderName, filename),
+        'utf-8'
+      )
+
+      const { data: frontmatter } = matter(markdownWithMeta)
+      return {
+        slug,
+        frontmatter,
+      }
+    })
+
+    cards.sort((a, b) => {
+      return (
+        new Date(b.frontmatter.date).getTime() -
+        new Date(a.frontmatter.date).getTime()
+      )
+    })
+
+    return cards
   }
 
-  // Get slug and frontmatter from posts
-  const posts = files.map((filename) => {
-    // Create slug
-    const slug = filename.replace('.pl.md', '').replace('.md', '')
+  const postsCardsList = createCardsList('posts')
+  const projectsCardsList = createCardsList('projects')
 
-    // Get frontmatter
-    const markdownWithMeta = fs.readFileSync(
-      path.join('posts', filename),
-      'utf-8'
-    )
-
-    const { data: frontmatter } = matter(markdownWithMeta)
-    return {
-      slug,
-      frontmatter,
-    }
-  })
-
-  posts.sort((a, b) => {
-    return (
-      new Date(b.frontmatter.date).getTime() -
-      new Date(a.frontmatter.date).getTime()
-    )
-  })
   return {
     props: {
-      posts,
+      postsCardsList,
+      projectsCardsList,
       ...(await serverSideTranslations(locale, ['header', 'hero', 'common'])),
     },
   }
