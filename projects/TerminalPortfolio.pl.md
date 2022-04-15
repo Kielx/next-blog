@@ -51,7 +51,22 @@ Jeśli chodzi o kolorystykę, to opierałem się na kolorystyce Cobalt2, która 
 
 ### Formularz kontaktowy
 
-Formularz kontaktowy obsługiwany jest przez funkcję Lambda na AWS, która jest odpowiednio zabezpieczona przez api gateway. Dzięki temu mogłem ograniczyć ewentualny spam jaki ktoś złośliwy, mógłby chcieć mi wysyłać na podany adres email, a sam formularz jest łatwy do wykorzystania w innych projektach.
+W zasadzie, wystarczyło by przecież podać adres e-mail i ktoś kto chciałby się ze mną skontaktować mógł by wysłać wiadomość prawda? Teoretycznie tak, ale jest to prosta droga do zasypania poczty niechcianym spamem w przypadku, gdy jakiś bot lub ktoś złośliwy uzna, że warto obdarować mnie niechcianymi wiadomościami.
+
+Chcąc uniknąc takiej sytuacji jedynym wyjściem jest stworzenie formularza kontaktowego, gdzie uczciwa osoba, chcąca napisać do mnie wiadomość poda swój adres e-mail i napisze wiadomość. Formularz powinien wtedy wysłać ją na mój adres, bez ujawniania go szerszej publiczności.
+
+Wobec tego musiałem wziąć kilka okoliczności pod uwagę przy tworzeniu tego formularza:
+
+- Skoro formularz jest obsługiwany przez frontend, to zakodowanie w JavaScript adresu e-mail na który ma być wysyłana wiadomość nie wchodziło w grę, gdyż równie dobrze, każdy mógł by podejrzeć zawartość żądania sieciowego i sprawdzić na jaki adres wysyłamy wiadomość.
+- Ewentualny klucz API do obsługi wysyłanych wiadomości również nie mógł być przechowywany we frontendzie, gdyż można by go podejrzeć w taki sam sposób.
+- Musiałem też wziąć pod uwagę, że w łatwy sposób można wysłac setki wiadomości za pomocą tego formularza i w jakiś sposób zapobiec takiej ewentualności
+
+Rozwiązałem to w następujący sposób:
+
+- Użytkownik wpisuje swój adres e-mail i wiadomość w formularzu kontaktowym.
+- Następnie wysyłane jest żądanie do funkcji lambda hostowanej na Netlify, w której zapisane są dane gatewaya AWS oraz klucz API do potwierdzenia, że żądanie pochodzi z mojej strony
+- Po wysłaniu tego żądania API Gateway AWS sprawdza czy żądanie pochodzi z mojej strony oraz ogranicza wiadomości do 3 na sekundę i 30 wiadomości dziennie - dzięki temu  nie ma możliwości zasypania mnie spamem, a mój limit wydatków na AWS nie zostanie przekroczony.
+- Jeśli żądanie pochodzi z mojej strony, to zostaje wysyłane do funkcji lambda AWS, która za pomocą AWS SES wysyła wiadomość na mój adres e-mail.
 
 ## Wnioski
 
