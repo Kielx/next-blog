@@ -1,6 +1,5 @@
 ---
 title: 'Terminal Portfolio'
-date: '2022-02-01'
 liveLink: 'https://pantak.net'
 githubLink: 'https://github.com/Kielx/terminal-portfolio'
 excerpt: Portfolio stylizowane na wiersz poleceń. Stworzone z wykorzystaniem Gatsby, strony projektów generowane z plików Markdown, a okna tworzone przy pomocy Winbox.js.

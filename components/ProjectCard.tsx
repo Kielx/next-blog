@@ -12,7 +12,6 @@ type Props = {
   liveLink: string
   githubLink: string
   excerpt: string
-  date: string
   techUsed: string[]
 }
 
@@ -23,7 +22,6 @@ const ProjectCard: React.FC<Props> = ({
   liveLink,
   githubLink,
   excerpt,
-  date,
   techUsed,
 }) => {
   const { ref, inView, entry } = useInView({
@@ -90,11 +88,7 @@ const ProjectCard: React.FC<Props> = ({
         <h3 className=" text-start text-md font-extrabold text-primary transition-all hover:text-[#222] md:text-left md:text-xl">
           {title}
         </h3>
-        <p className="text-xs text-secondary  opacity-80 transition-all group-hover:text-secondary">
-          {date.split('-').reverse().join('-')}
-        </p>
-
-        <p className="pt-2 text-xs text-secondary transition-all line-clamp-3 group-hover:text-secondary md:text-sm  lg:pt-4">
+        <p className="py-1 text-xs text-secondary transition-all line-clamp-3 group-hover:text-secondary md:text-sm  lg:pt-2">
           {excerpt}
         </p>
         <div className="flex flex-wrap gap-2 pt-2">

@@ -93,12 +93,9 @@ const PostPage: NextPage<Props> = ({
         />
 
         <div className="m-auto flex min-h-screen w-full max-w-[920px] flex-col rounded-md bg-white md:w-3/4 lg:w-8/12">
-          <h2 className="text-center text-xl font-bold text-primary xs:text-2xl  sm:text-3xl">
+          <h2 className="py-2 text-center text-xl font-bold text-primary xs:text-2xl  sm:text-3xl">
             {frontmatter.title}
           </h2>
-          <p className="pt-1 pb-2 text-center text-gray-300">
-            {frontmatter.date}
-          </p>
           <div className="flex flex-wrap justify-center gap-2 pb-2">
             <Button
               bgColor="#24292F"
