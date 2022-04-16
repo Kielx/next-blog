@@ -28,6 +28,8 @@ type Props = {
     slug: string
     frontmatter: {
       title: string
+      liveLink: string
+      githubLink: string
       date: string
       excerpt: string
       coverImage: string

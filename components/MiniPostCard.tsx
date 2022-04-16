@@ -43,7 +43,7 @@ const MiniPostCard: React.FC<Props> = ({
         ref={ref}
         className={`${
           inView && !initialView && 'animate__fadeInUp'
-        } animate__animated Post group relative col-span-12  cursor-pointer rounded-lg bg-white shadow transition-all md:col-span-4`}
+        } animate__animated Post group relative col-span-12  cursor-pointer rounded-lg bg-white shadow transition-all hover:shadow-md md:col-span-4`}
         key={slug}
       >
         <div className="hidden h-40 w-full overflow-hidden  rounded-t-lg md:flex ">
