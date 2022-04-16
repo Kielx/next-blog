@@ -13,12 +13,31 @@ techUsed:
 
 ![App Screenshot](https://raw.githubusercontent.com/Kielx/terminal-portfolio/master/static/PortfolioSS.png#postMiniImage 'Screenshot of app')
 
+## Spis treści
+
+- [Co to jest Terminal Portfolio](#co-to-jest-terminal-portfolio)
+- [Stworzone przy pomocy](#stworzone-przy-pomocy)
+- [Jak i dlaczego?](#jak-i-dlaczego)
+  - [Szybkość — Gatsby](#szybkość---gatsby)
+  - [Prostota obsługi — Markdown](#prostota-obsługi---markdown)
+  - [Oryginalność - Winbox.js](#oryginalność---winbox-js)
+  - [Formularz kontaktowy](#formularz-kontaktowy)
+- [Wnioski](#wnioski)
+
 ## Co to jest Terminal Portfolio
 
 Od zawsze byłem zafascynowany oknem terminala. Jest proste, lecz niezwykle potężne. Dlatego też zainspirowany filmem o
 tworzeniu landing page z wykorzystaniem Winbox.js postanowiłem wykorzystać tą technologię do stworzenia mojego
 portfolio. Portfolio stylizowane na okno wiersza poleceń wyglądało na ciekawy i oryginalny projekt, który w prosty
 sposób może przedstawić moje programistyczne projekty.
+
+## Stworzone przy pomocy
+
+- [React](https://reactjs.org/)
+- [Gatsby](https://www.gatsbyjs.com/)
+- [Winbox.js](https://github.com/nextapps-de/winbox)
+- [Markdown](https://www.markdownguide.org/getting-started/)
+- [AWS API Gateway / Lambda Functions](https://aws.amazon.com/)
 
 ## Jak i dlaczego?
 
@@ -44,7 +63,7 @@ Projekty przechowywane są w folderze projektu w plikach Markdown. Zapewnia to �
 
 ### Oryginalność - Winbox.js
 
-Projekt zawdzięcza swoją oryginalność zastosowaniu biblioteki Winbox.js, która umożliwia tworzenie osobnych okien wewnątrz przeglądarki. Dzięki temu dla użytkownika, który korzysta z komputera do wyświetlania zawartośći strony, każdy projekt otwierany jest w osobnym oknie stylizowanym na nowe okno terminala. Tam wyświetlane jest zdjęcie lub film przedstawiajacy projekt.
+Projekt zawdzięcza swoją oryginalność zastosowaniu biblioteki Winbox.js, która umożliwia tworzenie osobnych okien wewnątrz przeglądarki. Dzięki temu dla użytkownika, który korzysta z komputera do wyświetlania zawartośći strony, każdy projekt otwierany jest w osobnym oknie stylizowanym na nowe okno terminala. Tam wyświetlane jest zdjęcie lub film przedstawiajacy projekt. Użytkownikom urządzeń mobilnych wyświetlane są osobne strony, dzięki temu nie ma problemów z nawigają i osbsługą okien za pomocą dotyku.
 
 W początkowej wersji chciałem stworzyć grafiki ASCII i wyświetlać je w oknie. Dzięki temu projekt wyglądałby bardziej spójnie i 'hakersko', ale jednocześnie straciłby dużo w kwestii łatwości użycia — a to był przecież mój cel główny. W moim zamyśle portfolio ma w łatwy i przystępny sposób prezentować projekty, a nie służyć za idealną kopię okna terminala.
 
