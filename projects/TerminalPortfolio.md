@@ -26,7 +26,7 @@ techUsed:
 
 ## What Terminal Portfolio is
 
-I have always been fascinated by the terminal window. It is simple but extremely powerful. Therefore, inspired by the YouTube video about creating a landing page using Winbox.js, I decided to use this technology to create my portfolio. The command-line styled portfolio looked like an interesting and original design that can present my programming projects simply and cleanly.
+I have always been fascinated by the terminal. It is simple but extremely powerful. Therefore, inspired by the YouTube video about creating a landing page using Winbox.js, I decided to use this technology to create my portfolio. The command-line styled portfolio looked like an interesting and original design that can present my programming projects simply and cleanly.
 
 ## Built with
 
@@ -35,6 +35,7 @@ I have always been fascinated by the terminal window. It is simple but extremely
 - [Winbox.js](https://github.com/nextapps-de/winbox)
 - [Markdown](https://www.markdownguide.org/getting-started/)
 - [AWS API Gateway / Lambda Functions](https://aws.amazon.com/)
+- [Netlify Serverless Functions](https://www.netlify.com/docs/functions/)
 
 ## How and why?
 
@@ -50,15 +51,15 @@ This was the first project that I created using Gatsby. At that time, I read a l
 
 ### Ease of use - Markdown
 
-Another important aspect for me when creating this project was the ease of use. While watching some of the portfolios, I saw many projects using creative solutions for user interactions. Very ingenious, but often very counter-intuitive. I found such non-standard solutions to be very interesting, but they can make it difficult to navigate through the website, and sometimes even make it impossible to get to know its essence - the projects it is supposed to present. Therefore, despite the temptation to create, for example, an interactive window in which the user can enter commands, I immediately displayed all the projects in the list to choose from.
+Another important aspect for me when creating this project was the ease of use. While watching some portfolios, I noticed that a lot of them use really creative solutions for user interactions. Very ingenious, but often very counter-intuitive. I found such non-standard solutions to be very interesting, but they can make it difficult to navigate through the website, and sometimes even make it impossible to get to know its essence - the projects it is supposed to present. Therefore, despite the temptation to create, for example, an interactive window in which the user can enter commands, I immediately displayed all the projects in the list to choose from.
 
-Projects are stored in the projects folder in separate Markdown files. This ensures that they are easy to edit and independent from other service providers. I did not want to connect to separate CMS services, because editing Markdown files is easy and fun, and one commit is all that separates me from uploading the updated version to GitHub.
+Projects are stored in the projects' folder in separate Markdown files. This ensures that they are easy to edit and independent of other service providers. I did not want to connect to separate CMS services, because editing Markdown files is easy and fun, and one commit is all that separates me from uploading the updated version to GitHub.
 
 ### Uniqueness - Winbox.js
 
 The project owes its uniqueness to the use of the Winbox.js library, which allows users to create separate windows inside the browser. As a result, for the user who uses the desktop computer to display the page content, each project opens in a separate window styled as a new terminal window. There, a photo or video of the project is displayed. For mobile users, the project windows are displayed as separate static pages for a better user experience.
 
-In the initial release, I wanted to create ASCII graphics and display them in a window. This would make the design look more coherent and 'hackerish', but at the same time lose a lot in terms of ease of use - and ease of use was my main goal after all. The portfolio is supposed to present projects in an easy and accessible way, and not to serve as a perfect copy of the terminal window.
+In the initial release, I wanted to create ASCII graphics and display them in a window. This would make the design look more coherent and 'hacker-ish', but at the same time lose a lot in terms of ease of use - and ease of use was my main goal after all. The portfolio is supposed to present projects in an easy and accessible way, and not to serve as a perfect copy of the terminal window.
 
 As for the color scheme, I relied on the Cobalt2 color scheme, which gave the terminal windows a little more color than the standard black and white. In light mode, I used a solarized light-based palette, which allows the eyes to take a break from the completely white background.
 
@@ -70,9 +71,9 @@ To avoid such a situation, the only solution was to create a contact form, where
 
 Therefore, I had to take several considerations into account when creating this form:
 
-- Since the form is handled by the frontend, hardcoding the e-mail address in JavaScript was not an option, because anyone could view the content of the network request and check the address to which we are sending the message.
+- Since the form is handled by the frontend, hard coding the e-mail address in JavaScript was not an option, because anyone could view the content of the network request and check the address to which we are sending the message.
 - An API key to secure and authenticate sent messages could not be stored in the frontend for the same reason.
-- I also had to take into account that you can easily send hundreds of messages using this form. Therefore I had to somehow prevent such an eventuality. Any attempts to limit this on the frontend are bound to be unsuccessful because a properly determined person can easily change all my security features.
+- I also had to take into account that you can easily send hundreds of messages using this form. Therefore, I had to somehow prevent such an eventuality. Any attempts to limit this on the frontend are bound to be unsuccessful because a properly determined person can easily change all my security features.
 
 I solved it as follows:
 

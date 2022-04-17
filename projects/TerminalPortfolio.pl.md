@@ -27,7 +27,7 @@ techUsed:
 ## Co to jest Terminal Portfolio
 
 Od zawsze byłem zafascynowany oknem terminala. Jest proste, lecz niezwykle potężne. Dlatego też zainspirowany filmem o
-tworzeniu landing page z wykorzystaniem Winbox.js postanowiłem wykorzystać tą technologię do stworzenia mojego
+tworzeniu landing page z wykorzystaniem Winbox.js postanowiłem wykorzystać tę technologię do stworzenia mojego
 portfolio. Portfolio stylizowane na okno wiersza poleceń wyglądało na ciekawy i oryginalny projekt, który w prosty
 sposób może przedstawić moje programistyczne projekty.
 
@@ -38,10 +38,11 @@ sposób może przedstawić moje programistyczne projekty.
 - [Winbox.js](https://github.com/nextapps-de/winbox)
 - [Markdown](https://www.markdownguide.org/getting-started/)
 - [AWS API Gateway / Lambda Functions](https://aws.amazon.com/)
+- [Funkcje Netlify](https://www.netlify.com/docs/functions/)
 
 ## Jak i dlaczego?
 
-Poniżej przedstawiam jakie technologie wykorzystałem podczas tworzenia mojego portfolio oraz co spowodowało, że zdecydowałem się właśnie na te rozwiązania, a także problemy na jakie się natknąłem oraz moj sposób na ich rozwiązanie.
+Poniżej przedstawiam jakie technologie wykorzystałem podczas tworzenia mojego portfolio oraz co spowodowało, że zdecydowałem się właśnie na te rozwiązania, a także problemy, na jakie się natknąłem oraz moj sposób na ich rozwiązanie.
 
 ### Szybkość — Gatsby
 
@@ -63,7 +64,7 @@ Projekty przechowywane są w folderze projektu w plikach Markdown. Zapewnia to �
 
 ### Oryginalność - Winbox.js
 
-Projekt zawdzięcza swoją oryginalność zastosowaniu biblioteki Winbox.js, która umożliwia tworzenie osobnych okien wewnątrz przeglądarki. Dzięki temu dla użytkownika, który korzysta z komputera do wyświetlania zawartośći strony, każdy projekt otwierany jest w osobnym oknie stylizowanym na nowe okno terminala. Tam wyświetlane jest zdjęcie lub film przedstawiajacy projekt. Użytkownikom urządzeń mobilnych wyświetlane są osobne strony, dzięki temu nie ma problemów z nawigają i osbsługą okien za pomocą dotyku.
+Projekt zawdzięcza swoją oryginalność zastosowaniu biblioteki Winbox.js, która umożliwia tworzenie osobnych okien wewnątrz przeglądarki. Dzięki temu dla użytkownika, który korzysta z komputera do wyświetlania zawartości strony, każdy projekt otwierany jest w osobnym oknie stylizowanym na nowe okno terminala. Tam wyświetlane jest zdjęcie lub film przedstawiający projekt. Użytkownikom urządzeń mobilnych wyświetlane są osobne strony, dzięki temu nie ma problemów z nawigacją i obsługą okien za pomocą dotyku.
 
 W początkowej wersji chciałem stworzyć grafiki ASCII i wyświetlać je w oknie. Dzięki temu projekt wyglądałby bardziej spójnie i 'hakersko', ale jednocześnie straciłby dużo w kwestii łatwości użycia — a to był przecież mój cel główny. W moim zamyśle portfolio ma w łatwy i przystępny sposób prezentować projekty, a nie służyć za idealną kopię okna terminala.
 
@@ -71,27 +72,27 @@ Jeśli chodzi o kolorystykę, to opierałem się na kolorystyce Cobalt2, która 
 
 ### Formularz kontaktowy
 
-W zasadzie, wystarczyło by przecież podać adres e-mail i ktoś kto chciałby się ze mną skontaktować mógł by wysłać wiadomość prawda? Teoretycznie tak, ale jest to prosta droga do zasypania poczty niechcianym spamem w przypadku, gdy jakiś bot lub ktoś złośliwy uzna, że warto obdarować mnie niechcianymi wiadomościami.
+W zasadzie wystarczyłoby przecież podać adres e-mail i ktoś, kto chciałby się ze mną skontaktować, mógłby wysłać wiadomość prawda? Teoretycznie tak, ale jest to prosta droga do zasypania poczty niechcianym spamem w przypadku, gdy jakiś bot lub ktoś złośliwy uzna, że warto obdarować mnie niechcianymi wiadomościami.
 
-Chcąc uniknąc takiej sytuacji jedynym wyjściem jest stworzenie formularza kontaktowego, gdzie uczciwa osoba, chcąca napisać do mnie wiadomość poda swój adres e-mail i napisze wiadomość. Formularz powinien wtedy wysłać ją na mój adres, bez ujawniania go szerszej publiczności.
+Chcąc uniknąć takiej sytuacji, jedynym wyjściem jest stworzenie formularza kontaktowego, gdzie uczciwa osoba, chcąca napisać do mnie wiadomość poda swój adres e-mail i napisze wiadomość. Formularz powinien wtedy wysłać ją na mój adres, bez ujawniania go szerszej publiczności.
 
 Wobec tego musiałem wziąć kilka okoliczności pod uwagę przy tworzeniu tego formularza:
 
-- Skoro formularz jest obsługiwany przez frontend, to zakodowanie w JavaScript adresu e-mail na który ma być wysyłana wiadomość nie wchodziło w grę, gdyż równie dobrze, każdy mógł by podejrzeć zawartość żądania sieciowego i sprawdzić na jaki adres wysyłamy wiadomość.
+- Skoro formularz jest obsługiwany przez frontend, to zakodowanie w JavaScript adresu e-mail, na który ma być wysyłana wiadomość, nie wchodziło w grę, gdyż równie dobrze, każdy mógłby podejrzeć zawartość żądania sieciowego i sprawdzić, na jaki adres wysyłamy wiadomość.
 - Ewentualny klucz API do obsługi wysyłanych wiadomości również nie mógł być przechowywany we frontendzie, gdyż można by go podejrzeć w taki sam sposób.
-- Musiałem też wziąć pod uwagę, że w łatwy sposób można wysłac setki wiadomości za pomocą tego formularza i w jakiś sposób zapobiec takiej ewentualności. Jakiekolwiek próby ograniczenia tego na frontendzie są bezskuteczne, gdyż odpowiednio zdeterminowana osoba bez trudu może zmienić wszystkie moje zabezpieczenia.
+- Musiałem też wziąć pod uwagę, że w łatwy sposób można wysłał setki wiadomości za pomocą tego formularza i w jakiś sposób zapobiec takiej ewentualności. Jakiekolwiek próby ograniczenia tego na frontendzie są bezskuteczne, gdyż odpowiednio zdeterminowana osoba bez trudu może zmienić wszystkie moje zabezpieczenia.
 
 Rozwiązałem to w następujący sposób:
 
 - Użytkownik wpisuje swój adres e-mail i wiadomość w formularzu kontaktowym i wysyła wiadomość za pomocą strony.
 - Następnie wysyłane jest żądanie do funkcji lambda hostowanej na Netlify, w której zapisane są dane gatewaya AWS oraz klucz API do potwierdzenia, że żądanie pochodzi z mojej strony. Oczywiście dane te są przechowywane jako zmienne środowiskowe na Netlify, więc nie da się ich podejrzeć z poziomu kodu. Funkcja ta, która otrzymała żądanie od strony z portfolio, przesyła je dalej do AWS API Gateway.
-- Po otrzymaniu tego żądania API Gateway AWS sprawdza czy żądanie pochodzi z mojej strony oraz ogranicza wiadomości do 3 na sekundę i 30 wiadomości dziennie - dzięki temu  nie ma możliwości zasypania mnie spamem, a mój limit wydatków na AWS nie zostanie przekroczony.
+- Po otrzymaniu tego żądania API Gateway AWS sprawdza, czy żądanie pochodzi z mojej strony oraz ogranicza wiadomości do 3 na sekundę i 30 wiadomości dziennie — dzięki temu nie ma możliwości zasypania mnie spamem, a mój limit wydatków na AWS nie zostanie przekroczony.
 - Jeśli żądanie pochodzi z mojej strony, to zostaje wysyłane do funkcji lambda AWS, która za pomocą AWS SES wysyła wiadomość na mój adres e-mail.
 
-Być może nie jest to rozwiązanie najprostsze lub najbardziej optymalne. Sendgrid oferuje przecież 100 darmowych e-maili na dzień i proste API - to fakt, ale tworząć ten formularz chciałem poznać jak działają niektóre technologie w chmurze, a przy okazji utrzymać (przynajmniej pozorną) niezależność od płatnych, zewnętrznych API.
+Być może nie jest to rozwiązanie najprostsze lub optymalne. Sendgrid oferuje przecież 100 darmowych e-maili na dzień i proste API — to fakt, ale tworząc ten formularz, chciałem jednocześnie poznać, jak działają niektóre technologie chmury, a przy okazji utrzymać (przynajmniej pozorną) niezależność od płatnych, zewnętrznych API.
 
 ## Wnioski
 
 Finalnie, jestem bardzo zadowolony z efektu, jaki udało mi się osiągnąć. Projekt zyskał nawet kilka gwiazdek na GitHubie, co pozwala mi sądzić, że udało mi się zrealizować zamierzone cele.
 
-Jeśli jeszcze tego nie zrobiłeś, to sprawdź, jak wygląda [Portfolio live](https://www.pantak.net) i zerknij na [kod na GitHub](https://github.com/kielx/terminal-portfolio). Tam też znajdziesz instrukcje jak sklonować projekt, jeśli chcesz zaczerpnąć inspiracji podczas tworzenia własnego projektu opartego na tej stronie.
+Jeśli jeszcze tego nie zrobiłeś, to sprawdź, jak wygląda [Portfolio live](https://www.pantak.net) i zerknij na [kod na GitHub](https://github.com/kielx/terminal-portfolio). Tam też znajdziesz instrukcje jak sklonować projekt, jeśli zechcesz zaczerpnąć inspiracji.
