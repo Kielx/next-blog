@@ -42,7 +42,7 @@ const MiniPostCard: React.FC<Props> = ({
         href="replace"
         ref={ref}
         className={`${
-          inView && !initialView && 'animate__fadeInUp'
+          inView && !initialView && 'animate__fadeInUp animate__fast'
         } animate__animated Post group relative col-span-12  cursor-pointer rounded-lg bg-white shadow transition-all hover:shadow-md md:col-span-4`}
         key={slug}
       >

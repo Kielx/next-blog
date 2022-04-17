@@ -20,3 +20,4 @@
 - [ ] Add searching via keyword
 - [ ] Add footer
 - [ ] Add a little more in the about me section
+- [ ] Rework PostCard, MiniPostCard, MainPostCard to be only one component using separate styles

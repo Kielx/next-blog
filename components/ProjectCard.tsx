@@ -44,7 +44,7 @@ const ProjectCard: React.FC<Props> = ({
   return (
     <div
       className={`${
-        inView && !initialView && 'animate__fadeInUp'
+        inView && !initialView && 'animate__fadeInUp animate__fast'
       } animate__animated Post group relative col-span-12  cursor-pointer rounded-lg bg-white shadow transition-all hover:shadow-md md:col-span-6`}
       key={slug}
     >
