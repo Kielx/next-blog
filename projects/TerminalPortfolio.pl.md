@@ -56,6 +56,8 @@ również mają podobne podejście. Dlatego też przy tworzeniu portfolio jako f
 
 To był mój pierwszy projekt, który wykonałem, korzystając z Gatsby. W owym czasie czytałem sporo na temat możliwości, jakie oferuje ten framework, a w szczególności zainteresowała mnie możliwość generowania statycznych stron i obiecywana prędkość, z jaką miała działać aplikacja korzystająca z Gatsby. Optymalizacja zdjęć, generowanie stron, pluginy do obsługi Markdowna — wszystkie te rzeczy były dość trudne do opanowania za pierwszym razem, jednak finalnie udało mi się stworzyć moje pierwsze portfolio, a przy okazji zdobyć doświadczenie w tworzeniu stron przy użyciu Gatsby.
 
+![Lighthouse](/images/projects/terminalPortfolio/lighthouse.webp#postMiniImage)
+
 ### Prostota obsługi — Markdown
 
 Kolejnym istotnym dla mnie aspektem przy tworzeniu tego projektu, była łatwość obsługi. Oglądając niektóre portfolia, widziałem w nich bardzo pomysłowe rozwiązania na interakcje ze stroną. Bardzo pomysłowe, ale niejednokrotnie bardzo nieintuicyjne. Uznałem, że takie niestandardowe rozwiązania są bardzo ciekawe, ale mogą utrudnić łatwą nawigację po stronie, a czasem uniemożliwić nawet zapoznanie się z jej sednem — projektami, które ma prezentować. Dlatego też mimo pokusy stworzenia np. interaktywnego okna, w którym użytkownik może wpisywać komendy, wyświetliłem od razu wszystkie projekty w liście do wyboru.

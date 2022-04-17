@@ -49,6 +49,8 @@ also have a similar approach. Therefore, when creating a portfolio, I chose Gats
 
 This was the first project that I created using Gatsby. At that time, I read a lot about the possibilities that this framework offers, and in particular, I was interested in the ability to generate static pages and the promised speed at which an application using Gatsby was supposed to run. Optimizing photos, generating pages, Markdown plugins - all these things were quite difficult to learn the first time, but finally, I managed to create my portfolio and gain experience by using Gatsby's features.
 
+![Lighthouse scores](/images/projects/terminalPortfolio/lighthouse.webp#postMiniImage)
+
 ### Ease of use - Markdown
 
 Another important aspect for me when creating this project was the ease of use. While watching some portfolios, I noticed that a lot of them use really creative solutions for user interactions. Very ingenious, but often very counter-intuitive. I found such non-standard solutions to be very interesting, but they can make it difficult to navigate through the website, and sometimes even make it impossible to get to know its essence - the projects it is supposed to present. Therefore, despite the temptation to create, for example, an interactive window in which the user can enter commands, I immediately displayed all the projects in the list to choose from.
