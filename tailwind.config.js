@@ -30,6 +30,28 @@ module.exports = {
         navLink: '#f5f5f7',
         secondary: '#6e6e73',
       },
+      keyframes: {
+        'fade-in': {
+          '0%': {
+            opacity: 0,
+          },
+          '100%': {
+            opacity: 0.5,
+          },
+        },
+        'fade-out': {
+          '0%': {
+            opacity: 0.5,
+          },
+          '100%': {
+            opacity: 0,
+          },
+        },
+      },
+      animation: {
+        'fade-in': 'fade-in 0.5s ease-in-out',
+        'fade-out': 'fade-out 0.5s ease-in-out',
+      },
     },
   },
   plugins: [require('@tailwindcss/line-clamp')],

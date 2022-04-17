@@ -14,10 +14,12 @@ import 'animate.css'
 import '../styles/globals.css'
 import '../styles/slug.css'
 import 'react-toastify/dist/ReactToastify.css'
+import ScrollTopButton from '../components/ScrollTopButton'
 
 const MyApp = ({ Component, pageProps }: AppProps) => (
   <>
     <ToastContainer position="top-left" transition={Slide} />
+    <ScrollTopButton />
     <Component {...pageProps} />
   </>
 )
