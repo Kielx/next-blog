@@ -5,9 +5,9 @@ const ScrollTopButton = () => {
   const [showScroll, setShowScroll] = useState(false)
 
   const checkScrollTop = () => {
-    if (!showScroll && window.pageYOffset > 400) {
+    if (!showScroll && window.scrollY > 400) {
       setShowScroll(true)
-    } else if (showScroll && window.pageYOffset <= 400) {
+    } else if (showScroll && window.scrollY <= 400) {
       setShowScroll(false)
     }
   }
@@ -23,16 +23,29 @@ const ScrollTopButton = () => {
   }
 
   return (
-    <div
+    <button
+      type="button"
       className={`${
         showScroll
           ? 'flex animate-fade-in opacity-50'
           : 'pointer-events-none flex animate-fade-out opacity-0'
-      } fixed bottom-5 right-5 z-[150] h-5 w-5  cursor-pointer items-center transition-opacity hover:opacity-100`}
+      } fixed bottom-2 right-2 z-[150] h-10 w-10 cursor-pointer items-center  transition-opacity hover:opacity-100 md:bottom-7 md:right-7`}
       onClick={scrollTop}
     >
-      TOP
-    </div>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth="2"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M9 11l3-3m0 0l3 3m-3-3v8m0-13a9 9 0 110 18 9 9 0 010-18z"
+        />
+      </svg>
+    </button>
   )
 }
 
