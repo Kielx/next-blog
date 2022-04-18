@@ -27,9 +27,9 @@ const ScrollTopButton = () => {
       type="button"
       className={`${
         showScroll
-          ? 'flex animate-fade-in opacity-50'
-          : 'pointer-events-none flex animate-fade-out opacity-0'
-      } fixed bottom-2 right-2 z-[150] h-10 w-10 cursor-pointer items-center  transition-opacity hover:opacity-100 md:bottom-7 md:right-7`}
+          ? 'flex animate-fade-in opacity-50 hover:opacity-80'
+          : 'pointer-events-none flex animate-fade-out opacity-0 hover:opacity-0'
+      } fixed bottom-2 right-2 z-[150] h-10 w-10 cursor-pointer items-center  transition-opacity md:bottom-7 md:right-7`}
       onClick={scrollTop}
     >
       <svg
