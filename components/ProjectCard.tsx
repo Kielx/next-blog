@@ -53,7 +53,7 @@ const ProjectCard: React.FC<Props> = ({
           aria-label="Project Link"
           href="replace"
           ref={ref}
-          className="absolute inset-0 z-10"
+          className="absolute inset-0 z-[1]"
         >
           <span className="hidden">{`${title} Project - Read More`}</span>
         </a>
