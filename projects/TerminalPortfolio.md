@@ -22,7 +22,7 @@ techUsed:
   - [Ease of use - Markdown](#ease-of-use---markdown)
   - [Uniqueness - Winbox.js](#uniqueness---winbox-js)
   - [Contact form](#contact-form)
-- [Conclusions](#conclusions)
+- [Summary](#summary)
 
 ## What Terminal Portfolio is
 
@@ -64,6 +64,8 @@ The project owes its uniqueness to the use of the Winbox.js library, which allow
 In the initial release, I wanted to create ASCII graphics and display them in a window. This would make the design look more coherent and 'hacker-ish', but at the same time lose a lot in terms of ease of use - and ease of use was my main goal after all. The portfolio is supposed to present projects in an easy and accessible way, and not to serve as a perfect copy of the terminal window.
 
 As for the color scheme, I relied on the Cobalt2 color scheme, which gave the terminal windows a little more color than the standard black and white. In light mode, I used a solarized light-based palette, which allows the eyes to take a break from the completely white background.
+
+![Winbox preview](/images/projects/terminalPortfolio/winbox.webp#postMiniImage)
 
 ### Contact form
 

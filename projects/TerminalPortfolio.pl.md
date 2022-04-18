@@ -72,6 +72,8 @@ W początkowej wersji chciałem stworzyć grafiki ASCII i wyświetlać je w okni
 
 Jeśli chodzi o kolorystykę, to opierałem się na kolorystyce Cobalt2, która nadała oknom terminala trochę więcej barw niż standardowe czarne i białe. W trybie jasnym użyłem palety opartej na solarized light, która pozwala oczom odetchnąć nieco od całkowicie białego tła.
 
+![Winbox preview](/images/projects/terminalPortfolio/winbox.webp#postMiniImage)
+
 ### Formularz kontaktowy
 
 W zasadzie wystarczyłoby przecież podać adres e-mail i ktoś, kto chciałby się ze mną skontaktować, mógłby wysłać wiadomość prawda? Teoretycznie tak, ale jest to prosta droga do zasypania poczty niechcianym spamem w przypadku, gdy jakiś bot lub ktoś złośliwy uzna, że warto obdarować mnie niechcianymi wiadomościami.
