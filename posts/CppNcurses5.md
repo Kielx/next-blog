@@ -182,8 +182,8 @@ GENERATE_LATEX = NO
 ```
 
 After making changes to the Doxyfile file, we generate the documentation again, which will be located in the `docs` folder.
-Note that in the meantime I've also added a `logo.png` and `README.md` files to the project. If you don't have them, you can change an option `PROJECT_LOGO = "logo.png"` to `PROJECT_LOGO = ` and `USE_MDFILE_AS_MAINPAGE = "README.md"`
-to `USE_MDFILE_AS_MAINPAGE = `
+Note that in the meantime I've also added a `logo.png` and `README.md` files to the project. If you don't have them, you can change an option `PROJECT_LOGO = "logo.png"` to `PROJECT_LOGO =` and `USE_MDFILE_AS_MAINPAGE = "README.md"`
+to `USE_MDFILE_AS_MAINPAGE =`
 
 Then run:
 

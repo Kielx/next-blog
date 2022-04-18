@@ -86,8 +86,8 @@ I solved it as follows:
 
 Perhaps it is not the simplest or the most optimal solution. Sendgrid offers 100 free e-mails a day and a simple API - that's a fact, but by creating this form I learned how some cloud technologies work, and at the same time I was able to maintain (at least to some extent) independence from paid, external APIs.
 
-## Conclusions
+## Summary
 
-Finally, I am very pleased with the effect I have achieved. The project even got a few stars on GitHub, which leads me to believe that I managed to achieve my goals.
+I am very pleased with the effect I have achieved. The project even got a few stars on GitHub, which leads me to believe that I managed to achieve my goals.
 
 If you haven't done it yet, check out [Portfolio live](https://www.pantak.net) and take a look at [GitHub code](https://github.com/kielx/terminal-portfolio). There you will also find instructions on how to clone a project if you want to get inspiration when creating your own project based on this website.

@@ -21,6 +21,7 @@ keywords:
   - [Let's make the balls move](#let-s-make-the-balls-move)
 - [Summary](#summary)
 - [Acknowledgements](#acknowledgements)
+- [Third part of the Tutorial](#third-part-of-the-tutorial)
 
 ## Introduction
 
@@ -312,9 +313,13 @@ In this part, we managed to create a simple program in which, using the Ncurses 
 
 ## Acknowledgements
 
-When creating this post, I used the following sources extensively, which are worth checking out if you want to reinforce your knowledge of Ncurses and other topics that I covered in this post:
+While creating this post, I used the following sources extensively, which are worth checking out if you want to reinforce your knowledge of Ncurses and other topics that I covered in this post:
 
 - [Ncurses Programming HowTo](https://tldp.org/HOWTO/NCURSES-Programming-HOWTO/)
 - [Ncurses Man Pages](https://invisible-island.net/ncurses/announce.html)
 - [Ncurses - Linux man page](https://linux.die.net/man/3/ncurses)
 - [Beautiful explanation of classes and objects](https://www.reddit.com/r/explainlikeimfive/comments/65658b/comment/dg8nxqk/?utm_source=share&utm_medium=web2x&context=3)
+
+## Third Part of the Tutorial
+
+You can see the third part of the Tutorial here: [How to get started with C ++ and Ncurses - Vol. 3 - Paddle and controls](/posts/CppNcurses3)

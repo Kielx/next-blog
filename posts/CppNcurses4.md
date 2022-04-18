@@ -2,24 +2,25 @@
 title: 'How to get started with C ++ and Ncurses - Vol. 4 - Game v1.0'
 date: '2022-02-24'
 excerpt: 'In the fourth part of the guide, we finish creating the logic responsible for the game'
-coverImage: '/images/posts/CppNcurses4/main.svg'
+coverImage: '/images/posts/CppNcurses4/2.webp'
 keywords:
 - C++
 - Ncurses
 - Basics
 ---
 
-![Main image](/images/posts/CppNcurses4/main.svg#postMiniImage)
+![Main image](/images/posts/CppNcurses4/2.webp#postMiniImage)
 
 ## Table of contents
 
-- [Wstęp](#wstęp)
-- [Ruch piłki](#ruch-piłki)
-- [Odbicie piłki](#odbicie-piłki)
-  - [Porządki](#porządki)
-- [Punkty i przegrana](#punkty-i-przegrana)
-- [Podsumowanie](#podsumowanie)
-- [Źródła](#źródła)
+- [Introduction](#introduction)
+- [Ball movement](#ball-movement)
+- [Ball bounce](#ball-bounce)
+  - [Cleanups](#cleanups)
+- [Points and loss](#points-and-loss)
+- [Summary](#summary)
+- [Sources](#sources)
+- [Fifth part of the Tutorial](#fifth-part-of-the-tutorial)
 
 ## Introduction
 
@@ -457,3 +458,7 @@ When creating this post, I used the following sources extensively, which are wor
 - [Ncurses Programming HowTo](https://tldp.org/HOWTO/NCURSES-Programming-HOWTO/)
 - [Ncurses Man Pages](https://invisible-island.net/ncurses/announce.html)
 - [Ncurses - Linux man page](https://linux.die.net/man/3/ncurses)
+
+## Fifth Part of the Tutorial
+
+You can see the Fifth part of the Tutorial here: [How to get started with C++ and Ncurses - Vol. 5 - Doxygen](/posts/CppNcurses5)

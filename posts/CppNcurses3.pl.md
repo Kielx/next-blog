@@ -20,6 +20,7 @@ keywords:
 - [Sterowanie paletka](#sterowanie-paletka)
 - [Podsumowanie](#podsumowanie)
 - [Źródła](#źródła)
+- [Czwarta część poradnika](#czwarta-część-poradnika)
 
 ## Wstęp
 
@@ -362,3 +363,7 @@ Tworząc tego posta korzystałem intensywnie z poniższych źródeł, które war
 - [Ncurses Programming HowTo](https://tldp.org/HOWTO/NCURSES-Programming-HOWTO/)
 - [Ncurses Man Pages](https://invisible-island.net/ncurses/announce.html)
 - [Ncurses - Linux man page](https://linux.die.net/man/3/ncurses)
+
+## Czwarta część poradnika
+
+Czwartą część poradnika możesz znaleźć tutaj: [Jak zacząć przygodę z C++ i Ncurses - Cz. 4 - Gra v1.0](/pl/posts/CppNcurses4)

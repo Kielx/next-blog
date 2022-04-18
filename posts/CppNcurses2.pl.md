@@ -21,6 +21,7 @@ keywords:
   - [Wprawmy piłki w ruch](#wprawmy-piłki-w-ruch)
 - [Podsumowanie](#podsumowanie)
 - [Źródła](#źródła)
+- [Trzecia część poradnika](#trzecia-część-poradnika)
 
 ## Wstęp
 
@@ -319,3 +320,7 @@ Tworząc tego posta korzystałem intensywnie z poniższych źródeł, które war
 - [Ncurses Man Pages](https://invisible-island.net/ncurses/announce.html)
 - [Ncurses - Linux man page](https://linux.die.net/man/3/ncurses)
 - [Klasy i obiekty dla pięciolatków](https://www.reddit.com/r/explainlikeimfive/comments/65658b/comment/dg8nxqk/?utm_source=share&utm_medium=web2x&context=3)
+
+## Trzecia część poradnika
+
+Trzecią część poradnika możesz znaleźć tutaj: [Jak zacząć przygodę z C++ i Ncurses - Cz. 2 - Ekran i piłka](/pl/posts/CppNcurses3)

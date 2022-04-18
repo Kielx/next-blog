@@ -299,7 +299,7 @@ And the effect:
 
 As I wrote at the beginning, this text is only a minimal introduction to the language and it definitely does not cover all the functions and options it offers. Nevertheless, after completing all these steps, you should have a prepared environment and elementary knowledge to be able to perform the next steps that I will describe in the coming posts.
 
-This is my first post, so it is possible that there were bugs in it, so if you reveal any, please contact me. Perhaps you have any comments, suggestions for improvement, or some sections are described vaguely or plainly wrong - in that case, please contact me and I will try to fix it.
+This is my first post, so it is possible that there were bugs in it, so if you find any, please contact me. Perhaps you have any comments, suggestions for improvement, or some sections are described vaguely or plainly wrong - in that case, please contact me and I will try to fix it.
 
 I hope this post will be helpful, and if you want to deepen your knowledge of the things that I have described, you will find a lot of materials and documentation along with tutorials at the following links:
 

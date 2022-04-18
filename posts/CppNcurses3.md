@@ -20,6 +20,7 @@ keywords:
 - [Controls](#controls)
 - [Summary](#summary)
 - [Acknowledgements](#acknowledgements)
+- [Fourth part of the Tutorial](#fourth-part-of-the-tutorial)
 
 ## Introduction
 
@@ -357,8 +358,12 @@ And after compiling and running:
 
 ## Acknowledgements
 
-When creating this post, I used the following sources extensively, which are worth checking out if you want to reinforce your knowledge of Ncurses and other topics that I covered in this post:
+While creating this post, I used the following sources extensively, which are worth checking out if you want to reinforce your knowledge of Ncurses and other topics that I covered in this post:
 
 - [Ncurses Programming HowTo](https://tldp.org/HOWTO/NCURSES-Programming-HOWTO/)
 - [Ncurses Man Pages](https://invisible-island.net/ncurses/announce.html)
 - [Ncurses - Linux man page](https://linux.die.net/man/3/ncurses)
+
+## Fourth Part of the Tutorial
+
+You can see the Fourth part of the Tutorial here: [How to get started with C ++ and Ncurses - Vol. 4 - Game v1.0](/posts/CppNcurses4)

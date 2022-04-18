@@ -69,7 +69,7 @@ const Home: NextPage<Props> = ({ postsCardsList, projectsCardsList }) => {
       <div className="flex w-full flex-col flex-wrap font-body ">
         <Head {...(locale === 'pl' ? metaTagsPL : metaTags)} />
 
-        <div className="cardsContainer m-auto box-border grid w-full max-w-[692px] grid-cols-12 justify-center gap-6 gap-y-2 px-4 py-8 xs:px-8 sm:gap-y-3 md:gap-y-10 md:px-0 md:py-12 xl:max-w-[980px]">
+        <div className="cardsContainer m-auto box-border grid w-full max-w-[692px] grid-cols-12 justify-center gap-6 gap-y-4 px-4 py-8 xs:px-8 md:gap-y-10 md:px-0 md:py-12 xl:max-w-[980px]">
           <h2 className="col-span-12 mb-8 text-xl font-semibold text-primary md:mb-4 md:-mt-4">
             {t('latestPosts')}
           </h2>

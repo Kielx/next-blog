@@ -2,14 +2,14 @@
 title: 'Jak zacząć przygodę z C++ i Ncurses - Cz. 4 - Gra v1.0'
 date: '2022-02-24'
 excerpt: 'W czwartej części poradnika kończymy tworzyć logikę odpowiedzialną za grę'
-coverImage: '/images/posts/CppNcurses4/main.svg'
+coverImage: '/images/posts/CppNcurses4/2.webp'
 keywords:
 - C++
 - Ncurses
 - Podstawy
 ---
 
-![Obraz główny](/images/posts/CppNcurses4/main.svg#postMiniImage)
+![Obraz główny](/images/posts/CppNcurses4/2.webp#postMiniImage)
 
 ## Spis treści
 
@@ -20,6 +20,7 @@ keywords:
 - [Punkty i przegrana](#punkty-i-przegrana)
 - [Podsumowanie](#podsumowanie)
 - [Źródła](#źródła)
+- [Piąta część poradnika](#piąta-część-poradnika)
 
 ## Wstęp
 
@@ -503,3 +504,7 @@ wiedzę na temat Ncurses i innych tematów, które poruszałem w tym poście:
 - [Ncurses Programming HowTo](https://tldp.org/HOWTO/NCURSES-Programming-HOWTO/)
 - [Ncurses Man Pages](https://invisible-island.net/ncurses/announce.html)
 - [Ncurses - Linux man page](https://linux.die.net/man/3/ncurses)
+
+## Piąta część poradnika
+
+Piątą część poradnika możesz znaleźć tutaj: [Jak zacząć przygodę z C++ i Ncurses - Cz. 5 - Doxygen](/pl/posts/CppNcurses5)
