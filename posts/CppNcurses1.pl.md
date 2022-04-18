@@ -27,6 +27,7 @@ keywords:
 - [Klasyczny Hello World](#klasyczny-hello-world)
   - [Co się zmieniło?](#co-się-zmieniło)
 - [Podsumowanie](#podsumowanie)
+- [Druga część poradnika](#druga-część-poradnika)
 
 ## Wstęp
 
@@ -304,3 +305,7 @@ Mam nadzieję, że ten post okaże się pomocny, a jeśli chcesz pogłębić swo
 - <https://cpp0x.pl/>
 - <https://en.cppreference.com/w/>
 - <https://www.cplusplus.com/reference/>
+
+## Druga część poradnika
+
+Drugą część poradnika możesz znaleźć tutaj: [Jak zacząć przygodę z C++ i Ncurses - Cz. 2 - Ekran i piłka](/pl/posts/CppNcurses2)

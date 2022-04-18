@@ -27,6 +27,7 @@ keywords:
 - [Classic Hello World](#classic-hello-world)
   - [What has changed?](#what-has-changed)
 - [Summary](#summary)
+- [Second part of the Tutorial](#second-part-of-the-tutorial)
 
 ## Introduction
 
@@ -304,3 +305,7 @@ I hope this post will be helpful, and if you want to deepen your knowledge of th
 
 - <https://en.cppreference.com/w/>
 - <https://www.cplusplus.com/reference/>
+
+## Second Part of the Tutorial
+
+You can see the second part of the Tutorial here: [How to get started with C++ and Ncurses - Vol. 2 - Screen and ball](/posts/CppNcurses2)
