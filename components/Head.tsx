@@ -50,6 +50,7 @@ const Head = ({
       <meta property="og:type" content="article" />
       <meta property="og:image" content={image} />
       <meta property="og:url" content={url} />
+      <meta name="twitter:image" content={image} />
       <meta name="twitter:card" content="summary_large_image" />
       {/*  Non-Essential, But Recommended */}
       <meta property="og:description" key="description" content={description} />
