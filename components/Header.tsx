@@ -45,13 +45,16 @@ const Header = () => {
     return items.map((item) => {
       if (item.type === 'link') {
         return (
-          <span key={item.name} className="relative w-full lg:w-auto">
+          <span
+            key={item.name}
+            className="relative flex w-full items-center lg:w-auto"
+          >
             <Link href={item.href} passHref>
               <a
                 href="replace"
                 className={`${
                   router.pathname === item.href ? 'active' : ''
-                } navLink w-full cursor-pointer py-1 text-navLink opacity-80 transition-all hover:opacity-100 lg:w-auto lg:py-0`}
+                } navLink w-full cursor-pointer py-2 text-navLink opacity-80 transition-all hover:opacity-100 lg:w-auto lg:py-0`}
               >
                 {t(item.name)}
               </a>
@@ -60,9 +63,9 @@ const Header = () => {
         )
       }
       return (
-        <span key={item.name} className="relative w-full lg:w-auto">
+        <span key={item.name} className="relative flex w-full lg:w-auto">
           <a
-            className="navLink w-full cursor-pointer py-1 text-navLink opacity-80 transition-all hover:opacity-100 lg:w-auto lg:py-0"
+            className="navLink w-full cursor-pointer py-2 text-navLink opacity-80 transition-all hover:opacity-100 lg:w-auto lg:py-0"
             href={item.href}
           >
             {t(item.name)}
@@ -95,7 +98,7 @@ const Header = () => {
         <div
           className={`${
             open ? 'max-h-[100vh] opacity-100' : 'invisible max-h-0 opacity-0'
-          }  mobileMenu  transition-[max-height opacity] z-20 flex w-full flex-col items-start  justify-end divide-y bg-primary px-10 py-4 text-lg font-extralight text-navLink duration-[150ms]`}
+          }  mobileMenu  transition-[max-height opacity] z-20 flex w-full flex-col divide-y divide-[#424245] bg-primary px-10 py-4 text-lg font-extralight text-navLink duration-[150ms]`}
         >
           {mapNavItems(navItems)}
           {/* This button is used to push the page to the next language
@@ -105,7 +108,7 @@ const Header = () => {
           So it checks what locale we have and then pushes the page to the next language
           Ternary operator checks if path is different than "/" because it needs to append pl to the path */}
           <a
-            className="w-full pt-1"
+            className="w-full py-2"
             href={`${router.locale === 'en-US' ? '/pl' : ''}${
               asPath !== '/' ? asPath.replace(/^\/$/, '') : asPath
             }`}

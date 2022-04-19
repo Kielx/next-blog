@@ -9,7 +9,7 @@
 - [x] ~~Style about me page~~
 - [x] ~~Add new posts with content~~
 - [ ] Google gtag
-- [ ] Add space between mobile menu items
+- [x] Add space between mobile menu items
 - [ ] Remove about me gif
 - [x] ~~Fix blocking od sług pages (branch)~~
 - [x] ~~Add button to go back to top of the page~~
