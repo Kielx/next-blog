@@ -84,11 +84,11 @@ const PostPage: NextPage<Props> = ({
         <Head
           title={`${frontmatter.title} - Pan-Media Blog`}
           description={frontmatter.excerpt}
-          image={`https://blog.pantak.net${frontmatter.coverImage}`}
-          url={`https://blog.pantak.net/posts/${
+          image={frontmatter.coverImage}
+          url={`https://blog.pantak.net/projects/${
             locale === 'pl' ? 'pl/' : ''
           }${slug}`}
-          imageAltText={`${frontmatter.title} post image`}
+          imageAltText={`${frontmatter.title} project image`}
           siteName="Pan Media Blog"
         />
 
