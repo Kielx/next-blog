@@ -61,14 +61,14 @@ const ProjectCard: React.FC<Props> = ({
       <div className="flex h-40 w-full  overflow-hidden rounded-t-lg xs:h-[204px] md:h-[187px] xl:h-[266px]">
         <div className="cardImageContainer animate__animated animate__fadeIn relative w-full">
           {coverImage.match(/.webm/) ? (
-            <LazyLoad height="200">
+            <LazyLoad height="266" offset={100} once>
               <video
                 src={coverImage}
                 playsInline
                 autoPlay
                 muted
                 loop
-                className="h-auto w-full max-w-full"
+                className="h-full w-full max-w-full"
               />
             </LazyLoad>
           ) : (
