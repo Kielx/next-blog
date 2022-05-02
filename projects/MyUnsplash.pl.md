@@ -2,12 +2,13 @@
 title: 'My-Unsplash'
 liveLink: 'https://my-unsplash-mu.vercel.app/'
 githubLink: 'https://github.com/Kielx/my-unsplash'
-excerpt: Klon Unsplash stworzony na bazie Next.js, Firebase, Redux Toolkit oraz Tailwind CSS. 
-coverImage: '/images/projects/myUnsplash/my-unsplash.webp#postImage'
+excerpt: Klon Unsplash stworzony na bazie Next.js, Firebase, Redux Toolkit oraz Tailwind CSS.
+coverImage: '/images/projects/myUnsplash/my-unsplash.webp'
 techUsed:
-  - 'React'
+  - 'Next.js'
+  - 'Firebase'
+  - 'Redux'
   - 'TailwindCSS'
-  - 'Leaflet JS'
 ---
 
 ![App Screenshot](/images/projects/myUnsplash/my-unsplash-mockup-1278.webp#postMiniImage 'Screenshot of app')
@@ -18,9 +19,10 @@ techUsed:
 - [Stworzony przy pomocy](#stworzony-przy-pomocy)
 - [Jak to działa](#jak-to-działa)
   - [Design](#design)
-  - [Wyszukiwanie lokalizacji użytkownika](#wyszukiwanie-lokalizacji-użytkownika)
-  - [Lokalizacja](#lokalizacja)
-  - [Wyświetlanie lokalizacji](#wyświetlanie-lokalizacji)
+  - [Wydajność](#wydajność)
+  - [Firebase](#firebase)
+  - [Dodawanie zdjęć](#dodawanie-zdjęć)
+  - [Redux Toolkit](#redux-toolkit)
 - [Wnioski](#wnioski)
 
 ## Opis projektu
@@ -33,119 +35,30 @@ My Unsplash to moje rozwiązanie [wyzwania](https://devchallenges.io/challenges/
 - [Firebase](https://firebase.google.com/)
 - [Redux Toolkit](https://redux-toolkit.js.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
-  
+
 ## Jak to działa
 
-By aplikacja działała, niezbędne było stworzenie następujących funkcjonalności:
+By aplikacja działała zgodnie z założeniami, niezbędne było stworzenie następujących funkcjonalności:
 
 ### Design
 
-Założeniem była implementacja istniejącego interfejsu na podstawie jednego zdjęcia. Nie miałem dostępu do żadnych plików ze szkicami lub designem. Oczywiście cała strona musiała być responsywny i działać na wszystkich urządzeniach.
+Założeniem było odtworzenie istniejącego interfejsu stylizowanego na układ Masonry. Strona musiała być w pełni responsywna i wyświetlać przycisk umożliwiający usunięcie zdjęcia po najechaniu na nie kursorem myszy. Układ masonry zapewnia biblioteka [React Masonry Css](https://www.npmjs.com/package/react-masonry-css). Strona została wyposażona także w modny Dark Mode.
 
-![Phone Mockup](/images/projects/IPTracker/PhoneMockup2.webp#postMiniImage 'Phone App Mockup')
+### Wydajność
 
-### Wyszukiwanie lokalizacji użytkownika
+Pobranie i załadowanie wszystkich zdjęć z galerii to ogromne wyzwanie nawet dla najlepszego łącza internetowego. Użytkownicy korzystający z urządzeń mobilnych, zmuszeni by byli do długiego oczekiwania nim strona się załaduje. Jednym z moich priorytetów podczas tworzenia jakiejkolwiek strony jest szybkość jej działania. Nie inaczej jest w przypadku My-Unsplash. Zdecydowałem, że wszystkie zdjęcia muszą być w formacie webp, aby zapewnić najlepszą wydajność. Dodatkowo są one ładowane w ramach infinite scroll, a wyświetlana jest tylko taka ich liczba, by ograniczyć czas ładowania strony do minimum. Kolejne zdjęcia są ładowane podczas scrollowania strony. Dzięki temu udało mi się osiągnąć wysokie wyniki lighthouse, mimo tego, że strona składa się z samych zdjęć.
 
-By stworzyć tę funkcjonalność, posłużyłem się [API Geolokalizacyjnym](https://geo.ipify.org/). Zwraca ono dane o lokalizacji użytkownika po wykonaniu właściwego żądania do API. Z uwagi na fakt, że API jest zabezpieczone kluczem oraz posiada ograniczoną ilość żądań dla darmowego użytkownika, musiałem zabezpieczyć żądanie poprzez wywołanie funkcji serverless obsługiwanej przez Netlify. W przeciwnym wypadku każdy miałby dostęp do klucza API i mógłby z niego korzystać.
+### Firebase
 
-```javascript
-const fetch = require('node-fetch')
+Zdjęcia muszą być gdzieś przechowywane. Rozważałem stworzenie w tym celu własnego backendu, jednak prostota implementacji, możliwość teoretycznie nieskończonego skalowania oraz hojna darmowa oferta skłoniły mnie do skorzystania z Firebase Storage.
 
-exports.handler = async (event, context) => {
-  const API_ENDPOINT = `https://geo.ipify.org/api/v1?apiKey=${process.env.GEO_API_KEY}&${event.queryStringParameters.query}=${event.queryStringParameters.ip}`
-  try {
-    const response = await fetch(API_ENDPOINT)
-    const data = await response.json()
-    return {
-      statusCode: 200,
-      body: JSON.stringify(data),
-    }
-  } catch (error) {
-    console.log(error)
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: 'Failed fetching data' }),
-    }
-  }
-}
-```
+### Dodawanie zdjęć
 
-### Lokalizacja
+Za dodawanie zdjęć odpowiedzialny jest stworzony przeze mnie wcześniej komponent — [Image Uploader](https://github.com/Kielx/image-uploader). Umożliwia on dodawanie zdjęć przez drag'n'drop, a także wyświetla informację w przypadku nieprawidłowego rozmiaru lub formatu pliku. Dodatkowo progress bar wyświetla informację o postępie wysyłania pliku.
 
-Samo wywołanie API geolokalizacyjnego dla adresu IP to za mało. Musiałem przygotować testy wyrażeń regularnych — REGEXP, które sprawdzają, czy użytkownik chce sprawdzić lokalizacją na podstawie adresu IP, adresu strony lub adresu E-mail. Następnie wywołując żądanie właściwe dla danego adresu, zwraca ono dane o lokalizacji użytkownika.
+### Redux Toolkit
 
-Dodatkowo należało rozważyć przypadki, kiedy użytkownik loguje się po raz pierwszy — wtedy aplikacja wyświetlić powinna jego aktualną lokalizację. Jeżeli użytkownik wyszukiwał już adres, to w bieżącej sesji powinien być on zapisany i wyświetlony. Do tego skorzystałem z SessionStorage.
-
-```javascript
-useEffect(() => {
-  if (
-    sessionStorage.getItem('geoIP') !== null &&
-    sessionStorage.getItem('geoIP') !== ''
-  ) {
-    setGeoIP(JSON.parse(sessionStorage.getItem('geoIP')))
-  } else {
-    async function getLocalIP() {
-      try {
-        const response = await fetch('https://jsonip.com', { mode: 'cors' })
-        let data = await response.json()
-        setLocalIP(data.ip)
-        getGeoIP(data.ip)
-        return
-      } catch (e) {
-        getGeoIP('1.1.1.1')
-        console.log(e)
-        return
-      }
-    }
-    getLocalIP()
-  }
-}, [])
-```
-
-### Wyświetlanie lokalizacji
-
-Kolejnym niezbędnym elementem było wyświetlenie lokalizacji. Tu z pomocą przyszło API Leafleta, która w prosty sposób tworzy interaktywną mapę, na której możemy wyświetlać ustaloną wcześniej lokalizację. Efektowność przejść pomiędzy lokalizacjami zapewnia funkcja Leafleta - `map.flyTo(position)`, która umożliwia piękne i płynne przejścia pomiędzy wyszukiwanymi lokalizacjami.
-
-```javascript
-// /components/Map.js
-import React from 'react'
-import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
-import LoadingSpinner from './LoadingSpinner'
-
-function MapComponent({ position }) {
-  const map = useMap()
-  map.flyTo(position)
-  return null
-}
-
-const Map = ({ lat, lng }) => {
-  if (!lat || !lng) {
-    return <LoadingSpinner />
-  }
-
-  const position = [lat, lng]
-
-  return (
-    <MapContainer
-      center={position}
-      zoom={13}
-      scrollWheelZoom={true}
-      style={{
-        height: '100%',
-        width: '100%',
-        zIndex: 0,
-      }}
-    >
-      <MapComponent position={position}></MapComponent>
-      <Marker position={position}>
-        <Popup>You are here!</Popup>
-      </Marker>
-    </MapContainer>
-  )
-}
-
-export default Map
-```
+Logika aplikacji wymagała ode mnie skorzystania z dodatkowego rozwiązania do przechowywania stanu aplikacji. Zdecydowałem się na zastosowanie Redux Toolkit, gdyż aplikacja posiadała znaczną ilość zmiennych przechowywanych w stanie poszczególnych komponentów, a które to musiały ze sobą współpracować. Dodatkowo chciałem zastosować Redux Toolkit z uwagi na jego popularność oraz przydatność w innych projektach.
 
 ## Wnioski
 
