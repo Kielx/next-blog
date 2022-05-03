@@ -14,20 +14,60 @@ techUsed:
 
 ## Table of contents
 
+- [Introduction](#introduction)
 - [Project description](#project-description)
+  - [What features does IP Tracker have](#what-features-does-ip-tracker-have)
+  - [And what features does IP Tracker not have](#and-what-features-does-ip-tracker-not-have)
 - [Created with](#created-with)
 - [How it works](#how-it-works)
   - [Design](#design)
-  - [Search for user's location](#search-for-user-s-location)
+  - [Search for user's location](#search-for-users-location)
   - [Location](#location)
   - [Location display](#location-display)
 - [Summary](#summary)
 
+## Introduction
+
+Below I am presenting what IP Tracker is. After reading this description you'll know:
+
+- What IP Tracker can do and how it works
+- What this application cannot do
+- What tools I used to prepare the project
+- How I solved some of the problems in the development process
+- What I have learned from the process of creating this project
+  
 ## Project description
 
 IP Tracker is my solution to [challenge](https://www.frontendmentor.io/challenges/ip-address-tracker-I8-0yYAH0), the purpose of which was to create a web application,
 that lets the user find geolocation and display location data based on the provided IP address, website address or e-mail address.
 The application uses React and three separate APIs to create a simple and effective tracker. User current location should be displayed on the first visit of the website.
+
+Does that mean all I had to do was copy the finished design and called it my project? Not at all. I didn't have access to the design files except for two photos, style-guid and two API links that should be used to display the location. The entire implementation and connection of all APIs in this project is my work.
+
+### What features does IP Tracker have
+
+- The user can display text data about the location based on:
+  - IP address,
+  - WWW address,
+  - E-mail address
+- The user can see the location on the map based on:
+  - IP address,
+  - WWW address,
+  - E-mail address
+- By default, on first visit, the user is shown his current location based on the IP address
+- If the current location cannot be determined (e.g. user has blocked scripts) the default location (1.1.1.1) is displayed
+- The user can zoom in on the map, a friendly locator pointing to the location is displayed
+- Transitions between locations are animated and dynamic
+- The website works as SPA (Single Page Application)
+- All requests are handled by Frontend
+- The application is responsive and should look correct on all types of devices that support modern browsers
+- IP Tracker can be operated with just the keyboard
+
+### And what features does IP Tracker not have
+
+- Does not display full data about IP address, WWW, E-mail
+- Does not display information about the system, browser, weather, user default language and other similar data
+- The application is limited by the amount of free API requests, after using them you will not be able to use it. It is not an application that you want to use for professional or business solutions.
 
 ## Created with
 
