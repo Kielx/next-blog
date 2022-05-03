@@ -14,7 +14,10 @@ techUsed:
 
 ## Spis treści
 
+- [Wstęp](#wstęp)
 - [Opis projektu](#opis-projektu)
+  - [Jakie funkcje posiada IP Tracker](#jakie-funkcje-posiada-ip-tracker)
+  - [Jakich funkcji nie posiada](#jakich-funkcji-nie-posiada)
 - [Stworzony przy pomocy](#stworzony-przy-pomocy)
 - [Jak to działa](#jak-to-działa)
   - [Design](#design)
@@ -23,11 +26,46 @@ techUsed:
   - [Wyświetlanie lokalizacji](#wyświetlanie-lokalizacji)
 - [Wnioski](#wnioski)
 
+## Wstęp
+
+Poniżej prezentuję czym jest IP Tracker. Po lekturze tego opisu będziesz wiedział:
+
+- Czym jest i jakie funkcje posiada aplikacja oraz jakich funkcji nie posiada
+- Jakich narzędzi użyłem do przygotowania projektu
+- W jaki sposób rozwiązałem niektóre z problemów w procesie tworzenia
+- Czego nauczyłem się w procesie tworzenia tego projektu
+
 ## Opis projektu
 
-IP Tracker to moje rozwiązanie [wyzwania](https://www.frontendmentor.io/challenges/ip-address-tracker-I8-0yYAH0), którego celem było stworzenie aplikacji webowej,
-umożliwiającej wyświetlanie danych i lokalizacji na podstawie podanego adresu IP, adresu strony lub adresu E-mail.
+IP Tracker to moje rozwiązanie [wyzwania](https://www.frontendmentor.io/challenges/ip-address-tracker-I8-0yYAH0), którego celem było stworzenie aplikacji webowej, umożliwiającej wyświetlanie danych i lokalizacji na podstawie podanego adresu IP, adresu strony lub adresu E-mail.
 Aplikacja wykorzystuje Reacta oraz trzy odrębne API — by stworzyć prosty i efektywny lokalizator. Dodatkowym założeniem jest wyświetlanie bieżącej lokalizacji użytkownika przy pierwszym odwiedzeniu strony.
+
+Czy to znaczy, że jedyne co miałem do zrobienia to skopiować gotowy design i nazwałem to moim projektem? Bynajmniej. Nie miałem dostępu do plików z designem poza dwoma zdjęciami, style-guidem oraz dwoma linkami do API, które należy użyć do wyświetlania lokalizacji. Całość implementacji oraz połączenie wszystkich API w tym projekcie to moje dzieło.
+
+### Jakie funkcje posiada IP Tracker
+
+- Użytkownik może wyświetlić dane tekstowe o lokalizacji na podstawie:
+  - adresu IP,
+  - adresu WWW,
+  - adresu E-mail
+- Użytkownik może zobaczyć na mapie lokalizację na podstawie:
+  - adresu IP,
+  - adresu WWW,
+  - adresu E-mail
+- Domyślnie po wejściu na stronę użytkownikowi wyświetlana jest jego bieżąca lokalizacja na podstawie adresu IP
+- Jeśli nie można ustalić bieżącej lokalizacji (np. użytkownik ma zablokowane skrypty) wyświetlana jest domyślna lokalizacja (1.1.1.1)
+- Użytkownik może przybliżać mapę, wyświetlany jest przyjazny lokalizator wskazujący na położenie
+- Przejścia pomiędzy kolejnymi lokalizacjami są animowane i dynamiczne
+- Strona działa jako SPA (Single Page Application)
+- Wszystkie żądania obsługiwane są przez Frontend
+- Aplikacja jest responsywna i powinna wyglądać prawidłowo na wszystkich rodzajach urządzeń obsługujących nowoczesne przeglądarki
+- IP Tracker może być obsługiwany za pomocą samej klawiatury
+
+### Jakich funkcji nie posiada
+
+- Nie wyświetla pełnych danych o adresie IP, WWW, E-mail
+- Nie wyświetla informacji o systemie, przeglądarce, pogodzie, domyślnym języku użytkownika i innych podobnych danych
+- Aplikacja ograniczona jest limitem darmowych żądań do API, po ich wykorzystaniu nie będzie można z niej korzystać. Nie jest to aplikacja z której chcesz korzystać dla rozwiązań profesjonalnych lub biznesowych.
 
 ## Stworzony przy pomocy
 
