@@ -43,6 +43,7 @@ const MainPost: React.FC<Props> = ({
               layout="fill"
               objectFit="contain"
               objectPosition="center"
+              sizes="50vw"
             />
           )}
 

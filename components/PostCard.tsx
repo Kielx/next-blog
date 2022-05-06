@@ -68,6 +68,7 @@ const Post: React.FC<Props> = ({
                 layout="fill"
                 objectFit="contain"
                 objectPosition="center"
+                sizes="33vw"
               />
             )}
             <div className="overlay" />

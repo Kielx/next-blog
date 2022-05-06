@@ -66,6 +66,7 @@ const MiniPostCard: React.FC<Props> = ({
                 layout="fill"
                 objectFit="contain"
                 objectPosition="center"
+                sizes="25vw"
               />
             )}
             <div className="overlay" />

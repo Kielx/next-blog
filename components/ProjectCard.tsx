@@ -78,6 +78,7 @@ const ProjectCard: React.FC<Props> = ({
               layout="fill"
               objectFit="cover"
               objectPosition="center"
+              sizes="33vw"
             />
           )}
           <div className="overlay" />
