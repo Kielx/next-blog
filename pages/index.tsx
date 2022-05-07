@@ -34,6 +34,8 @@ type Props = {
       excerpt: string
       coverImage: string
       techUsed: string[]
+      ribbonIcon: string
+      ribbonColor: string
     }
   }[]
 }

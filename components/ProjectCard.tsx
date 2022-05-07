@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useInView } from 'react-intersection-observer'
 import LazyLoad from 'react-lazyload'
 import Button from './Button'
+import Ribbon from './Ribbon'
 
 type Props = {
   slug: string
@@ -13,6 +14,8 @@ type Props = {
   githubLink: string
   excerpt: string
   techUsed: string[]
+  ribbonIcon: string
+  ribbonColor: string
 }
 
 const ProjectCard: React.FC<Props> = ({
@@ -23,6 +26,8 @@ const ProjectCard: React.FC<Props> = ({
   githubLink,
   excerpt,
   techUsed,
+  ribbonIcon,
+  ribbonColor,
 }) => {
   const { ref, inView, entry } = useInView({
     /* Optional options */
@@ -58,6 +63,7 @@ const ProjectCard: React.FC<Props> = ({
           <span className="hidden">{`${title} Project - Read More`}</span>
         </a>
       </Link>
+
       <div className="flex h-40 w-full  overflow-hidden rounded-t-lg xs:h-[204px] md:h-[187px] xl:h-[266px]">
         <div className="cardImageContainer animate__animated animate__fadeIn relative w-full">
           {coverImage.match(/.webm|.mp4/) ? (
@@ -84,7 +90,7 @@ const ProjectCard: React.FC<Props> = ({
           <div className="overlay" />
         </div>
       </div>
-
+      <Ribbon ribbonColor={ribbonColor} ribbonIcon={ribbonIcon} />
       <div className="flex flex-col rounded-lg p-4 shadow-none">
         <h3 className=" text-start text-md font-extrabold text-primary transition-all hover:text-[#222] md:text-left md:text-xl">
           {title}
