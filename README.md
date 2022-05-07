@@ -22,4 +22,5 @@
 - [ ] Add a little more in the about me section
 - [ ] Rework PostCard, MiniPostCard, MainPostCard to be only one component using separate styles
 - [ ] Update Meta tags images to fit Pantak.net brand
-- [ ] Update meta title in Head Component and ```[Slug]``` components to fit Pantak.net 
+- [ ] Update meta title in Head Component and ```[Slug]``` components to fit Pantak.net
+- [ ] Add CSS ribbon to projects and maybe blogs cards
