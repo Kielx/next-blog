@@ -6,7 +6,7 @@ type Props = {
   ribbonColor: string
 }
 
-const Ribbon = ({ ribbonColor, icon, ribbonIcon }: Props) => {
+const Ribbon = ({ ribbonColor, ribbonIcon }: Props) => {
   return (
     <div className={`${styles.ribbon} ${styles.down}`}>
       <div
