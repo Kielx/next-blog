@@ -3,7 +3,7 @@ title: 'My-Unsplash'
 liveLink: 'https://my-unsplash-mu.vercel.app/'
 githubLink: 'https://github.com/Kielx/my-unsplash'
 excerpt: Klon Unsplash stworzony na bazie Next.js, Firebase, Redux Toolkit oraz Tailwind CSS.
-coverImage: '/images/projects/myUnsplash/my-unsplash-ss-hi-rez.webp'
+coverImage: '/images/projects/myUnsplash/my-unsplash.webp'
 techUsed:
   - 'Next.js'
   - 'Firebase'
@@ -11,7 +11,7 @@ techUsed:
   - 'TailwindCSS'
 ---
 
-![App Screenshot](/images/projects/myUnsplash/my-unsplash-mockup-1278.webp#postMiniImage 'Screenshot of app')
+![App Screenshot](/images/projects/myUnsplash/my-unsplash.webp#postMiniImage 'Screenshot of app')
 
 ## Spis treści
 
