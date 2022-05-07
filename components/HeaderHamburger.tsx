@@ -1,4 +1,4 @@
-import styles from '../styles/header.module.css'
+import styles from './headerHamburger.module.css'
 
 type Props = {
   open: boolean

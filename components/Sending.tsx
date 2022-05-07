@@ -1,4 +1,4 @@
-import styles from '../styles/sending.module.css'
+import styles from './sending.module.css'
 
 const Sending = () => {
   return (
