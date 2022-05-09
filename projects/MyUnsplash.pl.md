@@ -32,12 +32,7 @@ ribbonIcon: '<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/s
 
 ## Wstęp
 
-Poniżej prezentuję czym jest My Unsplash. Po lekturze tego opisu będziesz wiedział:
-
-- Czym jest i jakie funkcje posiada aplikacja oraz jakich funkcji nie posiada
-- Jakich narzędzi użyłem do przygotowania projektu
-- W jaki sposób rozwiązałem niektóre z problemów w procesie tworzenia
-- Czego nauczyłem się w procesie tworzenia tego projektu
+Po stworzeniu kilku projektów wykorzystujących zewnętrzne API chciałem pójść o krok dalej i zdobyć doświadczenie wykorzystując Firebase i Next.js. Wcześniej korzystałem z Firebase, gdy tworzyłem [Image Uploader](https://github.com/Kielx/image-uploader) - który wykorzystałem też w tym projekcie, jednak był to dobry sposób by zrobić sobie powtórkę i ponownie przećwiczyć korzystanie Firebase Storage. Dodatkowo mogłem ograniczyć się do korzystania tylko z Firebase Storage by łatwiej przyswajać temat w mniejszych porcjach. Dodatkowo była to dobra okazja by nauczyć się korzystania z Next.js. Wcześniej tworzyłem projekty w Gatsby, jednak widząc popularność Next.js uznałem, że najwyższa pora by sięgnąć także po ten framework. Całość dopełnił Redux Toolkit, który wykorzystałem do obsługi stanu globalnego aplikacji.
 
 ## Opis projektu
 
@@ -59,7 +54,7 @@ Czy to znaczy, że jedyne co miałem do zrobienia to skopiować gotowy design i 
 - Aplikacja jest responsywna i powinna wyglądać prawidłowo na wszystkich rodzajach urządzeń obsługujących nowoczesne przeglądarki
 - IP Tracker może być obsługiwany za pomocą samej klawiatury
 
-### Jakich funkcji nie posiada
+### Jakich funkcji nie posiada My Unsplash
 
 - Strona nie posiada logowania i kont użytkowników, wobec tego każdy użytkownik może dodawać zdjęcia o maksymalnym rozmiarze 5MB
 - Z uwagi na powyższe w teorii każdy może usunąć wszystkie zdjęcia z galerii (otwarte pozostaje pytanie po co?). Nie aspiruję by konkurować z profesjonalnymi serwisami takimi jak Unsplash lub Pexels, a projekt jest tylko rozwiązaniem hobbystycznym, dlatego też nie implementowałem logowania i kont użytkowników.
