@@ -4,6 +4,7 @@ liveLink: 'https://pantak.net'
 githubLink: 'https://github.com/Kielx/terminal-portfolio'
 excerpt: A command-line styled portfolio. Created with Gatsby, project pages generated from Markdown files, and windows created with Winbox.js
 coverImage: 'https://raw.githubusercontent.com/Kielx/terminal-portfolio/master/static/PortfolioSS.png'
+writeup: true
 techUsed:
   - 'Gatsby'
   - 'React'

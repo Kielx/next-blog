@@ -4,6 +4,7 @@ liveLink: 'https://my-unsplash-mu.vercel.app/'
 githubLink: 'https://github.com/Kielx/my-unsplash'
 excerpt: Unsplash clone created with Next.js, Firebase, Redux Toolkit and Tailwind CSS.
 coverImage: '/images/projects/myUnsplash/my-unsplash.webp'
+writeup: true
 techUsed:
   - 'Next.js'
   - 'Firebase'

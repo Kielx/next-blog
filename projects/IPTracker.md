@@ -4,6 +4,7 @@ liveLink: 'https://ip-tracker.pantak.net/'
 githubLink: 'https://github.com/Kielx/ip-tracker'
 excerpt: A web application that allows users to find a location on the map based on the provided IP address, website address or e-mail address
 coverImage: '/images/projects/IPTracker/new60OPT.webm#postVideo'
+writeup: true
 techUsed:
   - 'React'
   - 'TailwindCSS'
@@ -37,7 +38,7 @@ Below I am presenting what IP Tracker is. After reading this description you'll 
 - What tools I used to prepare the project
 - How I solved some of the problems in the development process
 - What I have learned from the process of creating this project
-  
+
 ## Project description
 
 IP Tracker is my solution to [challenge](https://www.frontendmentor.io/challenges/ip-address-tracker-I8-0yYAH0), the purpose of which was to create a web application,

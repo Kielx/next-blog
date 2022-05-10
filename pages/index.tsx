@@ -36,6 +36,7 @@ type Props = {
       techUsed: string[]
       ribbonIcon: string
       ribbonColor: string
+      writeup: boolean
     }
   }[]
 }

@@ -4,6 +4,7 @@ liveLink: 'https://pantak.net'
 githubLink: 'https://github.com/Kielx/terminal-portfolio'
 excerpt: Portfolio stylizowane na wiersz poleceń. Stworzone z wykorzystaniem Gatsby, strony projektów generowane z plików Markdown, a okna tworzone przy pomocy Winbox.js.
 coverImage: 'https://raw.githubusercontent.com/Kielx/terminal-portfolio/master/static/PortfolioSS.png'
+writeup: true
 techUsed:
   - 'Gatsby'
   - 'React'
