@@ -15,7 +15,8 @@ type Props = {
   techUsed: string[]
   ribbonIcon: string
   ribbonColor: string
-  writeup: boolean
+  writeup?: boolean
+  displayCardImageContain?: boolean
 }
 
 const ProjectCard: React.FC<Props> = ({
@@ -29,6 +30,7 @@ const ProjectCard: React.FC<Props> = ({
   ribbonIcon,
   ribbonColor,
   writeup,
+  displayCardImageContain,
 }) => {
   const { ref, inView, entry } = useInView({
     /* Optional options */
@@ -83,7 +85,7 @@ const ProjectCard: React.FC<Props> = ({
               src={coverImage}
               alt={title}
               layout="fill"
-              objectFit="cover"
+              objectFit={displayCardImageContain ? 'contain' : 'cover'}
               objectPosition="center"
               sizes="33vw"
             />
@@ -160,6 +162,11 @@ const ProjectCard: React.FC<Props> = ({
       </div>
     </div>
   )
+}
+
+ProjectCard.defaultProps = {
+  writeup: false,
+  displayCardImageContain: false,
 }
 
 export default ProjectCard

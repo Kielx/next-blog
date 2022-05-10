@@ -2,7 +2,7 @@
 title: 'Country Quiz'
 liveLink: 'https://country-quiz.pantak.net/'
 githubLink: 'https://github.com/Kielx/country-quiz'
-excerpt: 'Quiz dotyczący Stolic oraz Flag poszczególnych krajów, wykorzystujący Rest Countries API'
+excerpt: 'Country quiz application utilizing the Rest Countries API'
 coverImage: '/images/projects/countryQuiz/countryQuiz.webp'
 displayCardImageContain: false
 techUsed:

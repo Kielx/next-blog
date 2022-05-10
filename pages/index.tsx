@@ -37,6 +37,7 @@ type Props = {
       ribbonIcon: string
       ribbonColor: string
       writeup: boolean
+      displayCardImageContain: boolean
     }
   }[]
 }
