@@ -7,6 +7,7 @@ module.exports = {
   ],
   safelist: [
     // used to safelist button component colors that will be purged without those
+    'bg-[#333333]',
     'bg-[#24292F]',
     'hover:bg-[#24292F]/90',
     'focus:ring-[#24292F]',

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
 import { useInView } from 'react-intersection-observer'
 import LazyLoad from 'react-lazyload'
 import Button from './Button'
@@ -53,16 +52,16 @@ const ProjectCard: React.FC<Props> = ({
       } animate__animated Post group relative col-span-12  cursor-pointer rounded-lg bg-white shadow transition-all hover:shadow-md md:col-span-6`}
       key={slug}
     >
-      <Link href={`/projects/${slug}`} passHref>
-        <a
-          aria-label="Project Link"
-          href="replace"
-          ref={ref}
-          className="absolute inset-0 z-[1]"
-        >
-          <span className="hidden">{`${title} Project - Read More`}</span>
-        </a>
-      </Link>
+      <a
+        aria-label="Project live page  link"
+        rel="noopener noreferrer"
+        target="_blank"
+        href={liveLink}
+        ref={ref}
+        className="absolute inset-0 z-[1]"
+      >
+        <span className="hidden">{`${title} Project - Read More`}</span>
+      </a>
 
       <div className="flex h-40 w-full  overflow-hidden rounded-t-lg xs:h-[204px] md:h-[187px] xl:h-[266px]">
         <div className="cardImageContainer animate__animated animate__fadeIn relative w-full">
@@ -120,22 +119,25 @@ const ProjectCard: React.FC<Props> = ({
               </svg>
             }
           />
+
           <Button
-            bgColor="#4285F4"
-            link={liveLink}
+            bgColor="#333333"
+            innerLink
+            link={`/projects/${slug}`}
+            buttonText="Write-up"
             iconSvg={
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-8 w-8"
+                className="h-6 w-6"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
-                strokeWidth={2}
+                strokeWidth="2"
               >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+                  d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
                 />
               </svg>
             }
