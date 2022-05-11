@@ -3,7 +3,8 @@ title: 'IP Tracker'
 liveLink: 'https://ip-tracker.pantak.net/'
 githubLink: 'https://github.com/Kielx/ip-tracker'
 excerpt: Aplikacja webowa, która pozwala na wyszukanie i przedstawienie na mapie lokalizacji na podstawie podanego adresu IP, adresu strony www lub adresu E-mail
-coverImage: '/images/projects/IPTracker/new60OPT.webm#postVideo'
+coverImage: '/images/projects/IPTracker/new60OPT.webm'
+placeholder: false
 writeup: true
 techUsed:
   - 'React'

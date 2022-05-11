@@ -6,6 +6,7 @@ import Button from './Button'
 import Ribbon from './Ribbon'
 
 type Props = {
+  placeholder: string
   slug: string
   coverImage: string
   title: string
@@ -20,6 +21,7 @@ type Props = {
 }
 
 const ProjectCard: React.FC<Props> = ({
+  placeholder,
   slug,
   coverImage,
   title,
@@ -82,6 +84,8 @@ const ProjectCard: React.FC<Props> = ({
             </LazyLoad>
           ) : (
             <Image
+              blurDataURL={placeholder}
+              placeholder="blur"
               src={coverImage}
               alt={title}
               layout="fill"

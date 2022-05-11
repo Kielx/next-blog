@@ -7,6 +7,7 @@ import LazyLoad from 'react-lazyload'
 type Props = {
   slug: string
   coverImage: string
+  placeholder: string
   title: string
   excerpt: string
   date: string
@@ -16,6 +17,7 @@ type Props = {
 const Post: React.FC<Props> = ({
   slug,
   coverImage,
+  placeholder,
   title,
   excerpt,
   date,
@@ -65,6 +67,8 @@ const Post: React.FC<Props> = ({
               <Image
                 src={coverImage}
                 alt={title}
+                blurDataURL={placeholder}
+                placeholder="blur"
                 layout="fill"
                 objectFit="contain"
                 objectPosition="center"

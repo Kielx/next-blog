@@ -7,6 +7,7 @@ import LazyLoad from 'react-lazyload'
 type Props = {
   slug: string
   coverImage: string
+  placeholder: string
   title: string
   date: string
   keywords: string[]
@@ -14,6 +15,7 @@ type Props = {
 
 const MiniPostCard: React.FC<Props> = ({
   slug,
+  placeholder,
   coverImage,
   title,
   date,
@@ -62,6 +64,8 @@ const MiniPostCard: React.FC<Props> = ({
             ) : (
               <Image
                 src={coverImage}
+                blurDataURL={placeholder}
+                placeholder="blur"
                 alt={title}
                 layout="fill"
                 objectFit="contain"

@@ -4,6 +4,7 @@ import Link from 'next/link'
 
 type Props = {
   slug: string
+  placeholder: string
   coverImage: string
   title: string
   excerpt: string
@@ -13,6 +14,7 @@ type Props = {
 
 const MainPost: React.FC<Props> = ({
   slug,
+  placeholder,
   coverImage,
   title,
   excerpt,
@@ -40,6 +42,8 @@ const MainPost: React.FC<Props> = ({
             <Image
               src={coverImage}
               alt={title}
+              blurDataURL={placeholder}
+              placeholder="blur"
               layout="fill"
               objectFit="contain"
               objectPosition="center"

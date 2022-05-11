@@ -14,6 +14,8 @@ const Hero = ({ imageLink }: Props) => {
         <div className="animate__animated animate__fadeIn relative m-auto flex h-[250px]  w-[250px] flex-shrink-0 flex-grow-0 rounded-md   lg:order-2">
           <Image
             src={imageLink}
+            blurDataURL={imageLink}
+            placeholder="blur"
             layout="fixed"
             alt="about"
             width={250}
