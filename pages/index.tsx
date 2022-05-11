@@ -72,7 +72,7 @@ const Home: NextPage<Props> = ({ postsCardsList, projectsCardsList }) => {
   return (
     <>
       <Header />
-      <Hero imageLink="/myPhoto.webp" />
+      <Hero />
       <div className="flex w-full flex-col flex-wrap font-body ">
         <Head {...(locale === 'pl' ? metaTagsPL : metaTags)} />
 

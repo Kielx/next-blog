@@ -65,6 +65,7 @@ const Post: React.FC<Props> = ({
               </LazyLoad>
             ) : (
               <Image
+                quality={100}
                 src={coverImage}
                 alt={title}
                 blurDataURL={placeholder}
