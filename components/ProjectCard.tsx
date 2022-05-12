@@ -54,7 +54,7 @@ const ProjectCard: React.FC<Props> = ({
   return (
     <div
       className={`${
-        inView && !initialView && 'animate__fadeInUp animate__fast'
+        inView && !initialView && 'animate__fadeInUp animate__faster'
       } animate__animated Post group relative col-span-12  cursor-pointer rounded-lg bg-white shadow transition-all hover:shadow-md md:col-span-6`}
       key={slug}
     >
@@ -70,7 +70,7 @@ const ProjectCard: React.FC<Props> = ({
       </a>
 
       <div className="flex h-40 w-full  overflow-hidden rounded-t-lg xs:h-[204px] md:h-[187px] xl:h-[266px]">
-        <div className="cardImageContainer animate__animated animate__fadeIn relative w-full">
+        <div className="cardImageContainer animate__animated animate__fadeIn animate__faster relative w-full">
           {coverImage.match(/.webm|.mp4/) ? (
             <LazyLoad height="266" offset={100} once>
               <video

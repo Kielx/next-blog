@@ -28,7 +28,7 @@ const MainPost: React.FC<Props> = ({
       key={slug}
     >
       <div className=" mb-4 flex min-h-[30vh] w-full overflow-hidden rounded-t-lg  md:mb-0 md:h-auto md:min-h-[10vh] md:w-1/2 md:rounded-l-lg md:rounded-r-none">
-        <div className="animate__animated animate__fadeIn cardImageContainer relative w-full">
+        <div className="animate__animated animate__fadeIn animate__faster cardImageContainer relative w-full">
           {coverImage.match(/.webm/) ? (
             <video
               src={coverImage}
