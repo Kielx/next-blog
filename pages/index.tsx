@@ -2,6 +2,7 @@ import type { GetStaticProps, NextPage } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { getPlaiceholder } from 'plaiceholder'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
@@ -17,6 +18,7 @@ type Props = {
   postsCardsList: {
     slug: string
     frontmatter: {
+      placeholder: string
       title: string
       date: string
       excerpt: string
@@ -27,6 +29,7 @@ type Props = {
   projectsCardsList: {
     slug: string
     frontmatter: {
+      placeholder: string
       title: string
       liveLink: string
       githubLink: string
@@ -69,7 +72,7 @@ const Home: NextPage<Props> = ({ postsCardsList, projectsCardsList }) => {
   return (
     <>
       <Header />
-      <Hero imageLink="/myPhoto.webp" />
+      <Hero />
       <div className="flex w-full flex-col flex-wrap font-body ">
         <Head {...(locale === 'pl' ? metaTagsPL : metaTags)} />
 
@@ -167,8 +170,37 @@ export const getStaticProps: GetStaticProps = async (context) => {
     return cards
   }
 
-  const postsCardsList = createCardsList('posts')
-  const projectsCardsList = createCardsList('projects')
+  let postsCardsList = createCardsList('posts')
+  let projectsCardsList = createCardsList('projects')
+
+  // Map cards with blur image placeholders
+  projectsCardsList = await Promise.all(
+    projectsCardsList.map(async (project) => {
+      return {
+        ...project,
+        frontmatter: {
+          ...project.frontmatter,
+          placeholder:
+            project.frontmatter.placeholder !== false &&
+            (await getPlaiceholder(project.frontmatter.coverImage)).base64,
+        },
+      }
+    })
+  )
+
+  postsCardsList = await Promise.all(
+    postsCardsList.map(async (project) => {
+      return {
+        ...project,
+        frontmatter: {
+          ...project.frontmatter,
+          placeholder:
+            project.frontmatter.placeholder !== false &&
+            (await getPlaiceholder(project.frontmatter.coverImage)).base64,
+        },
+      }
+    })
+  )
 
   return {
     props: {

@@ -7,6 +7,7 @@ import LazyLoad from 'react-lazyload'
 type Props = {
   slug: string
   coverImage: string
+  placeholder: string
   title: string
   excerpt: string
   date: string
@@ -16,6 +17,7 @@ type Props = {
 const Post: React.FC<Props> = ({
   slug,
   coverImage,
+  placeholder,
   title,
   excerpt,
   date,
@@ -44,12 +46,12 @@ const Post: React.FC<Props> = ({
         href="replace"
         ref={ref}
         className={`${
-          inView && !initialView && 'animate__fadeInUp animate__fast'
+          inView && !initialView && 'animate__fadeInUp animate__faster'
         } animate__animated Post group relative col-span-12  cursor-pointer rounded-lg bg-white shadow transition-all hover:shadow-md md:col-span-6`}
         key={slug}
       >
         <div className="flex h-40 w-full  overflow-hidden rounded-t-lg xs:h-[204px] md:h-[187px] xl:h-[266px]">
-          <div className="cardImageContainer animate__animated animate__fadeIn relative w-full">
+          <div className="cardImageContainer animate__animated animate__fadeIn animate__faster relative w-full">
             {coverImage.match(/.webm/) ? (
               <LazyLoad height="200">
                 <video
@@ -65,6 +67,8 @@ const Post: React.FC<Props> = ({
               <Image
                 src={coverImage}
                 alt={title}
+                blurDataURL={placeholder}
+                placeholder="blur"
                 layout="fill"
                 objectFit="contain"
                 objectPosition="center"

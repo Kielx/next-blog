@@ -7,6 +7,7 @@ import LazyLoad from 'react-lazyload'
 type Props = {
   slug: string
   coverImage: string
+  placeholder: string
   title: string
   date: string
   keywords: string[]
@@ -14,6 +15,7 @@ type Props = {
 
 const MiniPostCard: React.FC<Props> = ({
   slug,
+  placeholder,
   coverImage,
   title,
   date,
@@ -42,12 +44,12 @@ const MiniPostCard: React.FC<Props> = ({
         href="replace"
         ref={ref}
         className={`${
-          inView && !initialView && 'animate__fadeInUp animate__fast'
+          inView && !initialView && 'animate__fadeInUp animate__faster'
         } animate__animated Post group relative col-span-12  cursor-pointer rounded-lg bg-white shadow transition-all hover:shadow-md md:col-span-4`}
         key={slug}
       >
         <div className="hidden h-40 w-full overflow-hidden  rounded-t-lg md:flex ">
-          <div className="cardImageContainer animate__animated animate__fadeIn relative w-full">
+          <div className="cardImageContainer animate__animated animate__fadeIn animate__faster relative w-full">
             {coverImage.match(/.webm/) ? (
               <LazyLoad height="200">
                 <video
@@ -62,6 +64,8 @@ const MiniPostCard: React.FC<Props> = ({
             ) : (
               <Image
                 src={coverImage}
+                blurDataURL={placeholder}
+                placeholder="blur"
                 alt={title}
                 layout="fill"
                 objectFit="contain"
