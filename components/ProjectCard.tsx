@@ -85,7 +85,6 @@ const ProjectCard: React.FC<Props> = ({
           ) : (
             <Image
               blurDataURL={placeholder}
-              quality={100}
               placeholder="blur"
               src={coverImage}
               alt={title}

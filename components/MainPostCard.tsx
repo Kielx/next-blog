@@ -42,7 +42,6 @@ const MainPost: React.FC<Props> = ({
             <Image
               src={coverImage}
               alt={title}
-              quality={100}
               blurDataURL={placeholder}
               placeholder="blur"
               layout="fill"

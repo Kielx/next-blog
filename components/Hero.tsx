@@ -16,7 +16,6 @@ const Hero = () => {
             alt="about"
             width={250}
             height={250}
-            quality={100}
             className="rounded-md"
             priority
           />

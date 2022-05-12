@@ -63,7 +63,6 @@ const MiniPostCard: React.FC<Props> = ({
               </LazyLoad>
             ) : (
               <Image
-                quality={100}
                 src={coverImage}
                 blurDataURL={placeholder}
                 placeholder="blur"
