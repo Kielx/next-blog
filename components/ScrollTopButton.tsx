@@ -25,6 +25,7 @@ const ScrollTopButton = () => {
   return (
     <button
       type="button"
+      aria-label="Scroll top"
       className={`${
         showScroll
           ? 'flex animate-fade-in opacity-50 hover:opacity-80'
