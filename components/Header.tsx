@@ -51,6 +51,7 @@ const Header = () => {
           >
             <Link href={item.href} passHref>
               <a
+                aria-label={item.name}
                 href="replace"
                 className={`${
                   router.pathname === item.href ? 'active' : ''
@@ -65,7 +66,8 @@ const Header = () => {
       return (
         <span key={item.name} className="relative flex w-full lg:w-auto">
           <a
-            className="navLink w-full cursor-pointer py-2 text-navLink opacity-80 transition-all hover:opacity-100 lg:w-auto lg:py-0"
+            aria-label={item.name}
+            className="navLink w-full cursor-pointer py-2 text-navLink transition-all hover:opacity-100 lg:w-auto lg:py-0"
             href={item.href}
           >
             {t(item.name)}
@@ -80,6 +82,7 @@ const Header = () => {
       <div className="mobileNavbar flex h-11 w-full flex-wrap bg-primary lg:hidden">
         <Link href="/" passHref>
           <a
+            aria-label="Index page"
             href="replace"
             className="relative flex h-full w-1/2 py-[2px] pl-2 sm:pl-4 md:pl-8"
           >
@@ -150,6 +153,7 @@ const Header = () => {
           So it checks what locale we have and then pushes the page to the next language
           Ternary operator checks if path is different than "/" because it needs to append pl to the path */}
           <a
+            aria-label="Change language"
             className="pl-8 text-lg"
             href={`${router.locale === 'en-US' ? '/pl' : ''}${
               asPath !== '/' ? asPath.replace(/^\/$/, '') : asPath

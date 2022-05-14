@@ -29,7 +29,7 @@ module.exports = {
       colors: {
         primary: '#333333',
         navLink: '#f5f5f7',
-        secondary: '#6e6e73',
+        secondary: '#58585c',
       },
       keyframes: {
         'fade-in': {
