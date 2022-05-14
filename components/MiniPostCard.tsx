@@ -81,7 +81,7 @@ const MiniPostCard: React.FC<Props> = ({
           <h3 className=" text-start text-md font-extrabold text-primary transition-all hover:text-[#222] md:text-left ">
             {title}
           </h3>
-          <p className="hidden text-xs text-secondary opacity-80  transition-all group-hover:text-secondary md:block">
+          <p className="hidden text-xs text-secondary  transition-all group-hover:text-secondary md:block">
             {date.split('-').reverse().join('-')}
           </p>
 
@@ -89,7 +89,7 @@ const MiniPostCard: React.FC<Props> = ({
             {keywords?.map((keyword) => (
               <span
                 key={keyword}
-                className="mr-1 pt-2 text-xs text-secondary  opacity-80 transition-all group-hover:text-secondary"
+                className="mr-1 pt-2 text-xs text-secondary  transition-all group-hover:text-secondary"
               >
                 #{keyword}
               </span>

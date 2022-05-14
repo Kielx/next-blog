@@ -59,7 +59,7 @@ const ProjectCard: React.FC<Props> = ({
       key={slug}
     >
       <a
-        aria-label="Project live page  link"
+        aria-label={`${title} Project - Live Page`}
         rel="noopener noreferrer"
         target="_blank"
         href={liveLink}
@@ -108,6 +108,7 @@ const ProjectCard: React.FC<Props> = ({
         <div className="flex flex-wrap gap-2 pt-2">
           <Button
             bgColor="#24292F"
+            ariaLabel={`${title} - Github Page`}
             link={githubLink}
             iconSvg={
               <svg
@@ -130,6 +131,7 @@ const ProjectCard: React.FC<Props> = ({
           {writeup && (
             <Button
               bgColor="#333333"
+              ariaLabel={`${title} - Write-Up Page`}
               innerLink
               link={`/projects/${slug}`}
               buttonText="Write-up"
@@ -157,7 +159,7 @@ const ProjectCard: React.FC<Props> = ({
           {techUsed?.map((keyword) => (
             <span
               key={keyword}
-              className="mr-1 pt-2 text-xs text-secondary  opacity-80 transition-all group-hover:text-secondary"
+              className="mr-1 pt-2 text-xs text-secondary  transition-all group-hover:text-secondary"
             >
               #{keyword}
             </span>

@@ -83,7 +83,7 @@ const Post: React.FC<Props> = ({
           <h3 className=" text-start text-md font-extrabold text-primary transition-all hover:text-[#222] md:text-left md:text-xl">
             {title}
           </h3>
-          <p className="text-xs text-secondary  opacity-80 transition-all group-hover:text-secondary">
+          <p className="text-xs text-secondary  transition-all group-hover:text-secondary">
             {date.split('-').reverse().join('-')}
           </p>
 
@@ -95,7 +95,7 @@ const Post: React.FC<Props> = ({
             {keywords?.map((keyword) => (
               <span
                 key={keyword}
-                className="mr-1 pt-2 text-xs text-secondary  opacity-80 transition-all group-hover:text-secondary"
+                className="mr-1 pt-2 text-xs text-secondary  transition-all group-hover:text-secondary"
               >
                 #{keyword}
               </span>

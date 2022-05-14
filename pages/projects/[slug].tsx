@@ -98,6 +98,7 @@ const PostPage: NextPage<Props> = ({
           </h2>
           <div className="flex flex-wrap justify-center gap-2 pb-2">
             <Button
+              ariaLabel={`${frontmatter.title} GitHub link`}
               bgColor="#24292F"
               link={frontmatter.githubLink}
               iconSvg={
@@ -119,6 +120,7 @@ const PostPage: NextPage<Props> = ({
               }
             />
             <Button
+              ariaLabel={`${frontmatter.title} Live link`}
               bgColor="#4285F4"
               link={frontmatter.liveLink}
               iconSvg={
