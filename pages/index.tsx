@@ -6,9 +6,7 @@ import { getPlaiceholder } from 'plaiceholder'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import MainPost from '../components/MainPostCard'
-import PostCard from '../components/PostCard'
-import MiniPostCard from '../components/MiniPostCard'
+import { Size, PostCard } from '../components/PostCard'
 import Head from '../components/Head'
 import Header from '../components/Header'
 import Hero from '../components/Hero'
@@ -83,7 +81,8 @@ const Home: NextPage<Props> = ({ postsCardsList, projectsCardsList }) => {
           {postsCardsList.map((post, index) => {
             if (index < 1) {
               return (
-                <MainPost
+                <PostCard
+                  size={Size.large}
                   key={post.slug}
                   slug={post.slug}
                   {...post.frontmatter}
@@ -93,6 +92,7 @@ const Home: NextPage<Props> = ({ postsCardsList, projectsCardsList }) => {
             if (index < 3) {
               return (
                 <PostCard
+                  size={Size.medium}
                   key={post.slug}
                   slug={post.slug}
                   {...post.frontmatter}
@@ -101,7 +101,8 @@ const Home: NextPage<Props> = ({ postsCardsList, projectsCardsList }) => {
             }
             if (index < 6) {
               return (
-                <MiniPostCard
+                <PostCard
+                  size={Size.small}
                   key={post.slug}
                   slug={post.slug}
                   {...post.frontmatter}
