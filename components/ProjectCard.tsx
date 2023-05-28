@@ -74,7 +74,7 @@ const ProjectCard: React.FC<Props> = ({
           {coverImage.match(/.webm|.mp4/) ? (
             <LazyLoad height="266" offset={100} once>
               <video
-                src={coverImage}
+                src={`${coverImage}#t=0.001`}
                 playsInline
                 autoPlay
                 muted
