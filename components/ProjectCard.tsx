@@ -10,7 +10,6 @@ type Props = {
   slug: string
   coverImage: string
   title: string
-  liveLink: string
   githubLink: string
   excerpt: string
   techUsed: string[]
@@ -25,7 +24,6 @@ const ProjectCard: React.FC<Props> = ({
   slug,
   coverImage,
   title,
-  liveLink,
   githubLink,
   excerpt,
   techUsed,
@@ -34,7 +32,7 @@ const ProjectCard: React.FC<Props> = ({
   writeup,
   displayCardImageContain,
 }) => {
-  const { ref, inView, entry } = useInView({
+  const { inView, entry } = useInView({
     /* Optional options */
     triggerOnce: true,
     rootMargin: '50px',
@@ -55,21 +53,10 @@ const ProjectCard: React.FC<Props> = ({
     <div
       className={`${
         inView && !initialView && 'animate__fadeInUp animate__faster'
-      } animate__animated Post group relative col-span-12  cursor-pointer rounded-lg bg-white shadow transition-all hover:shadow-md md:col-span-6`}
+      }  animate__animated Post  group relative col-span-12 flex cursor-pointer  flex-col rounded-lg bg-white shadow transition-all hover:shadow-md md:col-span-6`}
       key={slug}
     >
-      <a
-        aria-label={`${title} Project - Live Page`}
-        rel="noopener noreferrer"
-        target="_blank"
-        href={liveLink}
-        ref={ref}
-        className="absolute inset-0 z-[1]"
-      >
-        <span className="hidden">{`${title} Project - Read More`}</span>
-      </a>
-
-      <div className="flex h-40 w-full  overflow-hidden rounded-t-lg xs:h-[204px] md:h-[187px] xl:h-[266px]">
+      <div className="flex h-full w-full  overflow-hidden rounded-t-lg xs:min-h-[204px] md:min-h-[187px] xl:min-h-[266px]">
         <div className="cardImageContainer animate__animated animate__fadeIn animate__faster relative w-full">
           {coverImage.match(/.webm|.mp4/) ? (
             <LazyLoad height="266" offset={100} once>
@@ -98,14 +85,14 @@ const ProjectCard: React.FC<Props> = ({
         </div>
       </div>
       <Ribbon ribbonColor={ribbonColor} ribbonIcon={ribbonIcon} />
-      <div className="flex flex-col rounded-lg p-4 shadow-none">
+      <div className="flex h-full flex-col  rounded-lg p-4 shadow-none">
         <h3 className=" text-start text-md font-extrabold text-primary transition-all hover:text-[#222] md:text-left md:text-xl">
           {title}
         </h3>
         <p className="py-1 text-xs text-secondary transition-all line-clamp-3 group-hover:text-secondary md:text-sm  lg:pt-2">
           {excerpt}
         </p>
-        <div className="flex flex-wrap gap-2 pt-2">
+        <div className="mt-auto flex flex-wrap gap-2 pt-2">
           <Button
             bgColor="#24292F"
             ariaLabel={`${title} - Github Page`}
